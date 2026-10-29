@@ -1,0 +1,19 @@
+docs/PRD.md
+  s_6893795e9e5c8d::t_d853a6efc73956 1-190
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "4171c5e948194a8112d5a416705d9ef9f0b4a827",
+  "prompts": {},
+  "sessions": {
+    "s_6893795e9e5c8d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "14f0fa19-a43e-4ecc-a174-f8f3a4a39cd3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
