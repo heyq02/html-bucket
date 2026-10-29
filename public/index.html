@@ -90,6 +90,33 @@
           class="mt-3 min-h-5 rounded-md px-3 py-2 text-sm text-fg-muted empty:hidden"
           aria-live="polite"
         ></div>
+
+        <div
+          id="overwrite-dialog"
+          class="mt-3 hidden rounded-md border border-border-default bg-canvas-inset p-4"
+          role="dialog"
+          aria-labelledby="overwrite-title"
+        >
+          <p id="overwrite-title" class="text-sm text-fg-default">
+            路径 <span id="overwrite-path" class="font-semibold"></span> 已存在，是否覆盖？
+          </p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              id="overwrite-yes"
+              class="inline-flex cursor-pointer items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+            >
+              覆盖
+            </button>
+            <button
+              type="button"
+              id="overwrite-no"
+              class="inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-default"
+            >
+              取消
+            </button>
+          </div>
+        </div>
       </section>
 
       <section
@@ -192,6 +219,35 @@
       let pendingFile = null;
       let pendingUpdatePath = null;
       let statusTimer = null;
+      let knownPaths = new Set();
+      let overwriteResolver = null;
+
+      const overwriteDialog = document.getElementById('overwrite-dialog');
+      const overwritePathEl = document.getElementById('overwrite-path');
+
+      function askOverwrite(path) {
+        return new Promise((resolve) => {
+          overwriteResolver = resolve;
+          overwritePathEl.textContent = `/${path}`;
+          overwriteDialog.classList.remove('hidden');
+          document.getElementById('overwrite-yes').focus();
+        });
+      }
+
+      function closeOverwriteDialog(answer) {
+        overwriteDialog.classList.add('hidden');
+        if (overwriteResolver) {
+          overwriteResolver(answer);
+          overwriteResolver = null;
+        }
+      }
+
+      document
+        .getElementById('overwrite-yes')
+        .addEventListener('click', () => closeOverwriteDialog(true));
+      document
+        .getElementById('overwrite-no')
+        .addEventListener('click', () => closeOverwriteDialog(false));
 
       function applyStatusStyles(el, tone) {
         el.classList.remove(
@@ -332,13 +388,21 @@
           return;
         }
 
-        setResult('发布中…');
-        let { res, body } = await publishFile(pendingFile, path, false);
+        let overwrite = knownPaths.has(path);
+        if (overwrite) {
+          const shouldOverwrite = await askOverwrite(path);
+          if (!shouldOverwrite) {
+            setResult('已取消发布，路径未被覆盖', 'info');
+            return;
+          }
+        }
 
+        setResult('发布中…');
+        let { res, body } = await publishFile(pendingFile, path, overwrite);
+
+        // Server-side conflict (list may be stale / filtered)
         if (res.status === 409) {
-          const shouldOverwrite = confirm(
-            `路径 /${path} 已存在，是否覆盖？`,
-          );
+          const shouldOverwrite = await askOverwrite(path);
           if (!shouldOverwrite) {
             setResult('已取消发布，路径未被覆盖', 'info');
             return;
@@ -365,14 +429,19 @@
 
       async function loadPages() {
         const q = filterEl.value.trim();
-        const url = q
-          ? `/api/pages?q=${encodeURIComponent(q)}&_=${Date.now()}`
-          : `/api/pages?_=${Date.now()}`;
-        const res = await fetch(url, { cache: 'no-store' });
-        if (!res.ok) {
+        // Always load full path set for overwrite detection, then filter for display
+        const allRes = await fetch(`/api/pages?_=${Date.now()}`, {
+          cache: 'no-store',
+        });
+        if (!allRes.ok) {
           throw new Error('加载列表失败');
         }
-        const pages = await res.json();
+        const allPages = await allRes.json();
+        knownPaths = new Set(allPages.map((page) => page.path));
+
+        const pages = q
+          ? allPages.filter((page) => page.path.includes(q))
+          : allPages;
         pagesEl.innerHTML = '';
 
         if (!pages.length) {
