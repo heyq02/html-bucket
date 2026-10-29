@@ -1,0 +1,23 @@
+test/pages.e2e-spec.ts
+  s_6893795e9e5c8d::t_6bb82014a3e63c 163-164
+public/index.html
+  s_6893795e9e5c8d::t_594d825402f34d 222-250
+  s_6893795e9e5c8d::t_5fb109f4662b1c 391-399,401,403,405,432-436,439-444
+  s_6893795e9e5c8d::t_4367301c24a410 93-119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "47e33ed25ea17c4e069b19b7a7a0880c2222ab28",
+  "prompts": {},
+  "sessions": {
+    "s_6893795e9e5c8d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "14f0fa19-a43e-4ecc-a174-f8f3a4a39cd3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
