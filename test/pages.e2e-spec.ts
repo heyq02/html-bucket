@@ -155,12 +155,14 @@ describe('Pages (e2e)', () => {
 
     expect(res.headers['content-type']).toMatch(/text\/html/);
     expect(res.text).toContain('HTML Bucket');
+    expect(res.text).toContain('/styles/app.css');
     expect(res.text).toContain('type="file"');
     expect(res.text).toContain('name="path"');
     expect(res.text).toContain('name="overwrite"');
     expect(res.text).toContain('data-action="toggle"');
     expect(res.text).toContain('data-action="update"');
     expect(res.text).toContain('data-action="delete"');
+    expect(res.text).toContain('data-color-mode');
   });
 
   it('can disable, enable, and delete a published page', async () => {

@@ -1,232 +1,153 @@
 <!doctype html>
-<html lang="zh-CN">
+<html
+  lang="zh-CN"
+  data-color-mode="auto"
+  data-light-theme="light"
+  data-dark-theme="dark"
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HTML Bucket</title>
-    <style>
-      :root {
-        --bg: #f3efe6;
-        --ink: #1c2420;
-        --accent: #0f6b5c;
-        --line: #cfc6b6;
-        --card: #fffdf8;
-        --danger: #9b2c2c;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at top left, #dde9e4 0, transparent 40%),
-          linear-gradient(180deg, #f7f3ea, var(--bg));
-        min-height: 100vh;
-      }
-      main {
-        width: min(920px, calc(100% - 2rem));
-        margin: 0 auto;
-        padding: 3rem 0 4rem;
-      }
-      h1 {
-        font-family: "Fraunces", Georgia, serif;
-        font-weight: 600;
-        font-size: clamp(2rem, 5vw, 3rem);
-        margin: 0 0 0.35rem;
-      }
-      p.lead {
-        margin: 0 0 2rem;
-        color: #44514b;
-      }
-      section {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 1.25rem 1.35rem 1.4rem;
-        margin-bottom: 1.25rem;
-      }
-      label {
-        display: block;
-        font-size: 0.9rem;
-        margin-bottom: 0.35rem;
-      }
-      input[type='text'],
-      input[type='file'] {
-        width: 100%;
-        margin-bottom: 0.9rem;
-      }
-      input[type='text'] {
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: 0.7rem 0.8rem;
-        font: inherit;
-      }
-      .overwrite {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin: 0 0 1rem;
-        font-size: 0.95rem;
-      }
-      .overwrite input {
-        width: auto;
-        margin: 0;
-      }
-      .overwrite label {
-        margin: 0;
-      }
-      button,
-      .btn {
-        background: var(--accent);
-        color: white;
-        border: 0;
-        border-radius: 999px;
-        padding: 0.55rem 0.9rem;
-        font: inherit;
-        cursor: pointer;
-      }
-      button:hover,
-      .btn:hover {
-        filter: brightness(1.05);
-      }
-      .btn.secondary {
-        background: transparent;
-        color: var(--ink);
-        border: 1px solid var(--line);
-      }
-      .btn.danger {
-        background: transparent;
-        color: var(--danger);
-        border: 1px solid #e2b4b4;
-      }
-      #result {
-        margin-top: 0.9rem;
-        min-height: 1.4rem;
-        word-break: break-all;
-      }
-      #result a {
-        color: var(--accent);
-      }
-      .toolbar {
-        display: flex;
-        gap: 0.6rem;
-        margin-bottom: 0.9rem;
-      }
-      .toolbar input {
-        margin: 0;
-        flex: 1;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      th,
-      td {
-        text-align: left;
-        padding: 0.7rem 0.4rem;
-        border-top: 1px solid var(--line);
-        vertical-align: middle;
-      }
-      th {
-        border-top: 0;
-        font-size: 0.85rem;
-        color: #66736c;
-        font-weight: 600;
-      }
-      .path a {
-        color: var(--ink);
-        font-weight: 600;
-      }
-      .status {
-        font-size: 0.85rem;
-      }
-      .status.on {
-        color: var(--accent);
-      }
-      .status.off {
-        color: #66736c;
-      }
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        justify-content: flex-end;
-      }
-      .muted {
-        color: #66736c;
-        font-size: 0.85rem;
-      }
-      .error {
-        color: var(--danger);
-      }
-      .disabled-row .path a {
-        color: #66736c;
-        text-decoration: line-through;
-      }
-    </style>
+    <link rel="stylesheet" href="/styles/app.css" />
   </head>
-  <body>
-    <main>
-      <h1>HTML Bucket</h1>
-      <p class="lead">Upload an HTML file, set a path, share an internal link.</p>
+  <body class="min-h-screen text-fg-default bg-canvas-subtle">
+    <main class="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6">
+      <header class="mb-8">
+        <h1 class="font-sans text-3xl font-semibold tracking-tight text-fg-default sm:text-4xl">
+          HTML Bucket
+        </h1>
+        <p class="mt-2 text-fg-muted">
+          Upload an HTML file, set a path, share an internal link.
+        </p>
+      </header>
 
-      <section aria-labelledby="publish-title">
-        <h2 id="publish-title">Publish</h2>
-        <form id="publish-form">
-          <label for="file">HTML file</label>
-          <input id="file" name="file" type="file" accept=".html,text/html" required />
-
-          <label for="path">Relative path</label>
-          <input
-            id="path"
-            name="path"
-            type="text"
-            placeholder="demos/checkout-v2"
-            required
-          />
-
-          <div class="overwrite">
-            <input id="overwrite" name="overwrite" type="checkbox" value="true" />
-            <label for="overwrite">覆盖已有路径</label>
+      <section
+        aria-labelledby="publish-title"
+        class="mb-4 rounded-lg border border-border-default bg-canvas-default p-5 shadow-sm"
+      >
+        <h2 id="publish-title" class="mb-4 text-xl font-semibold text-fg-default">
+          Publish
+        </h2>
+        <form id="publish-form" class="space-y-3">
+          <div>
+            <label for="file" class="mb-1 block text-sm font-medium text-fg-default">
+              HTML file
+            </label>
+            <input
+              id="file"
+              name="file"
+              type="file"
+              accept=".html,text/html"
+              required
+              class="block w-full text-sm text-fg-default file:mr-3 file:rounded-md file:border file:border-border-default file:bg-btn-default-bg file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-btn-default-fg"
+            />
           </div>
 
-          <button type="submit">Upload</button>
-          <div id="result" aria-live="polite"></div>
+          <div>
+            <label for="path" class="mb-1 block text-sm font-medium text-fg-default">
+              Relative path
+            </label>
+            <input
+              id="path"
+              name="path"
+              type="text"
+              placeholder="demos/checkout-v2"
+              required
+              class="w-full rounded-md border border-control-border bg-canvas-default px-3 py-2 text-sm text-fg-default outline-none focus:border-fg-link focus:ring-2 focus:ring-fg-link/30"
+            />
+          </div>
+
+          <div class="flex items-center gap-2 py-1">
+            <input
+              id="overwrite"
+              name="overwrite"
+              type="checkbox"
+              value="true"
+              class="size-4 rounded border-control-border text-fg-success focus:ring-fg-link"
+            />
+            <label for="overwrite" class="text-sm text-fg-default">覆盖已有路径</label>
+          </div>
+
+          <button
+            type="submit"
+            class="inline-flex items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+          >
+            Upload
+          </button>
+          <div id="result" class="min-h-5 text-sm text-fg-muted" aria-live="polite"></div>
         </form>
       </section>
 
-      <section aria-labelledby="library-title">
-        <h2 id="library-title">Library</h2>
-        <div class="toolbar">
-          <input id="filter" type="text" placeholder="Filter by path" />
-          <button type="button" id="refresh">Refresh</button>
+      <section
+        aria-labelledby="library-title"
+        class="rounded-lg border border-border-default bg-canvas-default p-5 shadow-sm"
+      >
+        <h2 id="library-title" class="mb-4 text-xl font-semibold text-fg-default">
+          Library
+        </h2>
+        <div class="mb-4 flex flex-col gap-2 sm:flex-row">
+          <input
+            id="filter"
+            type="text"
+            placeholder="Filter by path"
+            class="w-full flex-1 rounded-md border border-control-border bg-canvas-default px-3 py-2 text-sm text-fg-default outline-none focus:border-fg-link focus:ring-2 focus:ring-fg-link/30"
+          />
+          <button
+            type="button"
+            id="refresh"
+            class="inline-flex items-center justify-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
+          >
+            Refresh
+          </button>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>路径</th>
-              <th>状态</th>
-              <th>大小</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody id="pages"></tbody>
-        </table>
+
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-border-muted text-fg-muted">
+                <th class="px-2 py-2 font-semibold">路径</th>
+                <th class="px-2 py-2 font-semibold">状态</th>
+                <th class="px-2 py-2 font-semibold">大小</th>
+                <th class="px-2 py-2 font-semibold text-right">操作</th>
+              </tr>
+            </thead>
+            <tbody id="pages"></tbody>
+          </table>
+        </div>
       </section>
     </main>
 
     <template id="page-row-template">
-      <tr>
-        <td class="path"><a href="#"></a></td>
-        <td class="status"></td>
-        <td class="muted size"></td>
-        <td>
-          <div class="actions">
-            <button type="button" class="btn secondary" data-action="toggle">开启/关闭</button>
-            <button type="button" class="btn secondary" data-action="update">更新</button>
-            <button type="button" class="btn danger" data-action="delete">删除</button>
+      <tr class="border-b border-border-muted last:border-b-0">
+        <td class="path px-2 py-3">
+          <a href="#" class="font-semibold text-fg-link hover:underline"></a>
+        </td>
+        <td class="status px-2 py-3 text-sm"></td>
+        <td class="size px-2 py-3 text-fg-muted"></td>
+        <td class="px-2 py-3">
+          <div class="actions flex flex-wrap justify-end gap-2">
+            <button
+              type="button"
+              class="btn secondary inline-flex items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
+              data-action="toggle"
+            >
+              开启/关闭
+            </button>
+            <button
+              type="button"
+              class="btn secondary inline-flex items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
+              data-action="update"
+            >
+              更新
+            </button>
+            <button
+              type="button"
+              class="btn danger inline-flex items-center rounded-md border border-btn-danger-border bg-btn-danger-bg px-2.5 py-1 text-xs font-medium text-btn-danger-fg hover:bg-canvas-inset"
+              data-action="delete"
+            >
+              删除
+            </button>
           </div>
         </td>
       </tr>
@@ -248,7 +169,8 @@
 
         if (!pages.length) {
           const empty = document.createElement('tr');
-          empty.innerHTML = '<td colspan="4" class="muted">暂无页面</td>';
+          empty.innerHTML =
+            '<td colspan="4" class="px-2 py-6 text-center text-fg-muted">暂无页面</td>';
           pagesEl.appendChild(empty);
           return;
         }
@@ -256,22 +178,28 @@
         for (const page of pages) {
           const row = rowTemplate.content.firstElementChild.cloneNode(true);
           if (!page.enabled) {
-            row.classList.add('disabled-row');
+            row.classList.add('opacity-70');
           }
 
           const link = row.querySelector('.path a');
           link.href = `/${page.path}`;
           link.textContent = `/${page.path}`;
+          if (!page.enabled) {
+            link.classList.add('line-through', 'text-fg-muted');
+            link.classList.remove('text-fg-link');
+          }
 
           const status = row.querySelector('.status');
           status.textContent = page.enabled ? '已开启' : '已关闭';
-          status.classList.add(page.enabled ? 'on' : 'off');
+          status.classList.add(page.enabled ? 'text-fg-success' : 'text-fg-muted');
 
           row.querySelector('.size').textContent = `${page.size} bytes`;
 
           const toggleBtn = row.querySelector('[data-action="toggle"]');
           toggleBtn.textContent = page.enabled ? '关闭' : '开启';
-          toggleBtn.addEventListener('click', () => togglePage(page.path, !page.enabled));
+          toggleBtn.addEventListener('click', () =>
+            togglePage(page.path, !page.enabled),
+          );
 
           row
             .querySelector('[data-action="update"]')
@@ -290,7 +218,8 @@
         document.getElementById('overwrite').checked = true;
         document.getElementById('file').focus();
         result.textContent = `已填入路径 /${path}，请选择新的 HTML 后上传覆盖。`;
-        result.classList.remove('error');
+        result.classList.remove('text-fg-danger');
+        result.classList.add('text-fg-muted');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -326,7 +255,8 @@
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
         result.textContent = 'Uploading…';
-        result.classList.remove('error');
+        result.classList.remove('text-fg-danger');
+        result.classList.add('text-fg-muted');
 
         const data = new FormData(form);
         const res = await fetch('/api/pages', { method: 'POST', body: data });
@@ -337,11 +267,12 @@
             ? body.message.join(', ')
             : body.message || 'Upload failed';
           result.textContent = message;
-          result.classList.add('error');
+          result.classList.remove('text-fg-muted');
+          result.classList.add('text-fg-danger');
           return;
         }
 
-        result.innerHTML = `Published: <a href="${body.url}">${body.url}</a>`;
+        result.innerHTML = `Published: <a class="text-fg-link hover:underline" href="${body.url}">${body.url}</a>`;
         form.reset();
         await loadPages();
       });
