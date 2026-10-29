@@ -17,7 +17,7 @@ If the user provides files (spreadsheets, backlogs, opportunity assessments), re
 
 For framework selection guidance, see the `prioritization-frameworks` skill. Key recommendations:
 
-**Opportunity Score** (Dan Olsen, *The Lean Product Playbook*) is recommended for evaluating customer problems: Opportunity Score = Importance × (1 − Satisfaction), normalized to 0–1. High Importance + low Satisfaction = best opportunities. Prioritize **problems (opportunities)**, not solutions.
+**Opportunity Score** (Dan Olsen, _The Lean Product Playbook_) is recommended for evaluating customer problems: Opportunity Score = Importance × (1 − Satisfaction), normalized to 0–1. High Importance + low Satisfaction = best opportunities. Prioritize **problems (opportunities)**, not solutions.
 
 **ICE** is recommended for quick scoring of initiatives: Impact (Opportunity Score × # Customers) × Confidence × Ease. **RICE** adds Reach as a separate factor for larger teams.
 

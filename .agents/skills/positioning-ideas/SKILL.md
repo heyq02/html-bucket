@@ -2,6 +2,7 @@
 name: positioning-ideas
 description: "Brainstorm product positioning ideas differentiated from competitors. Identifies top competitors and generates positioning statements with rationale. Use when developing product positioning, differentiating from competitors, or crafting brand positioning strategy."
 ---
+
 # Positioning Ideas
 
 Brainstorm product positioning ideas differentiated from competitors. Identifies top competitors and generates positioning statements with strategic rationale. Use when developing product positioning, differentiating from competitors, or crafting brand positioning strategy.
@@ -24,6 +25,7 @@ Follow these steps:
 
 **Step 1: Competitive Landscape Analysis**
 Identify and briefly describe the top 5 competitors in this market. For each, note:
+
 - Their primary positioning angle
 - Their target audience focus
 - Key differentiators they emphasize
@@ -31,6 +33,7 @@ Identify and briefly describe the top 5 competitors in this market. For each, no
 
 **Step 2: Positioning Brainstorm**
 Generate 5 unique positioning ideas for this product that target the specified market segment. Each positioning idea should:
+
 - Be clearly differentiated from competitor positioning
 - Resonate with the target audience's values and needs
 - Emphasize specific capabilities that competitors downplay or ignore

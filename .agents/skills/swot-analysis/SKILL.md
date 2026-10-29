@@ -2,9 +2,11 @@
 name: swot-analysis
 description: "Perform a detailed SWOT analysis — strengths, weaknesses, opportunities, and threats with actionable recommendations. Use when doing strategic assessment, competitive analysis, or evaluating a product or business position."
 ---
+
 # SWOT Analysis
 
 ## Metadata
+
 - **Name**: swot-analysis
 - **Description**: Perform a detailed SWOT analysis for a product. Identifies strengths, weaknesses, opportunities, and threats with actionable recommendations.
 - **Triggers**: SWOT analysis, strengths weaknesses, SWOT matrix, strategic assessment
@@ -16,6 +18,7 @@ You are a strategic analyst conducting a SWOT analysis for $ARGUMENTS.
 Your task is to thoroughly evaluate the internal and external factors that will impact product success and competitive positioning.
 
 ## Input Requirements
+
 - Product description and current state
 - Competitive landscape and market context
 - Company capabilities, resources, and constraints
@@ -25,6 +28,7 @@ Your task is to thoroughly evaluate the internal and external factors that will 
 ## SWOT Analysis Framework
 
 ### 1. Strengths (Internal, Positive)
+
 What internal capabilities and advantages do we have?
 
 - Unique capabilities or expertise
@@ -36,6 +40,7 @@ What internal capabilities and advantages do we have?
 - Existing customer base or distribution
 
 ### 2. Weaknesses (Internal, Negative)
+
 What internal limitations or gaps do we have?
 
 - Resource constraints (budget, team size, skills)
@@ -47,6 +52,7 @@ What internal limitations or gaps do we have?
 - Dependence on key people or partners
 
 ### 3. Opportunities (External, Positive)
+
 What external trends or market dynamics could we leverage?
 
 - Growing market segments or customer needs
@@ -58,6 +64,7 @@ What external trends or market dynamics could we leverage?
 - Shifting customer preferences or behaviors
 
 ### 4. Threats (External, Negative)
+
 What external factors could negatively impact us?
 
 - Emerging or stronger competitors
@@ -69,6 +76,7 @@ What external factors could negatively impact us?
 - Supplier or partner consolidation
 
 ## Output Process
+
 1. Identify 5-7 strengths (be honest about competitive advantages)
 2. List 5-7 weaknesses (avoid minimizing; focus on addressable gaps)
 3. Map 5-7 opportunities (prioritize by market size and alignment)
@@ -83,12 +91,14 @@ What external factors could negatively impact us?
 8. Identify metrics to track progress
 
 ## Strategic Applications
+
 - **Build**: Double down on strengths + opportunities
 - **Defend**: Fortify weaknesses + mitigate threats
 - **Pivot**: Explore opportunities that change the competitive dynamic
 - **Exit**: If too many threats and weak competitive position
 
 ## Notes
+
 - SWOT is internal to external assessment
 - Context matters: compare against competitors and industry standards
 - Update SWOT quarterly or when market conditions change

@@ -6,17 +6,20 @@ description: "Perform cohort analysis on user engagement data — retention curv
 # Cohort Analysis & Retention Explorer
 
 ## Purpose
+
 Analyze user engagement and retention patterns by cohort to identify trends in user behavior, feature adoption, and long-term engagement. Combine quantitative insights with qualitative research recommendations.
 
 ## How It Works
 
 ### Step 1: Read and Validate Your Data
+
 - Accept CSV, Excel, or JSON data files with user cohort information
 - Verify data structure: cohort identifier, time periods, engagement metrics
 - Check for missing values and data quality issues
 - Summarize key statistics (cohort sizes, date ranges, metrics available)
 
 ### Step 2: Generate Quantitative Analysis
+
 - Calculate cohort retention rates and engagement trends
 - Identify retention curves, drop-off patterns, and anomalies
 - Compute feature adoption rates across cohorts
@@ -24,6 +27,7 @@ Analyze user engagement and retention patterns by cohort to identify trends in u
 - Generate Python analysis scripts using pandas and numpy if requested
 
 ### Step 3: Create Visualizations
+
 - Generate retention heatmaps (cohorts vs. time periods)
 - Create line charts showing cohort progression
 - Build comparison charts for feature adoption
@@ -31,6 +35,7 @@ Analyze user engagement and retention patterns by cohort to identify trends in u
 - Output as interactive charts or static images
 
 ### Step 4: Identify Insights & Patterns
+
 - Spot one or more significant patterns:
   - Early churn in specific cohorts
   - Late-stage engagement changes
@@ -40,6 +45,7 @@ Analyze user engagement and retention patterns by cohort to identify trends in u
 - Compare cohort performance to establish baselines
 
 ### Step 5: Suggest Follow-Up Research
+
 - Recommend qualitative research methods:
   - Targeted user interviews with churning users
   - Feature usage surveys with engaged cohorts
@@ -51,6 +57,7 @@ Analyze user engagement and retention patterns by cohort to identify trends in u
 ## Usage Examples
 
 **Example 1: Upload CSV Data**
+
 ```
 Upload cohort_engagement.csv with columns: cohort_month, weeks_active,
 user_id, feature_x_usage, engagement_score
@@ -60,6 +67,7 @@ underperform compared to Q3"
 ```
 
 **Example 2: Describe Data Format**
+
 ```
 "I have monthly user cohorts from Jan-Dec 2025. Each row shows:
 cohort date, user ID, purchase frequency, and support tickets.
@@ -67,6 +75,7 @@ Analyze which cohorts show best long-term retention."
 ```
 
 **Example 3: Feature Adoption Analysis**
+
 ```
 Upload feature_usage.xlsx with cohort adoption data.
 
@@ -97,6 +106,7 @@ Which cohorts adopted fastest? Any patterns?"
 ## Output Format
 
 You'll receive:
+
 - **Data Summary**: Cohort overview and data quality assessment
 - **Quantitative Findings**: Key metrics, retention rates, and trend analysis
 - **Visualizations**: Charts showing retention curves, adoption patterns

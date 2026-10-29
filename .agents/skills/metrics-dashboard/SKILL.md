@@ -17,7 +17,7 @@ If the user provides files (existing dashboards, analytics data, OKRs, or strate
 
 **Metrics vs KPIs vs NSM**: Metrics = all measurable things. KPIs = a few key quantitative metrics tracked over a longer period. North Star Metric = a single customer-centric KPI that is a leading indicator of business success.
 
-**4 criteria for a good metric** (Ben Yoskovitz, *Lean Analytics*): (1) Understandable — creates a common language. (2) Comparative — over time, not a snapshot. (3) Ratio or Rate — more revealing than whole numbers. (4) Behavior-changing — the Golden Rule: "If a metric won't change how you behave, it's a bad metric."
+**4 criteria for a good metric** (Ben Yoskovitz, _Lean Analytics_): (1) Understandable — creates a common language. (2) Comparative — over time, not a snapshot. (3) Ratio or Rate — more revealing than whole numbers. (4) Behavior-changing — the Golden Rule: "If a metric won't change how you behave, it's a bad metric."
 
 **8 metric types**: Vanity vs Actionable (only actionable metrics change behavior), Qualitative vs Quantitative (WHAT vs WHY — you need both; never stop talking to customers), Exploratory vs Reporting (explore data to uncover unexpected insights), Lagging vs Leading (leading indicators enable faster learning cycles, e.g. customer complaints predict churn).
 
@@ -39,8 +39,8 @@ For case studies and more detail: [Are You Tracking the Right Metrics?](https://
 
 2. **For each metric, define**:
 
-   | Metric | Definition | Data Source | Visualization | Target | Alert Threshold |
-   |---|---|---|---|---|---|
+   | Metric | Definition                                              | Data Source                 | Visualization                        | Target       | Alert Threshold            |
+   | ------ | ------------------------------------------------------- | --------------------------- | ------------------------------------ | ------------ | -------------------------- |
    | [Name] | [Exact calculation: numerator/denominator, time window] | [Where the data comes from] | [Line chart / Bar / Number / Funnel] | [Goal value] | [When to trigger an alert] |
 
 3. **Design the dashboard layout**:

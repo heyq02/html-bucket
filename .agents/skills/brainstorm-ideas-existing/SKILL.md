@@ -15,7 +15,7 @@ If the user provides files (research data, opportunity trees, personas), read th
 
 ### Domain Context
 
-**Product Trio** (Teresa Torres, *Continuous Discovery Habits*): PM + Designer + Engineer collaborate on discovery together. "Best ideas often come from engineers." Discovery is not linear — loop back if experiments fail. Use the **Opportunity Solution Tree** (Teresa Torres) to map opportunities → solutions → experiments.
+**Product Trio** (Teresa Torres, _Continuous Discovery Habits_): PM + Designer + Engineer collaborate on discovery together. "Best ideas often come from engineers." Discovery is not linear — loop back if experiments fail. Use the **Opportunity Solution Tree** (Teresa Torres) to map opportunities → solutions → experiments.
 
 ### Instructions
 

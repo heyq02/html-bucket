@@ -23,15 +23,15 @@ If the user provides files (competitor pricing, survey data, financial models, o
 
 2. **Evaluate pricing models** — recommend the best fit:
 
-   | Model | Best For | Example |
-   |---|---|---|
-   | **Flat-rate** | Simple products, predictable costs | Basecamp ($99/mo flat) |
-   | **Per-seat** | Collaboration tools, team products | Slack, Figma |
-   | **Usage-based** | Infrastructure, API products | AWS, Twilio |
-   | **Tiered** | Products with distinct user segments | Most SaaS (Free/Pro/Enterprise) |
-   | **Freemium** | Products with viral/network effects | Spotify, Notion |
-   | **Freemium + usage** | Platform products | Vercel, OpenAI API |
-   | **Value-based** | High-impact enterprise tools | Salesforce, Palantir |
+   | Model                | Best For                             | Example                         |
+   | -------------------- | ------------------------------------ | ------------------------------- |
+   | **Flat-rate**        | Simple products, predictable costs   | Basecamp ($99/mo flat)          |
+   | **Per-seat**         | Collaboration tools, team products   | Slack, Figma                    |
+   | **Usage-based**      | Infrastructure, API products         | AWS, Twilio                     |
+   | **Tiered**           | Products with distinct user segments | Most SaaS (Free/Pro/Enterprise) |
+   | **Freemium**         | Products with viral/network effects  | Spotify, Notion                 |
+   | **Freemium + usage** | Platform products                    | Vercel, OpenAI API              |
+   | **Value-based**      | High-impact enterprise tools         | Salesforce, Palantir            |
 
 3. **Analyze competitive pricing**:
    - Map competitor pricing tiers and what's included

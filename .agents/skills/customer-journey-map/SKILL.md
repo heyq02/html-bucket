@@ -19,15 +19,15 @@ If the user provides files (interview transcripts, survey data, analytics, suppo
 
 2. **Map the journey stages** (adapt to the product):
 
-   | Stage | Description |
-   |---|---|
-   | **Awareness** | How do they first learn about the product? |
+   | Stage             | Description                                               |
+   | ----------------- | --------------------------------------------------------- |
+   | **Awareness**     | How do they first learn about the product?                |
    | **Consideration** | What do they evaluate? What alternatives do they compare? |
-   | **Acquisition** | How do they sign up or purchase? |
-   | **Onboarding** | First experience with the product — time to value |
-   | **Engagement** | Regular usage — building habits |
-   | **Retention** | What keeps them coming back? What might cause churn? |
-   | **Advocacy** | When and why do they recommend the product to others? |
+   | **Acquisition**   | How do they sign up or purchase?                          |
+   | **Onboarding**    | First experience with the product — time to value         |
+   | **Engagement**    | Regular usage — building habits                           |
+   | **Retention**     | What keeps them coming back? What might cause churn?      |
+   | **Advocacy**      | When and why do they recommend the product to others?     |
 
 3. **For each stage, document**:
 
@@ -46,7 +46,7 @@ If the user provides files (interview transcripts, survey data, analytics, suppo
 5. **Create the journey map table**:
 
    | Stage | Touchpoint | User Action | Emotion | Pain Point | Opportunity |
-   |---|---|---|---|---|---|
+   | ----- | ---------- | ----------- | ------- | ---------- | ----------- |
 
 6. **Recommend prioritized improvements**:
    - Which pain points have the highest impact on conversion or retention?

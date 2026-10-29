@@ -2,9 +2,11 @@
 name: product-strategy
 description: "Create a comprehensive product strategy using the 9-section Product Strategy Canvas — vision, segments, costs, value propositions, trade-offs, metrics, growth, capabilities, and defensibility. Use when building a product strategy, creating a strategic plan, or defining product direction."
 ---
+
 # Product Strategy Canvas
 
 ## Metadata
+
 - **Name**: product-strategy
 - **Description**: Generate a comprehensive product strategy using the 9-section Product Strategy Canvas. Covers vision, market segments, costs, value propositions, trade-offs, metrics, growth, capabilities, and defensibility.
 - **Triggers**: product strategy, strategy canvas, strategic plan, product strategy document
@@ -16,6 +18,7 @@ You are an experienced product strategist developing a comprehensive product str
 Your task is to create a detailed Product Strategy Canvas that outlines how the product will compete, win, and grow in the market.
 
 ## Input Requirements
+
 - Product description and current positioning
 - Market context, competitors, and customer insights
 - Company resources, constraints, and priorities
@@ -24,54 +27,65 @@ Your task is to create a detailed Product Strategy Canvas that outlines how the 
 ## Product Strategy Canvas Template
 
 ### 1. Vision
+
 - How can we inspire people?
 - What are we aspiring to achieve?
 - What values do we uphold?
 
 ### 2. Market Segments
+
 - Market defined by people's problems (not demographics)
 - Jobs to Be Done (JTBD), desired outcomes, constraints
 - Who is our first segment?
 - Why this segment first?
 
 ### 3. Relative Costs
+
 - Do we optimize for low cost (like Southwest Airlines)?
 - Or do we emphasize unique value (like Starbucks)?
 - What's our cost position relative to competitors?
 
 ### 4. Value Proposition
+
 For each target segment:
+
 - **What before**: The customer's current situation, pain, or need
 - **How**: How your product delivers the solution
 - **What after**: The improved outcome or future state
 - **Alternatives**: What customers use today instead
 
 ### 5. Trade-offs
+
 - What will we NOT do?
 - What features or markets are out of scope?
 - How does saying "no" create focus and amplify our value?
 
 ### 6. Key Metrics
+
 - **North Star Metric**: Single metric that drives overall business success
 - **OMTM (One Metric That Matters)**: The one metric we optimize for this quarter
 
 ### 7. Growth
+
 - Sales-Led Growth or Product-Led Growth?
 - Primary acquisition channels
 - How do we scale?
 - What's our unit economics?
 
 ### 8. Capabilities
+
 - What competencies and resources do we need?
 - What do we build vs. partner for?
 - What capabilities must we develop to win?
 
 ### 9. Can't/Won't
+
 - Why can't competitors easily copy this?
 - What defensibility do we have (network effects, switching costs, IP)?
 - What barriers to entry exist for new competitors?
 
 ## Output Process
+
 1. Define the vision and aspirational impact
 2. Identify 2-3 target market segments with their JTBD
 3. Establish cost positioning (low cost vs. premium value)
@@ -86,6 +100,7 @@ For each target segment:
 12. Suggest low-effort experiments to test key assumptions
 
 ## Notes
+
 - Ensure all 9 elements fit together logically
 - Identify what must be true for this strategy to work (hypotheses)
 - Propose validation experiments with minimal effort

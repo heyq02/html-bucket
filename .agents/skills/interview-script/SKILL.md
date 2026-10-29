@@ -59,6 +59,7 @@ If the user provides files (personas, hypothesis lists, product briefs, or previ
    - "What would you give up to have this solved?"
 
    ### Probing Techniques
+
    Use these when you hit an interesting thread:
    - **"Tell me more about that"** — opens up any topic
    - **"Why?"** (asked gently, 2-3 times) — gets to root causes

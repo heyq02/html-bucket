@@ -2,9 +2,11 @@
 name: pestle-analysis
 description: "Perform a PESTLE analysis covering Political, Economic, Social, Technological, Legal, and Environmental factors. Use when assessing the macro environment, doing strategic planning, or evaluating external factors affecting your business."
 ---
+
 # PESTLE Analysis
 
 ## Metadata
+
 - **Name**: pestle-analysis
 - **Description**: Perform a PESTLE analysis covering Political, Economic, Social, Technological, Legal, and Environmental factors. Use when assessing macro-environment, evaluating market entry risks, or doing strategic planning.
 - **Triggers**: PESTLE analysis, macro environment, market environment, external factors analysis
@@ -16,6 +18,7 @@ You are a strategic analyst conducting a PESTLE analysis for $ARGUMENTS.
 Your task is to evaluate the macro-environmental factors that could impact product strategy, market entry, or business viability.
 
 ## Input Requirements
+
 - Industry and market context
 - Geographic market or region(s)
 - Product or business type
@@ -25,6 +28,7 @@ Your task is to evaluate the macro-environmental factors that could impact produ
 ## PESTLE Analysis Framework
 
 ### 1. Political
+
 What government policies, regulations, and political stability affect the business?
 
 - Government policies and incentives
@@ -36,6 +40,7 @@ What government policies, regulations, and political stability affect the busine
 - Government relationships and lobbying needs
 
 ### 2. Economic
+
 What economic conditions and financial factors matter?
 
 - Economic growth and GDP trends
@@ -47,6 +52,7 @@ What economic conditions and financial factors matter?
 - Access to financing and capital
 
 ### 3. Social
+
 What demographic and cultural trends shape the market?
 
 - Population demographics and trends
@@ -58,6 +64,7 @@ What demographic and cultural trends shape the market?
 - Diversity and inclusion preferences
 
 ### 4. Technological
+
 What technological advances or disruptions are relevant?
 
 - Emerging technologies (AI, blockchain, cloud, etc.)
@@ -69,6 +76,7 @@ What technological advances or disruptions are relevant?
 - Technology adoption rates and digital literacy
 
 ### 5. Legal
+
 What laws, regulations, and compliance requirements apply?
 
 - Data protection and privacy laws (GDPR, CCPA, etc.)
@@ -80,6 +88,7 @@ What laws, regulations, and compliance requirements apply?
 - Liability and insurance requirements
 
 ### 6. Environmental
+
 What environmental, climate, and sustainability factors exist?
 
 - Climate change and environmental regulations
@@ -91,6 +100,7 @@ What environmental, climate, and sustainability factors exist?
 - Green certification and eco-friendly standards
 
 ## Output Process
+
 1. For each PESTLE category, identify 3-5 relevant factors
 2. Assess impact on product/business (High, Medium, Low)
 3. Assess probability or likelihood (High, Medium, Low)
@@ -104,6 +114,7 @@ What environmental, climate, and sustainability factors exist?
 8. Document assumptions and unknowns requiring research
 
 ## Strategic Applications
+
 - Market entry assessment: Is this market viable to enter?
 - Risk assessment: What macro risks could derail our strategy?
 - Opportunity identification: What external shifts create new possibilities?
@@ -111,6 +122,7 @@ What environmental, climate, and sustainability factors exist?
 - Regulatory roadmap: What compliance needs must we plan for?
 
 ## Notes
+
 - PESTLE is complementary to SWOT (macro vs. micro analysis)
 - Some factors span multiple categories (e.g., regulations affect legal, political, and economic)
 - Geographic and industry context matter significantly

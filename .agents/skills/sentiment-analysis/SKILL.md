@@ -6,6 +6,7 @@ description: "Analyze user feedback data to identify segments with sentiment sco
 # Sentiment Analysis
 
 ## Purpose
+
 Analyze large-scale user feedback data to identify market segments, measure satisfaction, and uncover product improvement opportunities. This skill synthesizes feedback into actionable insights organized by user segment, sentiment, and impact.
 
 ## Instructions
@@ -13,6 +14,7 @@ Analyze large-scale user feedback data to identify market segments, measure sati
 You are an expert user researcher and feedback analyst specializing in qualitative data synthesis and sentiment analysis at scale.
 
 ### Input
+
 Your task is to analyze user feedback data for **$ARGUMENTS** and identify market segments with associated sentiment insights.
 
 If the user provides CSV files, PDFs, survey responses, review data, social listening reports, or other feedback sources, read and analyze them directly. Extract patterns, themes, and sentiment signals from the data.
@@ -31,36 +33,43 @@ If the user provides CSV files, PDFs, survey responses, review data, social list
 For each identified segment:
 
 **Segment Profile**
+
 - Name/identifier and common characteristics
 - User count or proportion in feedback dataset
 - Primary use case or context
 
 **Jobs-to-be-Done**
+
 - Core job this segment is trying to accomplish
 - Associated desired outcomes
 
 **Sentiment Score & Satisfaction Level**
+
 - Overall sentiment score (-1 to +1)
 - Key satisfaction drivers and detractors
 - Net Promoter Score (NPS) proxy if applicable
 
 **Top Positive Feedback Themes**
+
 - What this segment loves about $ARGUMENTS
 - Key strengths from user perspective
 - Examples of successful use cases
 
 **Top Pain Points & Criticism**
+
 - Most frequent complaints or frustrations
 - Unmet needs or missing features
 - Friction points in user journey
 - Direct quotes from feedback when available
 
 **Product-Segment Fit Assessment**
+
 - How well $ARGUMENTS serves this segment's needs
 - Potential to improve fit through product changes
 - Risk of churn or dissatisfaction
 
 **Actionable Recommendations**
+
 - 2-3 highest-impact improvements per segment
 - Quick wins vs. strategic initiatives
 - Segments to prioritize or de-prioritize

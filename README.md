@@ -4,6 +4,20 @@ Internal service for sharing static HTML: upload a file, set a relative path, ge
 
 **Trust model (v1):** anyone who can reach the service on the intranet may publish, overwrite, enable/disable, or delete pages. No login. Do not expose to the public internet.
 
+## Toolchain
+
+Dev tooling is [Vite+](https://viteplus.dev/) (`vite-plus`) with presets from [`@liangmi/vp-config`](https://github.com/liangmiQwQ/vp-config). Nest still owns runtime build/start (`nest build` / `nest start`).
+
+| Command                           | Purpose                                     |
+| --------------------------------- | ------------------------------------------- |
+| `npm run check`                   | Format + lint + typecheck (`vp run ccheck`) |
+| `npm run test`                    | Vitest (`vp run ctest`)                     |
+| `npm run format` / `npm run lint` | Oxfmt / Oxlint via Vite+                    |
+| `npm run build`                   | Tailwind CSS + Nest compile                 |
+| `npm run start:dev`               | Nest watch mode                             |
+
+Config: [`vite.config.mts`](vite.config.mts).
+
 ## Quick start
 
 ```bash
@@ -21,12 +35,12 @@ npm run start:prod
 
 ## Environment variables
 
-| Variable | Default | Description |
-| --- | --- | --- |
-| `PORT` | `3000` | HTTP listen port |
-| `PAGE_STORE_ROOT` | `./storage` | Directory for stored HTML files and metadata |
-| `PUBLIC_BASE_URL` | `http://localhost:3000` | Base URL returned in publish responses (set to the real internal host in deploy) |
-| `MAX_FILE_SIZE_BYTES` | `1048576` (1MB) | Max upload size for a single HTML file |
+| Variable              | Default                 | Description                                                                      |
+| --------------------- | ----------------------- | -------------------------------------------------------------------------------- |
+| `PORT`                | `3000`                  | HTTP listen port                                                                 |
+| `PAGE_STORE_ROOT`     | `./storage`             | Directory for stored HTML files and metadata                                     |
+| `PUBLIC_BASE_URL`     | `http://localhost:3000` | Base URL returned in publish responses (set to the real internal host in deploy) |
+| `MAX_FILE_SIZE_BYTES` | `1048576` (1MB)         | Max upload size for a single HTML file                                           |
 
 ## Docker
 
@@ -53,15 +67,15 @@ Health probe: `GET /health` → `{ "status": "ok" }`.
 
 ## API
 
-| Method | Path | Purpose |
-| --- | --- | --- |
-| `GET` | `/health` | Liveness |
-| `GET` | `/` | Publish / library UI |
-| `POST` | `/api/pages` | Publish (`multipart`: `file`, `path`, optional `overwrite=true`) |
-| `GET` | `/api/pages?q=` | List pages (optional path filter) |
-| `PATCH` | `/api/pages` | Enable / disable (`{ "path", "enabled" }`) |
-| `DELETE` | `/api/pages?path=` | Hard delete |
-| `GET` | `/:path` | Serve published HTML |
+| Method   | Path               | Purpose                                                          |
+| -------- | ------------------ | ---------------------------------------------------------------- |
+| `GET`    | `/health`          | Liveness                                                         |
+| `GET`    | `/`                | Publish / library UI                                             |
+| `POST`   | `/api/pages`       | Publish (`multipart`: `file`, `path`, optional `overwrite=true`) |
+| `GET`    | `/api/pages?q=`    | List pages (optional path filter)                                |
+| `PATCH`  | `/api/pages`       | Enable / disable (`{ "path", "enabled" }`)                       |
+| `DELETE` | `/api/pages?path=` | Hard delete                                                      |
+| `GET`    | `/:path`           | Serve published HTML                                             |
 
 ## Docs
 

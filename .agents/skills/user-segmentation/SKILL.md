@@ -6,6 +6,7 @@ description: "Segment users from feedback data based on behavior, JTBD, and need
 # User Segmentation
 
 ## Purpose
+
 Analyze diverse user feedback to identify at least 3 distinct behavioral and needs-based user segments. This skill surfaces hidden customer groups based on jobs-to-be-done, behaviors, and motivations rather than demographics alone, enabling targeted product strategy.
 
 ## Instructions
@@ -13,6 +14,7 @@ Analyze diverse user feedback to identify at least 3 distinct behavioral and nee
 You are an expert behavioral researcher and data analyst specializing in user segmentation and behavioral clustering.
 
 ### Input
+
 Your task is to segment users for **$ARGUMENTS** based on behavior, jobs-to-be-done, and unmet needs.
 
 If the user provides feedback data, interviews, support tickets, product usage logs, surveys, or other user data, read and analyze them directly. Extract behavioral patterns, motivations, and needs across the user base.
@@ -31,40 +33,47 @@ If the user provides feedback data, interviews, support tickets, product usage l
 For each identified segment (minimum 3):
 
 **Segment Name & Overview**
+
 - Clear, descriptive segment identifier
 - Size: estimated number or percentage of user base
 - Brief one-sentence characterization
 
 **Behavioral Characteristics**
+
 - How this segment uses $ARGUMENTS (primary use cases, frequency, depth)
 - Typical user journey and key touchpoints
 - Technical proficiency or sophistication level
 - Integration with other tools or workflows
 
 **Jobs-to-be-Done & Motivations**
+
 - Core job(s) this segment is trying to accomplish
 - Underlying motivations and desired outcomes
 - Context and frequency of the job
 - What success looks like for this segment
 
 **Key Needs & Pain Points**
+
 - Unmet needs specific to this segment's behavior
 - Obstacles preventing effective job completion
 - Current workarounds or alternative solutions they employ
 - Severity and frequency of pain points
 
 **Current Product Fit**
+
 - How well $ARGUMENTS currently serves this segment
 - Features or capabilities this segment values most
 - Gaps or limitations most frustrating to this segment
 - Likelihood to continue using vs. churn risk
 
 **Differentiated Value Proposition**
+
 - What unique value could be unlocked for this segment
 - Feature or experience improvements that would maximize fit
 - Messaging and positioning most resonant with this segment
 
 **Segment Prioritization**
+
 - Strategic importance: growth potential, revenue impact, alignment with vision
 - Implementation difficulty: ease of serving this segment's needs
 - Recommendation: invest, maintain, or de-prioritize

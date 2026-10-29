@@ -46,13 +46,13 @@ If the user provides data files (CSV, Excel, or analytics exports), read and ana
 
 5. **Interpret results**:
 
-   | Outcome | Recommendation |
-   |---|---|
-   | Significant positive lift, no guardrail issues | **Ship it** — roll out to 100% |
-   | Significant positive lift, guardrail concerns | **Investigate** — understand trade-offs before shipping |
-   | Not significant, positive trend | **Extend the test** — need more data or larger effect |
-   | Not significant, flat | **Stop the test** — no meaningful difference detected |
-   | Significant negative lift | **Don't ship** — revert to control, analyze why |
+   | Outcome                                        | Recommendation                                          |
+   | ---------------------------------------------- | ------------------------------------------------------- |
+   | Significant positive lift, no guardrail issues | **Ship it** — roll out to 100%                          |
+   | Significant positive lift, guardrail concerns  | **Investigate** — understand trade-offs before shipping |
+   | Not significant, positive trend                | **Extend the test** — need more data or larger effect   |
+   | Not significant, flat                          | **Stop the test** — no meaningful difference detected   |
+   | Significant negative lift                      | **Don't ship** — revert to control, analyze why         |
 
 6. **Provide the analysis summary**:
    ```

@@ -15,11 +15,13 @@ OKRs bridge vision and execution by combining inspirational qualitative objectiv
 
 ## Domain Context
 
-**OKR** (Christina Wodtke, *Radical Focus*):
+**OKR** (Christina Wodtke, _Radical Focus_):
+
 - **Objective** (Why, What, When): Qualitative, inspirational, time-bound goal. Typically quarterly. Should be SMART.
 - **Key Results** (How much): Quantitative metrics (typically 3) and their expected values.
 
 **OKRs, KPIs, and NSM are interconnected — not alternatives.** Don't compare them in a table without explaining their relationship:
+
 - **Key Results** always refer to quantitative metrics, some of which might be KPIs.
 - **KPIs** = a few key quantitative metrics tracked over a longer period. Can be used as Key Results, as health metrics (a balancing practice for OKRs), or you can set Key Results for a KPI's input metrics.
 - **North Star Metric** = a single, customer-centric KPI. A leading indicator of business success. You can use Key Results to express expected change in NSM.
@@ -48,6 +50,7 @@ OKRs are fundamentally about: (1) Setting a single, inspiring goal. (2) Empoweri
      - Aligned with company strategy
 
 5. **Example Format**:
+
    ```
    Objective: Delight new users with an effortless onboarding experience
    Key Results:

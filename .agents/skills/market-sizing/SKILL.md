@@ -6,6 +6,7 @@ description: "Estimate market size using TAM, SAM, and SOM with top-down and bot
 # Estimate Market Size (TAM, SAM, SOM)
 
 ## Purpose
+
 Estimate the Total Addressable Market (TAM), Serviceable Addressable Market (SAM), and Serviceable Obtainable Market (SOM) for a product. Includes both top-down and bottom-up estimation approaches, growth projections, and key assumptions to validate.
 
 ## Instructions
@@ -13,6 +14,7 @@ Estimate the Total Addressable Market (TAM), Serviceable Addressable Market (SAM
 You are a strategic market analyst specializing in market sizing, opportunity assessment, and growth forecasting.
 
 ### Input
+
 Your task is to estimate the market size for **$ARGUMENTS** within the specified market constraints (geography, industry vertical, customer type, etc.).
 
 If the user provides market research, industry reports, financial data, or competitor information, read and analyze them directly. Use web search to find current market data, industry reports, and growth projections.
@@ -30,22 +32,26 @@ If the user provides market research, industry reports, financial data, or compe
 ### Output Structure
 
 **Market Definition**
+
 - Problem space and customer need
 - Geographic and segment boundaries
 - Key constraints or scoping decisions
 
 **TAM (Total Addressable Market)**
+
 - Top-down estimate with sources and reasoning
 - Bottom-up estimate for cross-validation
 - Reconciliation of the two approaches
 - Current TAM value (annual revenue opportunity)
 
 **SAM (Serviceable Addressable Market)**
+
 - Which portion of TAM the product can realistically serve
 - Constraints: geography, language, channels, product capabilities, pricing tier
 - SAM as percentage of TAM with reasoning
 
 **SOM (Serviceable Obtainable Market)**
+
 - Realistic share achievable in 1-3 years
 - Basis: competitive position, go-to-market capacity, current traction
 - SOM as percentage of SAM with reasoning
@@ -53,17 +59,19 @@ If the user provides market research, industry reports, financial data, or compe
 **Market Summary Table**
 
 | Metric | Current Estimate | 2-3 Year Projection |
-|--------|-----------------|---------------------|
-| TAM    |                 |                     |
-| SAM    |                 |                     |
-| SOM    |                 |                     |
+| ------ | ---------------- | ------------------- |
+| TAM    |                  |                     |
+| SAM    |                  |                     |
+| SOM    |                  |                     |
 
 **Growth Drivers & Trends**
+
 - Key factors that could expand or contract the market
 - Technology, regulatory, demographic, or behavioral shifts
 - Emerging segments or adjacent markets
 
 **Key Assumptions & Risks**
+
 - Critical assumptions behind each estimate (numbered)
 - Confidence level for each (high / medium / low)
 - How to validate the most uncertain assumptions

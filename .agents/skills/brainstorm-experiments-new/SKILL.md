@@ -27,7 +27,7 @@ If the user provides files (market research, landing page mockups), read them fi
    - **Pre-Order / Waitlist**: Test willingness to pay through skin-in-the-game commitment
    - **Concierge / Manual MVP**: Deliver the service manually to test value
 
-3. **Key principles** (Alberto Savoia, *The Right It*):
+3. **Key principles** (Alberto Savoia, _The Right It_):
    - **Skin-in-the-Game**: Test willingness to pay — not just interest. Real commitment (time, money, reputation) is the only reliable signal.
    - **Your Own Data (YODA)**: Collect your own data through experiments rather than relying on Others' Data (ODP) like market reports or analogies. "The market for your idea does not care about the market for someone else's idea."
    - Measure actual behavior, not users' opinions

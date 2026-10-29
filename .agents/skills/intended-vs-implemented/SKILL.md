@@ -7,7 +7,7 @@ description: "The method for finding the gap between what a system is supposed t
 
 ## Purpose
 
-A linter scans code in a vacuum. It can tell you the code is *internally* consistent; it cannot tell you the code does what you *meant*, because it has no model of your intent. The highest-value security and correctness bugs live in that gap — a permission documented but never enforced, a "cron-only" endpoint anyone can call, a field marked public-only that leaks private data.
+A linter scans code in a vacuum. It can tell you the code is _internally_ consistent; it cannot tell you the code does what you _meant_, because it has no model of your intent. The highest-value security and correctness bugs live in that gap — a permission documented but never enforced, a "cron-only" endpoint anyone can call, a field marked public-only that leaks private data.
 
 This skill is the method for finding that gap. It is the differentiator: it only works when intent has been written down first (see the **shipping-artifacts** skill), and that's exactly why commodity tools can't replicate it.
 
@@ -17,7 +17,7 @@ Use this when documented intent exists — `permissions.md`, `architecture.md`, 
 
 ## Method
 
-1. **Establish intent.** Read the system docs, wherever the repo keeps them (`documentation/*.md` by default; see the **shipping-artifacts** skill), as the source of truth for what *should* be true: who may access what, which boundaries are trusted, which data is public. Treat the docs as claims to verify, not as proof.
+1. **Establish intent.** Read the system docs, wherever the repo keeps them (`documentation/*.md` by default; see the **shipping-artifacts** skill), as the source of truth for what _should_ be true: who may access what, which boundaries are trusted, which data is public. Treat the docs as claims to verify, not as proof.
 
 2. **Gather implementation evidence.** Read the code that enforces (or fails to enforce) each claim. Evidence is a cited file and line — the actual authorization check, the actual query filter, the actual sanitizer. "It's probably handled upstream" is not evidence; the code path is.
 

@@ -2,6 +2,7 @@
 name: product-name
 description: "Brainstorm 5 unique, memorable product names with rationale aligned to brand values and target audience. Use when naming a new product, rebranding, or exploring product name ideas."
 ---
+
 # Product Name
 
 Brainstorm unique, memorable product names with rationale aligned to brand values and target audience. Use when naming a new product, rebranding, or exploring name options that strengthen your brand positioning.
@@ -31,6 +32,7 @@ For each name suggestion, provide:
 5. **Domain & Trademark Considerations**: Brief note on availability and potential trademark/domain concerns
 
 Prioritize names that are:
+
 - Easy to pronounce and spell
 - Distinctive and differentiated from competitors
 - Aligned with brand tone and positioning

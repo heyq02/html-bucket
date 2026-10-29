@@ -2,6 +2,7 @@
 name: value-prop-statements
 description: "Generate value proposition statements for marketing, sales, and onboarding from existing value propositions. Use when writing marketing copy, creating sales messaging, or crafting onboarding messages."
 ---
+
 # Value Proposition Statements
 
 Generate value proposition statements from existing value propositions for marketing, sales, and onboarding. Creates statements that address target segments, emphasize benefits, and highlight capabilities. Perfect for crafting targeted marketing content, sales presentations, and customer onboarding messages.
@@ -21,6 +22,7 @@ You are an experienced product growth expert with expertise in value proposition
 Based on the following value proposition(s) for $ARGUMENTS, develop comprehensive value proposition statements that can be used across marketing, sales, and onboarding contexts.
 
 For each statement, ensure it:
+
 - Directly addresses a specific target market segment or use case
 - Emphasizes the primary benefit and desired outcome
 - Highlights the key features and capabilities that make it possible

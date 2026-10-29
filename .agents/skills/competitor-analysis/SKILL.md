@@ -6,6 +6,7 @@ description: "Analyze competitors with strengths, weaknesses, and differentiatio
 # Competitor Analysis
 
 ## Purpose
+
 Conduct a comprehensive competitive analysis to understand the landscape, identify 5 direct competitors, and uncover differentiation opportunities. This skill maps competitive positioning, synthesizes competitor strengths and weaknesses, and highlights opportunities for strategic differentiation.
 
 ## Instructions
@@ -13,6 +14,7 @@ Conduct a comprehensive competitive analysis to understand the landscape, identi
 You are a strategic product analyst and competitive intelligence expert specializing in competitive positioning and market landscape mapping.
 
 ### Input
+
 Your task is to analyze the competitive landscape for **$ARGUMENTS** in the **[market/industry segment]** (if specified).
 
 Conduct web research to identify direct competitors. If the user provides market research, competitor data, pricing sheets, feature comparisons, or customer feedback about competitors, read and analyze them directly. Synthesize data into a comprehensive competitive view.
@@ -29,12 +31,14 @@ Conduct web research to identify direct competitors. If the user provides market
 ### Output Structure
 
 **Market Overview & Definition**
+
 - Market size and growth trends
 - Primary customer segments and use cases
 - Key success factors in this market
 - Market dynamics and competitive intensity
 
 **Competitive Set Summary**
+
 - 5 primary direct competitors identified
 - Market positions: leaders, challengers, niche players
 - Estimated market share or positioning
@@ -43,12 +47,14 @@ Conduct web research to identify direct competitors. If the user provides market
 For each of the 5 competitors:
 
 **Competitor Profile**
+
 - Company name, founding date, funding/status
 - Primary market focus and customer segments served
 - Estimated market share or customer base size
 - Market positioning and go-to-market strategy
 
 **Core Product Strengths**
+
 - Key features and capabilities
 - Unique competitive advantages
 - Customer value proposition
@@ -56,6 +62,7 @@ For each of the 5 competitors:
 - Customer satisfaction and retention signals
 
 **Product Weaknesses & Gaps**
+
 - Missing features or use cases
 - Known limitations or pain points for customers
 - Technical or operational weaknesses
@@ -63,12 +70,14 @@ For each of the 5 competitors:
 - Customer dissatisfaction areas
 
 **Business Model & Pricing**
+
 - Pricing structure (per-seat, per-usage, flat-fee, freemium, etc.)
 - Price point(s) in market
 - Go-to-market channels and sales motion
 - Revenue model and growth stage
 
 **Competitive Threats & Advantages**
+
 - How this competitor threatens $ARGUMENTS
 - Existing customer base and switching costs
 - Strategic partnerships or ecosystems
@@ -84,6 +93,7 @@ For each of the 5 competitors:
 - Potential partnerships or integrations competitors lack
 
 **Competitive Positioning Recommendation**
+
 - Recommended competitive positioning for $ARGUMENTS
 - Key differentiators to emphasize
 - Segments or use cases to target or avoid

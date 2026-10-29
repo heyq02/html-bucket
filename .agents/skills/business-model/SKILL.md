@@ -2,9 +2,11 @@
 name: business-model
 description: "Generate a Business Model Canvas with all 9 building blocks. Use when creating a business model, documenting how a business creates value, or analyzing an existing business model."
 ---
+
 # Business Model Canvas
 
 ## Metadata
+
 - **Name**: business-model
 - **Description**: Generate a Business Model Canvas with all 9 building blocks. Use when creating a business model, documenting how a business creates value, or analyzing an existing business model.
 - **Triggers**: business model canvas, BMC, business model, how we make money
@@ -16,6 +18,7 @@ You are a business model strategist designing a Business Model Canvas for $ARGUM
 Your task is to create a comprehensive Business Model Canvas that outlines how the business creates, delivers, and captures value.
 
 ## Input Requirements
+
 - Product or service description
 - Target customer(s) and market
 - Current business operations or assumptions
@@ -26,18 +29,21 @@ Your task is to create a comprehensive Business Model Canvas that outlines how t
 ### Left Side: Creating Value
 
 **1. Key Partners**
+
 - Who are the key strategic partners and suppliers?
 - What partnerships enable our business model?
 - Which activities do partners handle?
 - Are there joint ventures or co-creation opportunities?
 
 **2. Key Activities**
+
 - What key activities does the business perform?
 - What processes are critical to delivering value?
 - Are these activities in-house or outsourced?
 - Production, problem-solving, platform/network activities?
 
 **3. Key Resources**
+
 - What resources are necessary to create value?
 - Physical assets, intellectual property, human capital, financial
 - What resources enable key activities and partnerships?
@@ -46,6 +52,7 @@ Your task is to create a comprehensive Business Model Canvas that outlines how t
 ### Center: The Value Proposition
 
 **4. Value Propositions**
+
 - What value do we deliver to customers?
 - Which customer problems do we solve?
 - What needs are satisfied?
@@ -55,12 +62,14 @@ Your task is to create a comprehensive Business Model Canvas that outlines how t
 ### Right Side: Delivering Value
 
 **5. Customer Relationships**
+
 - How do we establish and maintain customer relationships?
 - Personal assistance, self-service, automated, community, co-creation
 - Cost of customer acquisition and retention
 - How do we keep customers engaged?
 
 **6. Channels**
+
 - How do customers discover and access the value?
 - Awareness: How do customers learn about us?
 - Purchase: How do they buy?
@@ -69,6 +78,7 @@ Your task is to create a comprehensive Business Model Canvas that outlines how t
 - Direct vs. indirect, owned vs. partner channels
 
 **7. Customer Segments**
+
 - Who are the key customer segments?
 - Mass market, niche market, segmented, multi-sided platform
 - What are their defining characteristics?
@@ -77,18 +87,21 @@ Your task is to create a comprehensive Business Model Canvas that outlines how t
 ### Bottom: Financial Viability
 
 **8. Cost Structure**
+
 - What are the most important costs?
 - Fixed vs. variable costs
 - Cost drivers (scale, automation, labor, infrastructure)
 - Is this a cost-driven or value-driven business?
 
 **9. Revenue Streams**
+
 - How does the business make money?
 - Per customer, per transaction, subscription, licensing, rents
 - Pricing mechanisms (fixed, dynamic, value-based)
 - Customer lifetime value and unit economics
 
 ## Output Process
+
 1. Identify and profile customer segments
 2. Define the core value proposition(s)
 3. Map customer relationships and channels
@@ -115,10 +128,12 @@ Business Model Canvas (Strategyzer, Alexander Osterwalder) is the most widely us
 **When to use BMC**: Established businesses, corporate strategy, investor materials where you need to articulate how all operational pieces connect.
 
 **Alternatives**:
+
 - **Lean Canvas** (Ash Maurya): Startup-focused, faster, replaces Partners/Activities/Resources with Problem/Solution/Unfair Advantage. Better for hypothesis testing but still mixes strategy and business model.
 - **Startup Canvas** (Paweł Huryn): Separates strategy (9 sections from the Product Strategy Canvas) from business model (Cost Structure + Revenue Streams). Recommended for new products where you need strategic clarity alongside the business model.
 
 ## Notes
+
 - The Business Model Canvas provides a holistic view of how value flows through the organization
 - Each block should reinforce and support the others
 - Strong business models have clear, defensible value propositions

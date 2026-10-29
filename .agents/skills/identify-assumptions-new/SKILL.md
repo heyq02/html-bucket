@@ -5,7 +5,7 @@ description: "Identify risky assumptions for a new product idea across 8 risk ca
 
 ## Identify Assumptions (New Product)
 
-Comprehensive risk identification across 8 categories — extending the 4 core product risks (Teresa Torres, *Continuous Discovery Habits*) with Ethics, Go-to-Market, Strategy & Objectives, and Team risks that are critical for new products.
+Comprehensive risk identification across 8 categories — extending the 4 core product risks (Teresa Torres, _Continuous Discovery Habits_) with Ethics, Go-to-Market, Strategy & Objectives, and Team risks that are critical for new products.
 
 ### Context
 
@@ -15,7 +15,7 @@ If the user provides files (business plans, research), read them first.
 
 ### Domain Context
 
-**The 4 core product risks** (Teresa Torres, *Continuous Discovery Habits*): Value, Usability, Viability, Feasibility.
+**The 4 core product risks** (Teresa Torres, _Continuous Discovery Habits_): Value, Usability, Viability, Feasibility.
 
 **For new products, extend to 8 risk categories.** Good teams assume at least three-quarters of their ideas won't perform as they hope.
 

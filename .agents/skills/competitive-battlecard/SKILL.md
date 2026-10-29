@@ -32,12 +32,12 @@ Use web search to research the competitor's current product, pricing, positionin
 
    ### Quick Comparison
 
-   | Capability | Us | Them | Winner |
-   |---|---|---|---|
+   | Capability       | Us             | Them             | Winner        |
+   | ---------------- | -------------- | ---------------- | ------------- |
    | [Feature area 1] | [Our approach] | [Their approach] | [Us/Them/Tie] |
-   | [Feature area 2] | ... | ... | ... |
-   | Pricing | ... | ... | ... |
-   | Support | ... | ... | ... |
+   | [Feature area 2] | ...            | ...              | ...           |
+   | Pricing          | ...            | ...              | ...           |
+   | Support          | ...            | ...              | ...           |
 
    ### Where We Win
    - [Advantage 1]: [Proof point or customer quote]
@@ -50,13 +50,14 @@ Use web search to research the competitor's current product, pricing, positionin
 
    ### Common Objections & Responses
 
-   | Prospect Says | Respond With |
-   |---|---|
-   | "Competitor X has [feature]" | "[Our alternative approach and why it's better for them]" |
-   | "They're cheaper" | "[Value framing: total cost of ownership, ROI, hidden costs]" |
-   | "They're more established" | "[Our advantages: speed, innovation, focus, support]" |
+   | Prospect Says                | Respond With                                                  |
+   | ---------------------------- | ------------------------------------------------------------- |
+   | "Competitor X has [feature]" | "[Our alternative approach and why it's better for them]"     |
+   | "They're cheaper"            | "[Value framing: total cost of ownership, ROI, hidden costs]" |
+   | "They're more established"   | "[Our advantages: speed, innovation, focus, support]"         |
 
    ### Landmines to Plant
+
    Questions to ask the prospect that highlight competitor weaknesses:
    - "How important is [area where we excel] to your team?"
    - "Have you evaluated [specific capability they lack]?"

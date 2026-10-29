@@ -2,6 +2,7 @@
 name: test-scenarios
 description: "Create comprehensive test scenarios from user stories with test objectives, starting conditions, user roles, step-by-step actions, and expected outcomes. Use when writing QA test cases, creating test plans, defining acceptance tests, or preparing for feature validation."
 ---
+
 # Test Scenarios
 
 Create comprehensive test scenarios from user stories with test objectives, starting conditions, user roles, step-by-step test actions, and expected outcomes.
@@ -9,6 +10,7 @@ Create comprehensive test scenarios from user stories with test objectives, star
 **Use when:** Writing QA test cases, creating test plans, defining acceptance test scenarios, or validating user story implementations.
 
 **Arguments:**
+
 - `$PRODUCT`: The product or system name
 - `$USER_STORY`: The user story to test (title and acceptance criteria)
 - `$CONTEXT`: Additional testing context or constraints
@@ -31,6 +33,7 @@ Create comprehensive test scenarios from user stories with test objectives, star
 **Test Objective:** [What this test validates]
 
 **Starting Conditions:**
+
 - [System state required]
 - [Data or configuration needed]
 - [User setup or permissions]
@@ -38,12 +41,14 @@ Create comprehensive test scenarios from user stories with test objectives, star
 **User Role:** [Who performs the test]
 
 **Test Steps:**
+
 1. [First action and its expected result]
 2. [Second action and observable outcome]
 3. [Third action and system behavior]
 4. [Completion action and final state]
 
 **Expected Outcomes:**
+
 - [Observable result 1]
 - [Observable result 2]
 - [Observable result 3]
@@ -55,6 +60,7 @@ Create comprehensive test scenarios from user stories with test objectives, star
 **Test Objective:** Verify that the 'Recently viewed' section displays correctly and excludes the current product.
 
 **Starting Conditions:**
+
 - User is logged in or has browser history enabled
 - User has viewed at least 2 products in the current session
 - User is now on a product page different from previously viewed items
@@ -62,6 +68,7 @@ Create comprehensive test scenarios from user stories with test objectives, star
 **User Role:** Online Shopper
 
 **Test Steps:**
+
 1. Navigate to any product page → Section should appear at bottom with previously viewed items
 2. Scroll to bottom of page → "Recently viewed" section is visible with product cards
 3. Verify product thumbnails → Images, titles, and prices are displayed correctly
@@ -69,6 +76,7 @@ Create comprehensive test scenarios from user stories with test objectives, star
 5. Click on a product card → User navigates to the corresponding product page
 
 **Expected Outcomes:**
+
 - Recently viewed section appears only after viewing at least 1 prior product
 - Section displays 4-8 product cards with complete information
 - Current product is excluded from the list

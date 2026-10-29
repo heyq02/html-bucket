@@ -1,60 +1,49 @@
 <!doctype html>
-<html
-  lang="zh-CN"
-  data-color-mode="auto"
-  data-light-theme="light"
-  data-dark-theme="dark"
->
+<html lang="zh-CN" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HTML Bucket</title>
     <link rel="stylesheet" href="/styles/app.css" />
   </head>
-  <body class="min-h-screen text-fg-default bg-canvas-subtle">
+  <body class="text-fg-default bg-canvas-subtle min-h-screen">
     <main class="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6">
       <header class="mb-8">
-        <h1 class="font-sans text-3xl font-semibold tracking-tight text-fg-default sm:text-4xl">
+        <h1 class="text-fg-default font-sans text-3xl font-semibold tracking-tight sm:text-4xl">
           HTML Bucket
         </h1>
-        <p class="mt-2 text-fg-muted">
+        <p class="text-fg-muted mt-2">
           先选择 HTML 文件，再确认相对路径并发布。内网任意可达用户均可发布与管理。
         </p>
       </header>
 
       <section
         aria-labelledby="publish-title"
-        class="mb-4 rounded-lg border border-border-default bg-canvas-default p-5 shadow-sm"
+        class="border-border-default bg-canvas-default mb-4 rounded-lg border p-5 shadow-sm"
       >
-        <h2 id="publish-title" class="mb-4 text-xl font-semibold text-fg-default">
-          发布
-        </h2>
+        <h2 id="publish-title" class="text-fg-default mb-4 text-xl font-semibold">发布</h2>
 
         <div id="step-pick" class="space-y-3">
-          <input
-            id="file"
-            name="file"
-            type="file"
-            accept=".html,text/html"
-            class="hidden"
-          />
+          <input id="file" name="file" type="file" accept=".html,text/html" class="hidden" />
           <button
             type="button"
             id="pick-file"
-            class="inline-flex cursor-pointer items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+            class="border-btn-primary-border bg-btn-primary-bg text-btn-primary-fg hover:bg-btn-primary-bg-hover inline-flex cursor-pointer items-center rounded-md border px-3.5 py-1.5 text-sm font-medium"
           >
             上传 HTML
           </button>
-          <p id="pick-hint" class="text-sm text-fg-muted">点击后选择要发布的 HTML 文件（最大 1MB）。</p>
+          <p id="pick-hint" class="text-fg-muted text-sm">
+            点击后选择要发布的 HTML 文件（最大 1MB）。
+          </p>
         </div>
 
         <form id="publish-form" class="hidden space-y-3">
-          <p class="text-sm text-fg-muted">
-            已选择：<span id="selected-name" class="font-medium text-fg-default"></span>
+          <p class="text-fg-muted text-sm">
+            已选择：<span id="selected-name" class="text-fg-default font-medium"></span>
           </p>
 
           <div>
-            <label for="path" class="mb-1 block text-sm font-medium text-fg-default">
+            <label for="path" class="text-fg-default mb-1 block text-sm font-medium">
               相对路径
             </label>
             <input
@@ -63,22 +52,22 @@
               type="text"
               placeholder="demos/checkout-v2"
               required
-              class="w-full rounded-md border border-control-border bg-canvas-default px-3 py-2 text-sm text-fg-default outline-none focus:border-fg-link focus:ring-2 focus:ring-fg-link/30"
+              class="border-control-border bg-canvas-default text-fg-default focus:border-fg-link focus:ring-fg-link/30 w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2"
             />
-            <p class="mt-1 text-xs text-fg-muted">默认使用文件名，可修改。</p>
+            <p class="text-fg-muted mt-1 text-xs">默认使用文件名，可修改。</p>
           </div>
 
           <div class="flex flex-wrap gap-2">
             <button
               type="submit"
-              class="inline-flex cursor-pointer items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+              class="border-btn-primary-border bg-btn-primary-bg text-btn-primary-fg hover:bg-btn-primary-bg-hover inline-flex cursor-pointer items-center rounded-md border px-3.5 py-1.5 text-sm font-medium"
             >
               确认发布
             </button>
             <button
               type="button"
               id="repick-file"
-              class="inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
+              class="border-btn-default-border bg-btn-default-bg text-btn-default-fg hover:bg-canvas-inset inline-flex cursor-pointer items-center rounded-md border px-3.5 py-1.5 text-sm font-medium"
             >
               重新选择
             </button>
@@ -87,31 +76,31 @@
 
         <div
           id="result"
-          class="mt-3 min-h-5 rounded-md px-3 py-2 text-sm text-fg-muted empty:hidden"
+          class="text-fg-muted mt-3 min-h-5 rounded-md px-3 py-2 text-sm empty:hidden"
           aria-live="polite"
         ></div>
 
         <div
           id="overwrite-dialog"
-          class="mt-3 hidden rounded-md border border-border-default bg-canvas-inset p-4"
+          class="border-border-default bg-canvas-inset mt-3 hidden rounded-md border p-4"
           role="dialog"
           aria-labelledby="overwrite-title"
         >
-          <p id="overwrite-title" class="text-sm text-fg-default">
+          <p id="overwrite-title" class="text-fg-default text-sm">
             路径 <span id="overwrite-path" class="font-semibold"></span> 已存在，是否覆盖？
           </p>
           <div class="mt-3 flex flex-wrap gap-2">
             <button
               type="button"
               id="overwrite-yes"
-              class="inline-flex cursor-pointer items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+              class="border-btn-primary-border bg-btn-primary-bg text-btn-primary-fg hover:bg-btn-primary-bg-hover inline-flex cursor-pointer items-center rounded-md border px-3.5 py-1.5 text-sm font-medium"
             >
               覆盖
             </button>
             <button
               type="button"
               id="overwrite-no"
-              class="inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-default"
+              class="border-btn-default-border bg-btn-default-bg text-btn-default-fg hover:bg-canvas-default inline-flex cursor-pointer items-center rounded-md border px-3.5 py-1.5 text-sm font-medium"
             >
               取消
             </button>
@@ -121,41 +110,39 @@
 
       <section
         aria-labelledby="library-title"
-        class="rounded-lg border border-border-default bg-canvas-default p-5 shadow-sm"
+        class="border-border-default bg-canvas-default rounded-lg border p-5 shadow-sm"
       >
-        <h2 id="library-title" class="mb-4 text-xl font-semibold text-fg-default">
-          页面库
-        </h2>
+        <h2 id="library-title" class="text-fg-default mb-4 text-xl font-semibold">页面库</h2>
         <div class="mb-4 flex flex-col gap-2 sm:flex-row">
           <input
             id="filter"
             type="text"
             placeholder="按路径筛选"
-            class="w-full flex-1 rounded-md border border-control-border bg-canvas-default px-3 py-2 text-sm text-fg-default outline-none focus:border-fg-link focus:ring-2 focus:ring-fg-link/30"
+            class="border-control-border bg-canvas-default text-fg-default focus:border-fg-link focus:ring-fg-link/30 w-full flex-1 rounded-md border px-3 py-2 text-sm outline-none focus:ring-2"
           />
           <button
             type="button"
             id="refresh"
-            class="inline-flex cursor-pointer items-center justify-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
+            class="border-btn-default-border bg-btn-default-bg text-btn-default-fg hover:bg-canvas-inset inline-flex cursor-pointer items-center justify-center rounded-md border px-3.5 py-1.5 text-sm font-medium"
           >
             刷新
           </button>
         </div>
         <p
           id="library-status"
-          class="mb-3 min-h-5 rounded-md px-3 py-2 text-sm text-fg-muted empty:hidden"
+          class="text-fg-muted mb-3 min-h-5 rounded-md px-3 py-2 text-sm empty:hidden"
           aria-live="polite"
         ></p>
 
         <div class="overflow-x-auto">
           <table class="w-full border-collapse text-left text-sm">
             <thead>
-              <tr class="border-b border-border-muted text-fg-muted">
+              <tr class="border-border-muted text-fg-muted border-b">
                 <th class="px-2 py-2 font-semibold">路径</th>
                 <th class="px-2 py-2 font-semibold">状态</th>
                 <th class="px-2 py-2 font-semibold">大小</th>
                 <th class="px-2 py-2 font-semibold">更新时间</th>
-                <th class="px-2 py-2 font-semibold text-right">操作</th>
+                <th class="px-2 py-2 text-right font-semibold">操作</th>
               </tr>
             </thead>
             <tbody id="pages"></tbody>
@@ -165,39 +152,39 @@
     </main>
 
     <template id="page-row-template">
-      <tr class="border-b border-border-muted last:border-b-0">
+      <tr class="border-border-muted border-b last:border-b-0">
         <td class="path px-2 py-3">
-          <a href="#" class="font-semibold text-fg-link hover:underline"></a>
+          <a href="#" class="text-fg-link font-semibold hover:underline"></a>
         </td>
         <td class="status px-2 py-3 text-sm"></td>
-        <td class="size px-2 py-3 text-fg-muted"></td>
-        <td class="updated px-2 py-3 text-fg-muted whitespace-nowrap"></td>
+        <td class="size text-fg-muted px-2 py-3"></td>
+        <td class="updated text-fg-muted px-2 py-3 whitespace-nowrap"></td>
         <td class="px-2 py-3">
           <div class="actions flex flex-wrap justify-end gap-2">
             <button
               type="button"
-              class="btn secondary inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
+              class="btn secondary border-btn-default-border bg-btn-default-bg text-btn-default-fg hover:bg-canvas-inset inline-flex cursor-pointer items-center rounded-md border px-2.5 py-1 text-xs font-medium"
               data-action="copy"
             >
               复制链接
             </button>
             <button
               type="button"
-              class="btn secondary inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
+              class="btn secondary border-btn-default-border bg-btn-default-bg text-btn-default-fg hover:bg-canvas-inset inline-flex cursor-pointer items-center rounded-md border px-2.5 py-1 text-xs font-medium"
               data-action="toggle"
             >
               开启/关闭
             </button>
             <button
               type="button"
-              class="btn secondary inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
+              class="btn secondary border-btn-default-border bg-btn-default-bg text-btn-default-fg hover:bg-canvas-inset inline-flex cursor-pointer items-center rounded-md border px-2.5 py-1 text-xs font-medium"
               data-action="update"
             >
               更新
             </button>
             <button
               type="button"
-              class="btn danger inline-flex cursor-pointer items-center rounded-md border border-btn-danger-border bg-btn-danger-bg px-2.5 py-1 text-xs font-medium text-btn-danger-fg hover:bg-canvas-inset"
+              class="btn danger border-btn-danger-border bg-btn-danger-bg text-btn-danger-fg hover:bg-canvas-inset inline-flex cursor-pointer items-center rounded-md border px-2.5 py-1 text-xs font-medium"
               data-action="delete"
             >
               删除

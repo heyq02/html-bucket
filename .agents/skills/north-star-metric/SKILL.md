@@ -2,6 +2,7 @@
 name: north-star-metric
 description: "Define a North Star Metric and 3-5 supporting input metrics that form a metrics constellation. Classify the business game (Attention, Transaction, Productivity) and validate against 7 criteria for an effective North Star. Use when choosing a North Star Metric, setting up a metrics framework, learning about the North Star Framework, or deciding what to measure."
 ---
+
 # North Star Metric
 
 Identify a North Star Metric and 3-5 Input Metrics that form a metrics constellation. Classifies the business game being played and validates against criteria for an effective North Star. Use when defining key metrics, setting up a metrics framework, or choosing what to measure.
@@ -52,6 +53,7 @@ Suggest a single metric that meets all seven criteria for an effective North Sta
 
 **Step 3: Identify Input Metrics**
 Define 3-5 Input Metrics (also called leading indicators) that most directly influence and drive the North Star Metric. Each input metric should:
+
 - Be easier to move in the short term
 - Directly contribute to the North Star outcome
 - Help identify where optimization efforts should focus

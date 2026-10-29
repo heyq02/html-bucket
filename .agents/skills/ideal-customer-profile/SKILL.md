@@ -2,12 +2,15 @@
 name: ideal-customer-profile
 description: "Identify the Ideal Customer Profile (ICP) from research data with demographics, behaviors, JTBD, and needs. Use when defining your ICP, analyzing PMF survey data, or understanding who your best customers are."
 ---
+
 # Ideal Customer Profile
 
 ## Overview
+
 Identify your Ideal Customer Profile (ICP) from research and survey data. This skill synthesizes customer research to define the customer most likely to find value, retain, and expand with your product.
 
 ## When to Use
+
 - Defining ICP from product-market fit survey data
 - Targeting high-value customer segments
 - Analyzing customer success and expansion patterns
@@ -18,7 +21,9 @@ Identify your Ideal Customer Profile (ICP) from research and survey data. This s
 ## ICP Framework Components
 
 ### Demographics
+
 Who are they from a firmographic and personal perspective?
+
 - Company size (employees, revenue)
 - Industry or vertical
 - Geographic location
@@ -28,7 +33,9 @@ Who are they from a firmographic and personal perspective?
 - Organizational structure and reporting
 
 ### Behaviors
+
 How do they work and make decisions?
+
 - How they discover and evaluate solutions
 - Buying process and decision-making timeline
 - Technical literacy and product adoption speed
@@ -38,7 +45,9 @@ How do they work and make decisions?
 - Community involvement and peer influence
 
 ### Jobs to Be Done (JTBD)
+
 What are they trying to accomplish?
+
 - Primary job/goal they're trying to achieve
 - Secondary jobs that support the primary job
 - Emotional jobs (how they want to feel)
@@ -48,7 +57,9 @@ What are they trying to accomplish?
 - Success metrics for completing job
 
 ### Needs and Pain Points
+
 What problems does your product solve?
+
 - Specific pain points they experience
 - Current workarounds and limitations
 - Impact on productivity or outcomes
@@ -61,7 +72,9 @@ What problems does your product solve?
 ## How It Works
 
 ### Step 1: Gather Customer Data
+
 Collect research about actual and potential customers:
+
 - Product-market fit survey responses
 - Customer interview transcripts
 - Trial or freemium user behavior data
@@ -71,7 +84,9 @@ Collect research about actual and potential customers:
 - Competitor customer analysis
 
 ### Step 2: Segment by Value
+
 Identify customer cohorts and their value:
+
 - Highest LTV (lifetime value) customers
 - Fastest time-to-value customers
 - Lowest churn rate customers
@@ -81,7 +96,9 @@ Identify customer cohorts and their value:
 - Most aligned with product vision
 
 ### Step 3: Profile Demographics
+
 Extract firmographic patterns:
+
 - Common company sizes (employee count, revenue)
 - Industry verticals and sub-verticals
 - Geographic concentrations
@@ -91,7 +108,9 @@ Extract firmographic patterns:
 - Company culture indicators
 
 ### Step 4: Identify Behaviors
+
 Map decision-making and adoption patterns:
+
 - How they discovered your product (channel)
 - Evaluation process and timeline
 - Key stakeholders in decision
@@ -102,7 +121,9 @@ Map decision-making and adoption patterns:
 - Support and service needs
 
 ### Step 5: Define JTBD
+
 Articulate what they're trying to accomplish:
+
 - Primary job/goal (functional job)
 - Emotional dimensions (how they want to feel)
 - Social dimensions (team and stakeholder impact)
@@ -112,7 +133,9 @@ Articulate what they're trying to accomplish:
 - Importance ranking of various jobs
 
 ### Step 6: Document Pain Points and Needs
+
 Synthesize specific problem areas:
+
 - Before state (current situation and frustrations)
 - Desired after state (ideal future state)
 - Gap size and impact quantification
@@ -122,7 +145,9 @@ Synthesize specific problem areas:
 - Success criteria for solution
 
 ## Input Format
+
 Use $ARGUMENTS to pass:
+
 - Research data (surveys, interviews, transcripts)
 - Customer success/metrics data
 - Product usage analytics
@@ -131,7 +156,9 @@ Use $ARGUMENTS to pass:
 - Competitive intelligence
 
 ## Output
+
 A comprehensive ICP definition including:
+
 - Firmographic profile (company size, industry, location)
 - Behavioral profile (buying patterns, adoption style)
 - Complete JTBD mapping (functional, emotional, social jobs)
@@ -144,9 +171,11 @@ A comprehensive ICP definition including:
 - High-value segment within ICP (ideal-of-the-ideal)
 
 ## Framework
+
 Based on Jobs to Be Done theory by Clayton Christensen and customer profiling methodology. Combines behavioral data with motivational insights to define actionable customer profiles.
 
 ## Tips
+
 - Use quantitative and qualitative data together
 - Interview 10+ high-value customers for pattern identification
 - Look for non-obvious demographic patterns (outliers can be high-value)

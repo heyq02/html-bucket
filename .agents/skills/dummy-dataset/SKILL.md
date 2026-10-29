@@ -2,6 +2,7 @@
 name: dummy-dataset
 description: "Generate realistic dummy datasets for testing with customizable columns, constraints, and output formats (CSV, JSON, SQL, Python script). Use when creating test data, building mock datasets, or generating sample data for development and demos."
 ---
+
 # Dummy Dataset Generation
 
 Generate realistic dummy datasets for testing with customizable columns, constraints, and output formats (CSV, JSON, SQL, Python script). Creates executable scripts or direct data files for immediate use.
@@ -9,6 +10,7 @@ Generate realistic dummy datasets for testing with customizable columns, constra
 **Use when:** Creating test data, generating sample datasets, building realistic mock data for development, or populating test environments.
 
 **Arguments:**
+
 - `$PRODUCT`: The product or system name
 - `$DATASET_TYPE`: Type of data (e.g., customer feedback, transactions, user profiles)
 - `$ROWS`: Number of rows to generate (default: 100)
@@ -77,6 +79,7 @@ if __name__ == "__main__":
 **Dataset Type:** Customer Feedback
 
 **Columns:**
+
 - feedback_id (auto-increment, U001, U002...)
 - customer_name (realistic names)
 - email (valid email format)
@@ -87,6 +90,7 @@ if __name__ == "__main__":
 - product (electronics, clothing, home)
 
 **Constraints:**
+
 - Ratings skewed: 40% 5-star, 30% 4-star, 20% 3-star, 10% 1-2 star
 - Bug category only with ratings 1-3
 - Feature requests only with ratings 3-5

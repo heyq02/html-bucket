@@ -32,11 +32,11 @@ HTML Bucket is not a CMS, a design tool, or a replacement for production hosting
 
 **Key Results (SMART)**
 
-| KR | Measure | Target |
-| --- | --- | --- |
-| KR1 — Time to share | From opening the UI to a working internal URL in the clipboard / message | ≤ 1 minute for a single HTML file |
-| KR2 — Habit shift | New internal HTML demos/reviews shared as links instead of email attachments | Team default for new shares within 4 weeks of launch (track via lightweight survey or spot-check) |
-| KR3 — Reliability | Shared URL opens the intended page for any intranet user | ≥ 99% successful opens for published paths during normal network conditions |
+| KR                  | Measure                                                                      | Target                                                                                            |
+| ------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| KR1 — Time to share | From opening the UI to a working internal URL in the clipboard / message     | ≤ 1 minute for a single HTML file                                                                 |
+| KR2 — Habit shift   | New internal HTML demos/reviews shared as links instead of email attachments | Team default for new shares within 4 weeks of launch (track via lightweight survey or spot-check) |
+| KR3 — Reliability   | Shared URL opens the intended page for any intranet user                     | ≥ 99% successful opens for published paths during normal network conditions                       |
 
 ## 5. Market Segment(s)
 
@@ -60,27 +60,27 @@ People who ship HTML plus CSS/JS/images as a small folder. Out of scope for v1 (
 
 ### Primary segment — Internal makers
 
-| Part | Detail |
-| --- | --- |
-| **Who** | Internal makers sharing HTML for review or demo |
-| **Why** | They need teammates to see a page quickly and keep a stable reference URL. Email attachments and local opens get in the way. |
-| **What before** | Attach `.html` to email/chat → download → open from disk. No durable link. Paths/assets often break. Hard to find “what we shared last week.” |
-| **How** | Upload HTML, bind a relative path, get an internal URL; browse and filter published pages in a list; update, disable, or delete as needed; service serves the file over HTTP on the intranet |
-| **What after** | Paste one link in chat/email/docs. Anyone on the network opens the live page. Same path stays usable for follow-up. |
-| **Alternatives** | Email/chat attachments (fast start, bad URL); ad-hoc personal static hosts (inconsistent); full deploy / CI to staging (heavy for a one-off) |
+| Part             | Detail                                                                                                                                                                                       |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Who**          | Internal makers sharing HTML for review or demo                                                                                                                                              |
+| **Why**          | They need teammates to see a page quickly and keep a stable reference URL. Email attachments and local opens get in the way.                                                                 |
+| **What before**  | Attach `.html` to email/chat → download → open from disk. No durable link. Paths/assets often break. Hard to find “what we shared last week.”                                                |
+| **How**          | Upload HTML, bind a relative path, get an internal URL; browse and filter published pages in a list; update, disable, or delete as needed; service serves the file over HTTP on the intranet |
+| **What after**   | Paste one link in chat/email/docs. Anyone on the network opens the live page. Same path stays usable for follow-up.                                                                          |
+| **Alternatives** | Email/chat attachments (fast start, bad URL); ad-hoc personal static hosts (inconsistent); full deploy / CI to staging (heavy for a one-off)                                                 |
 
 **Value proposition statement:** For teammates who need to share HTML demos, HTML Bucket turns “email a file” into “paste an internal URL” in under a minute — without a deploy pipeline.
 
 ### Value curve vs alternatives (qualitative)
 
-| Dimension | Email attachment | Full CI / staging deploy | HTML Bucket (v1) |
-| --- | --- | --- | --- |
-| Speed to first share | High | Low | High |
-| Stable shareable URL | Low | High | High |
-| Setup / ops cost | None | High | Low |
-| Multi-file / assets | Medium (zip pain) | High | Low (v1: single file) |
-| Discoverability of past shares | Low | Medium | High (list + filter) |
-| Public reach | N/A (local) | Possible | None (intranet only) — intentional |
+| Dimension                      | Email attachment  | Full CI / staging deploy | HTML Bucket (v1)                   |
+| ------------------------------ | ----------------- | ------------------------ | ---------------------------------- |
+| Speed to first share           | High              | Low                      | High                               |
+| Stable shareable URL           | Low               | High                     | High                               |
+| Setup / ops cost               | None              | High                     | Low                                |
+| Multi-file / assets            | Medium (zip pain) | High                     | Low (v1: single file)              |
+| Discoverability of past shares | Low               | Medium                   | High (list + filter)               |
+| Public reach                   | N/A (local)       | Possible                 | None (intranet only) — intentional |
 
 ## 7. Solution
 
@@ -116,20 +116,20 @@ People who ship HTML plus CSS/JS/images as a small folder. Out of scope for v1 (
 
 ### 7.2 Key features (v1 must-haves)
 
-| Feature | Behavior |
-| --- | --- |
-| HTML upload | Accept a single `.html` (or `text/html`) file, max 1MB |
-| Relative path binding | User-defined path maps 1:1 to the stored page |
-| Stable URL | `https://<internal-host>/<relative-path>` (exact URL scheme set at deploy via `PUBLIC_BASE_URL`) opens the page |
-| Overwrite with confirm | Re-upload to the same path replaces content after UI confirmation; no version history |
-| Update from library | Replace HTML for an existing path without changing the path |
-| Enable / disable | Disabled pages stay in the list but return 404 when opened |
-| Delete | Hard-delete removes the file and list entry |
-| Page list | Show path, status, size, updated time |
-| Filter / search | Filter list by path substring |
-| Copy link | One-click copy of the shareable URL after publish and from the list |
-| Internal HTTP serve | Serve stored HTML with correct content type to intranet clients |
-| Health check | `GET /health` for deploy probes |
+| Feature                | Behavior                                                                                                        |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------- |
+| HTML upload            | Accept a single `.html` (or `text/html`) file, max 1MB                                                          |
+| Relative path binding  | User-defined path maps 1:1 to the stored page                                                                   |
+| Stable URL             | `https://<internal-host>/<relative-path>` (exact URL scheme set at deploy via `PUBLIC_BASE_URL`) opens the page |
+| Overwrite with confirm | Re-upload to the same path replaces content after UI confirmation; no version history                           |
+| Update from library    | Replace HTML for an existing path without changing the path                                                     |
+| Enable / disable       | Disabled pages stay in the list but return 404 when opened                                                      |
+| Delete                 | Hard-delete removes the file and list entry                                                                     |
+| Page list              | Show path, status, size, updated time                                                                           |
+| Filter / search        | Filter list by path substring                                                                                   |
+| Copy link              | One-click copy of the shareable URL after publish and from the list                                             |
+| Internal HTTP serve    | Serve stored HTML with correct content type to intranet clients                                                 |
+| Health check           | `GET /health` for deploy probes                                                                                 |
 
 ### 7.3 Technology
 
@@ -144,14 +144,14 @@ Out of scope for tech in this PRD: SSO, CDN, multi-region, object storage.
 
 **Decided for v1**
 
-| Topic | Decision |
-| --- | --- |
-| Auth | Intranet reachability only; no login |
+| Topic          | Decision                                                         |
+| -------------- | ---------------------------------------------------------------- |
+| Auth           | Intranet reachability only; no login                             |
 | Path ownership | Anyone on the network may overwrite, disable, or delete any path |
-| Max file size | 1MB per HTML file |
-| Format | HTML only (no zip / asset folders) |
-| Path rules | Letters, digits, `.`, `_`, `-`, `/`; no `..` or empty segments |
-| Remove / hide | Hard delete + enable/disable toggle (no soft-delete recycle bin) |
+| Max file size  | 1MB per HTML file                                                |
+| Format         | HTML only (no zip / asset folders)                               |
+| Path rules     | Letters, digits, `.`, `_`, `-`, `/`; no `..` or empty segments   |
+| Remove / hide  | Hard delete + enable/disable toggle (no soft-delete recycle bin) |
 
 **Assumptions**
 
@@ -196,4 +196,4 @@ Out of scope for tech in this PRD: SSO, CDN, multi-region, object storage.
 
 ---
 
-*Source demand: `docs/DEMAND.md`. v1 access and lifecycle decisions are locked above.*
+_Source demand: `docs/DEMAND.md`. v1 access and lifecycle decisions are locked above._

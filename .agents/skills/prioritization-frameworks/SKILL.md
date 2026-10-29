@@ -11,13 +11,14 @@ A reference guide to help you select and apply the right prioritization framewor
 
 Never allow customers to design solutions. Prioritize **problems (opportunities)**, not features.
 
-### Opportunity Score (Dan Olsen, *The Lean Product Playbook*)
+### Opportunity Score (Dan Olsen, _The Lean Product Playbook_)
 
 The recommended framework for prioritizing customer problems.
 
 Survey customers on **Importance** and **Satisfaction** for each need (normalize to 0–1 scale).
 
 Three related formulas:
+
 - **Current value** = Importance × Satisfaction
 - **Opportunity Score** = Importance × (1 − Satisfaction)
 - **Customer value created** = Importance × (S2 − S1), where S1 = satisfaction before, S2 = satisfaction after
@@ -47,17 +48,17 @@ Splits ICE's Impact into two separate factors. Useful for larger teams that need
 
 ### 9 Frameworks Overview
 
-| Framework | Best For | Key Insight |
-|-----------|----------|-------------|
-| Eisenhower Matrix | Personal tasks | Urgent vs Important — for individual PM task management |
-| Impact vs Effort | Tasks/initiatives | Simple 2×2 — quick triage, not rigorous for strategic decisions |
-| Risk vs Reward | Initiatives | Like Impact vs Effort but accounts for uncertainty |
-| **Opportunity Score** | Customer problems | **Recommended.** Importance × (1 − Satisfaction). Normalize to 0–1. |
-| Kano Model | Understanding expectations | Must-be, Performance, Attractive, Indifferent, Reverse. For understanding, not prioritizing. |
-| Weighted Decision Matrix | Multi-factor decisions | Assign weights to criteria, score each option. Useful for stakeholder buy-in. |
-| **ICE** | Ideas/initiatives | Impact × Confidence × Ease. Recommended for quick prioritization. |
-| **RICE** | Ideas at scale | (Reach × Impact × Confidence) / Effort. Adds Reach to ICE. |
-| MoSCoW | Requirements | Must/Should/Could/Won't. Caution: project management origin. |
+| Framework                | Best For                   | Key Insight                                                                                  |
+| ------------------------ | -------------------------- | -------------------------------------------------------------------------------------------- |
+| Eisenhower Matrix        | Personal tasks             | Urgent vs Important — for individual PM task management                                      |
+| Impact vs Effort         | Tasks/initiatives          | Simple 2×2 — quick triage, not rigorous for strategic decisions                              |
+| Risk vs Reward           | Initiatives                | Like Impact vs Effort but accounts for uncertainty                                           |
+| **Opportunity Score**    | Customer problems          | **Recommended.** Importance × (1 − Satisfaction). Normalize to 0–1.                          |
+| Kano Model               | Understanding expectations | Must-be, Performance, Attractive, Indifferent, Reverse. For understanding, not prioritizing. |
+| Weighted Decision Matrix | Multi-factor decisions     | Assign weights to criteria, score each option. Useful for stakeholder buy-in.                |
+| **ICE**                  | Ideas/initiatives          | Impact × Confidence × Ease. Recommended for quick prioritization.                            |
+| **RICE**                 | Ideas at scale             | (Reach × Impact × Confidence) / Effort. Adds Reach to ICE.                                   |
+| MoSCoW                   | Requirements               | Must/Should/Could/Won't. Caution: project management origin.                                 |
 
 ### Templates
 

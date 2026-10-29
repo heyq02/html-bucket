@@ -9,13 +9,13 @@ A visual framework for structuring continuous product discovery. Connects a desi
 
 ### Domain Context
 
-The **Opportunity Solution Tree** (Teresa Torres, *Continuous Discovery Habits*) is the backbone of modern product discovery. It prevents teams from jumping to solutions by forcing them to first map the opportunity space.
+The **Opportunity Solution Tree** (Teresa Torres, _Continuous Discovery Habits_) is the backbone of modern product discovery. It prevents teams from jumping to solutions by forcing them to first map the opportunity space.
 
 **Structure (4 levels):**
 
 1. **Desired Outcome** (top) — The measurable business or product outcome the team is pursuing. Should be a single, clear metric (e.g., "increase 7-day retention to 40%"). This comes from your OKRs or product strategy.
 
-2. **Opportunities** (second level) — Customer needs, pain points, or desires discovered through research. These are problems worth solving — not features. Frame them from the customer's perspective: "I struggle to..." or "I wish I could..." Prioritize using Opportunity Score: **Importance × (1 − Satisfaction)** (Dan Olsen, *The Lean Product Playbook*). Normalize Importance and Satisfaction to 0–1.
+2. **Opportunities** (second level) — Customer needs, pain points, or desires discovered through research. These are problems worth solving — not features. Frame them from the customer's perspective: "I struggle to..." or "I wish I could..." Prioritize using Opportunity Score: **Importance × (1 − Satisfaction)** (Dan Olsen, _The Lean Product Playbook_). Normalize Importance and Satisfaction to 0–1.
 
 3. **Solutions** (third level) — Possible ways to address each opportunity. Generate multiple solutions per opportunity — don't commit to the first idea. The **Product Trio** (PM + Designer + Engineer) should ideate together. "Best ideas often come from engineers."
 
@@ -34,6 +34,7 @@ The **Opportunity Solution Tree** (Teresa Torres, *Continuous Discovery Habits*)
 You are helping a product team build an Opportunity Solution Tree for **$ARGUMENTS**.
 
 ### Input Requirements
+
 - A desired outcome or business metric to improve
 - Customer research data (interviews, surveys, analytics, feedback)
 - Optionally: existing opportunities or solution ideas to organize

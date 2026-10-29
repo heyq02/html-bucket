@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/nestjs-best-practices/SKILL.md",
       "computedHash": "58f8a630637be3acce1f118c747d68160346ada8a43d76cb52a5b4c4edaa2d37"
+    },
+    "use-vp-config": {
+      "source": "liangmiqwq/skills",
+      "sourceType": "github",
+      "skillPath": "skills/use-vp-config/SKILL.md",
+      "computedHash": "bea5b8921e3777c3948ab3588a42dd44ac6ca6be51153c40718387218963182e"
     }
   }
 }

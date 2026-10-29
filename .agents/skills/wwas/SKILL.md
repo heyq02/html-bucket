@@ -2,6 +2,7 @@
 name: wwas
 description: "Create product backlog items in Why-What-Acceptance format — independent, valuable, testable items with strategic context. Use when writing structured backlog items, breaking features into work items, or using the WWA format."
 ---
+
 # Why-What-Acceptance (WWA)
 
 Create product backlog items in Why-What-Acceptance format. Produces independent, valuable, testable items with strategic context.
@@ -9,6 +10,7 @@ Create product backlog items in Why-What-Acceptance format. Produces independent
 **Use when:** Writing backlog items, creating product increments, breaking features into work items, or communicating strategic intent to teams.
 
 **Arguments:**
+
 - `$PRODUCT`: The product or system name
 - `$FEATURE`: The new feature or capability
 - `$DESIGN`: Link to design files (Figma, Miro, etc.)
@@ -34,6 +36,7 @@ Create product backlog items in Why-What-Acceptance format. Produces independent
 **What:** [Short description and design link. 1-2 paragraphs maximum. A reminder of discussion, not detailed specification.]
 
 **Acceptance Criteria:**
+
 - [Observable outcome 1]
 - [Observable outcome 2]
 - [Observable outcome 3]
@@ -48,6 +51,7 @@ Create product backlog items in Why-What-Acceptance format. Produces independent
 **What:** Add a real-time spending tracker that updates as users log expenses. The tracker displays their current week's spending against their set budget. Designs available in [Figma link]. This is a reminder of our discussions - detailed specifications will emerge during development conversations with the team.
 
 **Acceptance Criteria:**
+
 - Spending totals update within 2 seconds of logging an expense
 - Budget progress is visually indicated with a progress bar
 - Users can see remaining budget amount at a glance

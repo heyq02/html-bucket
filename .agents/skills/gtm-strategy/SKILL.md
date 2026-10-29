@@ -2,12 +2,15 @@
 name: gtm-strategy
 description: "Create a go-to-market strategy covering marketing channels, messaging, success metrics, and launch timeline. Use when planning a product launch, creating a GTM plan from scratch, or defining a launch strategy for a new market."
 ---
+
 # GTM Strategy
 
 ## Overview
+
 Create a comprehensive go-to-market strategy for a product launch. This skill covers marketing channels, messaging development, success metrics definition, and launch planning.
 
 ## When to Use
+
 - Planning a product launch
 - Creating a GTM plan from scratch
 - Defining a launch strategy for a new market
@@ -17,7 +20,9 @@ Create a comprehensive go-to-market strategy for a product launch. This skill co
 ## How It Works
 
 ### Step 1: Gather Research Data
+
 The system will help you load and analyze early research about your product and target market. Provide:
+
 - Product description and key features
 - Target market segment details
 - Market research or validation data
@@ -25,7 +30,9 @@ The system will help you load and analyze early research about your product and 
 - Any available customer interviews or survey data
 
 ### Step 2: Define Marketing Channels
+
 Evaluate which channels best reach your target audience:
+
 - Digital marketing channels (paid search, social media, display)
 - Content and inbound channels (blog, SEO, thought leadership)
 - Sales and outbound channels (direct outreach, partnerships)
@@ -33,7 +40,9 @@ Evaluate which channels best reach your target audience:
 - Product-led and viral channels
 
 ### Step 3: Develop Messaging
+
 Create audience-specific messaging that resonates:
+
 - Core value proposition for target segment
 - Key differentiators and competitive advantages
 - Pain point validation and solution mapping
@@ -41,7 +50,9 @@ Create audience-specific messaging that resonates:
 - Channel-specific messaging variations
 
 ### Step 4: Define Success Metrics
+
 Establish measurable KPIs to track launch success:
+
 - Awareness metrics (impressions, reach, brand recall)
 - Engagement metrics (CTR, cost per engagement, time on site)
 - Conversion metrics (signups, demos requested, trials started)
@@ -49,7 +60,9 @@ Establish measurable KPIs to track launch success:
 - Market metrics (market share, segment penetration)
 
 ### Step 5: Create Launch Plan
+
 Build a phased launch timeline:
+
 - Pre-launch preparation (messaging, channels, timeline)
 - Launch day activities and announcements
 - Post-launch momentum (content, partnerships, communities)
@@ -57,7 +70,9 @@ Build a phased launch timeline:
 - Success criteria and go/no-go decision points
 
 ## Input Format
+
 Use $ARGUMENTS to pass:
+
 - Product name and description
 - Target market segment
 - Research data or file path
@@ -65,7 +80,9 @@ Use $ARGUMENTS to pass:
 - Budget or resource limitations
 
 ## Output
+
 A structured GTM strategy document including:
+
 - Recommended marketing channels with justification
 - Channel-specific messaging and positioning
 - Launch timeline with key milestones
@@ -74,9 +91,11 @@ A structured GTM strategy document including:
 - 90-day execution roadmap
 
 ## Framework
+
 This skill applies Product Compass GTM strategy methodology, focusing on market selection, channel fit, and message-market fit for sustainable product growth.
 
 ## Tips
+
 - Start with your most confident customer segment
 - Validate assumptions through customer interviews before full launch
 - Focus on a few channels excellently rather than many channels poorly
