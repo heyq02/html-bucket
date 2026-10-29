@@ -4,7 +4,7 @@
   "description": "Internal service to upload HTML and share a durable intranet URL",
   "author": "",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build:css": "tailwindcss -i ./public/styles/input.css -o ./public/styles/app.css",
     "build": "npm run build:css && nest build",
