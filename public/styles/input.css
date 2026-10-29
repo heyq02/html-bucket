@@ -57,4 +57,21 @@
     color: var(--fgColor-default);
     background-color: var(--bgColor-muted);
   }
+
+  button,
+  [type='button'],
+  [type='submit'],
+  [type='reset'],
+  summary,
+  a[href] {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [type='button']:disabled,
+  [type='submit']:disabled,
+  [type='reset']:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }

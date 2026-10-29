@@ -41,7 +41,7 @@
           <button
             type="button"
             id="pick-file"
-            class="inline-flex items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+            class="inline-flex cursor-pointer items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
           >
             上传 HTML
           </button>
@@ -71,21 +71,25 @@
           <div class="flex flex-wrap gap-2">
             <button
               type="submit"
-              class="inline-flex items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+              class="inline-flex cursor-pointer items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
             >
               确认发布
             </button>
             <button
               type="button"
               id="repick-file"
-              class="inline-flex items-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
+              class="inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
             >
               重新选择
             </button>
           </div>
         </form>
 
-        <div id="result" class="mt-3 min-h-5 text-sm text-fg-muted" aria-live="polite"></div>
+        <div
+          id="result"
+          class="mt-3 min-h-5 rounded-md px-3 py-2 text-sm text-fg-muted empty:hidden"
+          aria-live="polite"
+        ></div>
       </section>
 
       <section
@@ -105,12 +109,16 @@
           <button
             type="button"
             id="refresh"
-            class="inline-flex items-center justify-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
+            class="inline-flex cursor-pointer items-center justify-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
           >
             Refresh
           </button>
         </div>
-        <p id="library-status" class="mb-3 min-h-5 text-sm text-fg-muted" aria-live="polite"></p>
+        <p
+          id="library-status"
+          class="mb-3 min-h-5 rounded-md px-3 py-2 text-sm text-fg-muted empty:hidden"
+          aria-live="polite"
+        ></p>
 
         <div class="overflow-x-auto">
           <table class="w-full border-collapse text-left text-sm">
@@ -139,21 +147,21 @@
           <div class="actions flex flex-wrap justify-end gap-2">
             <button
               type="button"
-              class="btn secondary inline-flex items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
+              class="btn secondary inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
               data-action="toggle"
             >
               开启/关闭
             </button>
             <button
               type="button"
-              class="btn secondary inline-flex items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
+              class="btn secondary inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
               data-action="update"
             >
               更新
             </button>
             <button
               type="button"
-              class="btn danger inline-flex items-center rounded-md border border-btn-danger-border bg-btn-danger-bg px-2.5 py-1 text-xs font-medium text-btn-danger-fg hover:bg-canvas-inset"
+              class="btn danger inline-flex cursor-pointer items-center rounded-md border border-btn-danger-border bg-btn-danger-bg px-2.5 py-1 text-xs font-medium text-btn-danger-fg hover:bg-canvas-inset"
               data-action="delete"
             >
               删除
@@ -183,17 +191,74 @@
 
       let pendingFile = null;
       let pendingUpdatePath = null;
+      let statusTimer = null;
 
-      function setResult(message, isError = false) {
-        result.textContent = message;
-        result.classList.toggle('text-fg-danger', isError);
-        result.classList.toggle('text-fg-muted', !isError);
+      function applyStatusStyles(el, tone) {
+        el.classList.remove(
+          'text-fg-muted',
+          'text-fg-danger',
+          'text-fg-success',
+          'bg-canvas-inset',
+          'bg-btn-danger-bg',
+          'border',
+          'border-border-muted',
+          'border-btn-danger-border',
+          'border-fg-success/30',
+        );
+        if (!el.textContent) {
+          return;
+        }
+        el.classList.add('border');
+        if (tone === 'error') {
+          el.classList.add(
+            'text-fg-danger',
+            'bg-btn-danger-bg',
+            'border-btn-danger-border',
+          );
+        } else if (tone === 'success') {
+          el.classList.add(
+            'text-fg-success',
+            'bg-canvas-inset',
+            'border-fg-success/30',
+          );
+        } else {
+          el.classList.add('text-fg-muted', 'bg-canvas-inset', 'border-border-muted');
+        }
       }
 
-      function setLibraryStatus(message, isError = false) {
-        libraryStatus.textContent = message;
-        libraryStatus.classList.toggle('text-fg-danger', isError);
-        libraryStatus.classList.toggle('text-fg-muted', !isError);
+      function normalizeTone(tone) {
+        if (tone === true) {
+          return 'error';
+        }
+        if (tone === false || tone == null) {
+          return 'info';
+        }
+        return tone;
+      }
+
+      function setResult(message, tone = 'info') {
+        tone = normalizeTone(tone);
+        result.textContent = message || '';
+        applyStatusStyles(result, message ? tone : '');
+      }
+
+      function setResultHtml(html, tone = 'success') {
+        tone = normalizeTone(tone);
+        result.innerHTML = html || '';
+        applyStatusStyles(result, html ? tone : '');
+      }
+
+      function setLibraryStatus(message, tone = 'info') {
+        tone = normalizeTone(tone);
+        clearTimeout(statusTimer);
+        libraryStatus.textContent = message || '';
+        applyStatusStyles(libraryStatus, message ? tone : '');
+        if (message && tone === 'success') {
+          statusTimer = setTimeout(() => {
+            libraryStatus.textContent = '';
+            applyStatusStyles(libraryStatus, '');
+          }, 3200);
+        }
       }
 
       function defaultPathFromFilename(filename) {
@@ -275,7 +340,7 @@
             `路径 /${path} 已存在，是否覆盖？`,
           );
           if (!shouldOverwrite) {
-            setResult('已取消发布，路径未被覆盖');
+            setResult('已取消发布，路径未被覆盖', 'info');
             return;
           }
           ({ res, body } = await publishFile(pendingFile, path, true));
@@ -285,12 +350,14 @@
           const message = Array.isArray(body.message)
             ? body.message.join(', ')
             : body.message || '发布失败';
-          setResult(message, true);
+          setResult(message, 'error');
           return;
         }
 
-        setResult('');
-        result.innerHTML = `已发布：<a class="text-fg-link hover:underline" href="${body.url}">${body.url}</a>`;
+        setResultHtml(
+          `已发布：<a class="text-fg-link hover:underline" href="${body.url}">${body.url}</a>`,
+          'success',
+        );
         showPickStep();
         await loadPages();
       });
@@ -351,7 +418,7 @@
       function startUpdate(path) {
         pendingUpdatePath = path;
         updateFileInput.value = '';
-        setLibraryStatus(`选择新的 HTML 以更新 /${path}`);
+        setLibraryStatus(`请选择新的 HTML 以更新 /${path}`, 'info');
         updateFileInput.click();
       }
 
@@ -362,26 +429,30 @@
         updateFileInput.value = '';
 
         if (!path || !file) {
-          setLibraryStatus('');
+          setLibraryStatus('已取消更新', 'info');
           return;
         }
 
-        setLibraryStatus(`正在更新 /${path}…`);
+        setLibraryStatus(`正在更新 /${path}…`, 'info');
         const { res, body } = await publishFile(file, path, true);
 
         if (!res.ok) {
           const message = Array.isArray(body.message)
             ? body.message.join(', ')
             : body.message || '更新失败';
-          setLibraryStatus(message, true);
+          setLibraryStatus(message, 'error');
           return;
         }
 
-        setLibraryStatus(`已更新 /${path}`);
+        setLibraryStatus(`已更新 /${path}`, 'success');
         await loadPages();
       });
 
       async function togglePage(path, enabled) {
+        setLibraryStatus(
+          `正在${enabled ? '开启' : '关闭'} /${path}…`,
+          'info',
+        );
         const res = await fetch('/api/pages', {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -389,28 +460,39 @@
         });
         if (!res.ok) {
           const body = await res.json().catch(() => ({}));
-          alert(body.message || '更新状态失败');
+          setLibraryStatus(body.message || '更新状态失败', 'error');
           return;
         }
+        setLibraryStatus(
+          `已${enabled ? '开启' : '关闭'} /${path}`,
+          'success',
+        );
         await loadPages();
       }
 
       async function deletePage(path) {
         if (!confirm(`确认删除 /${path}？`)) {
+          setLibraryStatus('已取消删除', 'info');
           return;
         }
+        setLibraryStatus(`正在删除 /${path}…`, 'info');
         const res = await fetch(`/api/pages?path=${encodeURIComponent(path)}`, {
           method: 'DELETE',
         });
         if (!res.ok) {
           const body = await res.json().catch(() => ({}));
-          alert(body.message || '删除失败');
+          setLibraryStatus(body.message || '删除失败', 'error');
           return;
         }
+        setLibraryStatus(`已删除 /${path}`, 'success');
         await loadPages();
       }
 
-      document.getElementById('refresh').addEventListener('click', loadPages);
+      document.getElementById('refresh').addEventListener('click', async () => {
+        setLibraryStatus('正在刷新列表…', 'info');
+        await loadPages();
+        setLibraryStatus('列表已刷新', 'success');
+      });
       filterEl.addEventListener('input', () => {
         clearTimeout(filterEl._t);
         filterEl._t = setTimeout(loadPages, 200);
