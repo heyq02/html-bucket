@@ -23,4 +23,46 @@ describe('PageStore', () => {
 
     await expect(store.get('demos/hello')).resolves.toBe(html);
   });
+
+  it('overwrites HTML at the same path', async () => {
+    await store.save('demos/hello', '<h1>v1</h1>');
+    await store.save('demos/hello', '<h1>v2</h1>');
+
+    await expect(store.get('demos/hello')).resolves.toBe('<h1>v2</h1>');
+  });
+
+  it('returns null when path is missing', async () => {
+    await expect(store.get('missing/page')).resolves.toBeNull();
+  });
+
+  it('lists published paths', async () => {
+    await store.save('demos/a', '<h1>a</h1>');
+    await store.save('demos/b', '<h1>b</h1>');
+
+    const pages = await store.list();
+
+    expect(pages.map((page) => page.path).sort()).toEqual([
+      'demos/a',
+      'demos/b',
+    ]);
+  });
+
+  it('filters listed paths by substring', async () => {
+    await store.save('demos/checkout', '<h1>c</h1>');
+    await store.save('reports/weekly', '<h1>w</h1>');
+
+    const pages = await store.list('checkout');
+
+    expect(pages.map((page) => page.path)).toEqual(['demos/checkout']);
+  });
+
+  it('rejects empty path', async () => {
+    await expect(store.save('', '<h1>x</h1>')).rejects.toThrow(/path/i);
+  });
+
+  it('rejects path traversal', async () => {
+    await expect(store.save('../escape', '<h1>x</h1>')).rejects.toThrow(
+      /path/i,
+    );
+  });
 });

@@ -1,0 +1,2 @@
+export const PAGE_STORE_ROOT = 'PAGE_STORE_ROOT';
+export const PUBLIC_BASE_URL = 'PUBLIC_BASE_URL';
