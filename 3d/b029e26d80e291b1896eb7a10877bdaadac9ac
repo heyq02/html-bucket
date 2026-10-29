@@ -1,0 +1,19 @@
+public/index.html
+  s_6893795e9e5c8d::t_ccd351c1fb72cc 361
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "3db029e26d80e291b1896eb7a10877bdaadac9ac",
+  "prompts": {},
+  "sessions": {
+    "s_6893795e9e5c8d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "14f0fa19-a43e-4ecc-a174-f8f3a4a39cd3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
