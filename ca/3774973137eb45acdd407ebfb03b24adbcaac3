@@ -1,0 +1,41 @@
+src/pages/page-store.ts
+  s_6893795e9e5c8d::t_12c9cfa05f1970 1,10-13,17-29,34-43
+  s_6893795e9e5c8d::t_9a37d33a8b3d49 44-45
+src/pages/pages.controller.ts
+  s_6893795e9e5c8d::t_0f7412de804ae9 21,24-29
+  s_6893795e9e5c8d::t_0dc632ab9ef265 66-70
+  s_6893795e9e5c8d::t_98771a5293494f 30
+test/pages.e2e-spec.ts
+  s_6893795e9e5c8d::t_9182dba2f86ce2 106-148
+  s_6893795e9e5c8d::t_da7798b6e3946a 160
+src/pages/pages.service.ts
+  s_6893795e9e5c8d::t_05fb5bf4f052a2 3,22-26,28,30-34
+docker/Dockerfile
+  s_6893795e9e5c8d::t_08c250c5483a8f 1-22
+docker/start.sh
+  s_6893795e9e5c8d::t_729c2947421e91 1-5
+.dockerignore
+  s_6893795e9e5c8d::t_cb600d74405032 1-13
+src/pages/page-store.spec.ts
+  s_6893795e9e5c8d::t_94408ea1d5cab9 27,29,34-41
+  s_6893795e9e5c8d::t_2690fea0de4874 42-43
+public/index.html
+  s_6893795e9e5c8d::t_52207b06b9921c 65-78
+  s_6893795e9e5c8d::t_28602e5b03d18c 156-160
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "ca3774973137eb45acdd407ebfb03b24adbcaac3",
+  "prompts": {},
+  "sessions": {
+    "s_6893795e9e5c8d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "14f0fa19-a43e-4ecc-a174-f8f3a4a39cd3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
