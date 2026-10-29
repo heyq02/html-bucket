@@ -1,0 +1,19 @@
+docs/DEMAND.md
+  s_6893795e9e5c8d::t_00b5403c2acd17 3-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "d9f24013a9b298a8f2b4141609316adcd48ddac3",
+  "prompts": {},
+  "sessions": {
+    "s_6893795e9e5c8d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "14f0fa19-a43e-4ecc-a174-f8f3a4a39cd3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
