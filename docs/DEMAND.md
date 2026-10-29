@@ -1,3 +1,74 @@
 # HTML Bucket
 
-一个 node 服务，中部是上传按钮，可以上传一个 html，输入相对路径，就可以得到一个在线的页面链接。下部就是一个列表，可以筛选查看之类的
+## 1. Summary
+
+HTML Bucket is an internal Node service that lets the team upload an HTML file, assign a relative path, and get a shareable link on the company network. It replaces emailing HTML attachments for review and demos.
+
+## 2. Background
+
+Today, sharing a static HTML page means attaching it to email (or chat). Recipients download, open locally, and lose a stable URL for follow-up. Links break across machines; assets and paths often misbehave offline.
+
+We need a lightweight place on the internal network: upload once, link forever (for that path), browse what already exists.
+
+## 3. Objective
+
+Make internal HTML sharing as fast as “upload → copy link,” with no CDN or CI involved.
+
+**Key Results**
+- A teammate can publish a reviewable HTML page and share a working internal URL in under 1 minute.
+- New shares use a link instead of an email HTML attachment (team habit for demos/reviews).
+
+## 4. Market Segment(s)
+
+**Internal makers who need to show HTML** — engineers, PMs, designers who produce a single-page or static HTML demo and need teammates to open it without installing anything.
+
+Constraints: internal network only; not for public internet; trust model is “company intranet users.”
+
+## 5. Value Proposition
+
+- **Who:** Internal makers sharing HTML for review or demo  
+- **Why:** Get a page in front of teammates quickly, with a URL that stays usable  
+- **What before:** Email/chat the `.html` file; others download and open locally; no durable link  
+- **How:** Upload HTML, set a relative path, get an internal page URL; browse/filter existing pages in a list  
+- **What after:** One link in chat/email; anyone on the network opens the live page  
+- **Alternatives:** Email attachments, ad-hoc static hosts, full deploy pipelines — those are slower or heavier for a one-off HTML file  
+
+**Statement:** For teammates who need to share HTML demos, HTML Bucket turns “email a file” into “paste an internal URL” in under a minute.
+
+## 6. Solution
+
+### 6.1 Key flow
+
+1. Open the service UI (internal).  
+2. Upload an HTML file and enter a relative path.  
+3. Get a page URL; copy and share.  
+4. Use the lower list to find, filter, and open existing pages.
+
+### 6.2 Key features (v1)
+
+- Upload a single HTML file and bind it to a relative path  
+- Return a stable internal URL for that path  
+- Page list with basic filter/search  
+- Serve uploaded HTML over HTTP on the internal network  
+
+### 6.3 Technology
+
+Node service, deployed on the internal network. (Stack details left to engineering.)
+
+### 6.4 Assumptions and open questions
+
+- **Assumption:** One HTML file per path is enough for v1 (no multi-file project / asset folder upload yet).  
+- **Assumption:** Overwrite on same path is acceptable; no version history in v1.  
+- **Open:** Auth — open to anyone on the intranet, or login required?  
+- **Open:** Path rules — who owns a path, can others overwrite?  
+- **Open:** Max file size / HTML-only vs. zip with assets?
+
+## 7. Release
+
+| In v1 | Later | Not doing |
+| --- | --- | --- |
+| Upload HTML + relative path → URL | Multi-file / asset folders | Public internet hosting |
+| Internal HTTP serve | Auth / permissions if needed | Full CMS or visual editor |
+| List + basic filter | Version history, preview diffs | CI/CD or CDN replacement |
+
+**Timeframe:** Small internal tool — roughly days to a couple of weeks for a usable v1, depending on auth and storage choices.
