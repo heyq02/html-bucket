@@ -1,0 +1,326 @@
+.agents/skills/nestjs-best-practices/rules/di-interface-segregation.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 17-24,31,38-39,46-49,51-53,61,65,69,73,77,108,115-116,122-123,126-127,132,134,146,153,159-160
+.agents/skills/outcome-roadmap/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/market-sizing/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+index.html
+  s_08f6f1dcb0464e::t_a02b827eae7b30 1-12
+.agents/skills/nestjs-best-practices/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 7
+.agents/skills/nestjs-best-practices/rules/error-handle-async-errors.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 58,61,64-65,67,69,76,81,83,85,93,98-99,101,109-110,113-114,116-119,121
+.agents/skills/nestjs-best-practices/rules/arch-use-repository-pattern.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 18,30,43,46,50,62,66,76,80,82,85-88
+.agents/skills/nestjs-best-practices/rules/di-prefer-constructor-injection.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 19,22,25,43,47,53-54,59-60,62-63,66-70,77,80-81
+.agents/skills/nestjs-best-practices/rules/di-scope-awareness.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 21,28,31,35,49,56,59,63,68-69,76,81,88-89
+.agents/skills/create-prd/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+web/src/main.tsx
+  s_08f6f1dcb0464e::t_9e9f9c4b2c8d09 4-5,8,10,12-17,19-22,24
+  s_08f6f1dcb0464e::t_7e41b26354644d 1-3,6-7,9,11,18,23
+.agents/skills/nestjs-best-practices/rules/db-use-migrations.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 18,20,26,35,38,57-58,68-70,73,76,82,87,92-93,103,108,113,118,122-124
+.agents/skills/nestjs-best-practices/rules/test-mock-external-services.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 18,20,22-23,28-29,32,34-35,39,41,49-50,60-64,66-68,76-77,79,81,83-84,87,89-90,95-97,99-101,105-106,114-115,118-119,121-123,126-127,129,131-134,143,147-149,155-157,160-161,164,167,169-171
+.agents/skills/nestjs-best-practices/rules/test-e2e-supertest.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 18-19,21,23,25-26,31,35-36,43-47,50,54-55,57,64-66,68-69,72-73,81-86,93-97,101-104,108-109,113-114,116-118,123,125-126,129-130,137-141,145-146,152,154-156,158-161,165-166,169-172
+.agents/skills/stakeholder-map/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/gtm-strategy/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/pestle-analysis/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/di-use-interfaces-tokens.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 17,22-24,38,41,54,63-64,66,73,76,82
+.agents/skills/tdd/mocking.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 27,32-33,44-47,51-52
+.agents/skills/tdd/tests.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 9-14,31-35,49-53,56-60,67-71,74-76
+.agents/skills/growth-loops/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+package.json
+  s_08f6f1dcb0464e::t_82059337ab2695 32-34
+  s_08f6f1dcb0464e::t_b6ee1379c1288b 16-19
+  s_08f6f1dcb0464e::t_f79d886171aafa 9
+.agents/skills/ansoff-matrix/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/sprint-plan/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/pr/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3,9,147-148
+.agents/skills/swot-analysis/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/writing-fragments/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/writing-shape/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/grammar-check/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/review-resume/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/ab-test-analysis/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/test-scenarios/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/api-use-dto-serialization.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 45-47,54,57,60,64,68,72,75,79,87,96,99,102,106,109,115,119,128-129,134,136-137,144,147,150,153,156
+.agents/skills/beachhead-segment/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/metrics-dashboard/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/micro-use-health-checks.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 20,30-33
+.agents/skills/value-proposition/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/analyze-feature-requests/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/api-versioning.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 23,41,46-47,53-54,60-61,63,72,77-78,87,94-95,105,111,117,123,131,134,136,143-144,153-154,164,166,181-184,186
+.agents/skills/product-vision/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/db-use-transactions.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 20,23-24,27,30,44,46,49-50,54,56-57,67-69,73,77-78,80,84,91-92,94,96-97,99,109,112-117
+.agents/skills/nestjs-best-practices/rules/perf-use-caching.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 27,39,54-58,67,71,74-75,78-80,85-87,98,105,120-121
+.agents/skills/triage/AGENT-BRIEF.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 56,62,68,93,100,108,134,142,151,179,185,192,209
+.agents/skills/nestjs-best-practices/rules/micro-use-patterns.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 21,31-32,40,43,46
+.agents/skills/implement-spec/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/perf-optimize-database.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 19,21,27-28,30,38,41,53-55,67,81-84,96,99,102,105,115-116,124-126
+.agents/skills/brainstorm-ideas-new/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/code-review/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/product-strategy/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/brainstorm-experiments-existing/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/startup-canvas/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/brainstorm-experiments-new/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+src/main.ts
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 11
+  s_08f6f1dcb0464e::t_0a04405745dd3c 10
+.agents/skills/nestjs-best-practices/rules/arch-module-sharing.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 19,22,29,36,53,61,69,78-79,93,99,106,122,129,136
+.agents/skills/nestjs-best-practices/rules/error-throw-http-exceptions.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 19,21,23,31,33,35,49,51,53,58-59,61,63,67-69,78,83,91,93,101-102,108-109
+tsconfig.build.json
+  s_08f6f1dcb0464e::t_b79ab85ddff0cf 3-11
+.agents/skills/positioning-ideas/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/security-validate-all-input.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 21,27,33-35,44,48-50,52-55,57,61,72-73,81,85,90,96,98,106,113,119,125,133,139,145
+.agents/skills/nestjs-best-practices/rules/security-use-guards.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 21,24,26,32,35,37,50,57-59,61-62,65,69-70,72,77-78,90-91,93,95-96,101-102,108-109,119,124,130
+.agents/skills/handoff/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 4
+.agents/skills/business-model/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/interview-script/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/teach/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 5
+docker/Dockerfile
+  s_08f6f1dcb0464e::t_b44fd76483744d 9
+.agents/skills/prioritize-assumptions/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+src/pages/pages.controller.ts
+  s_08f6f1dcb0464e::t_aa6ddc12dbcaba 122,129-130,132
+  s_08f6f1dcb0464e::t_a923c6869bd12c 12
+  s_08f6f1dcb0464e::t_59d15ad40278e1 131
+.agents/skills/nestjs-best-practices/rules/arch-use-events.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 23,27,30-34,37,46,54,63,67,72-73,75,84,92,102-103
+.agents/skills/sql-queries/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/perf-async-hooks.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 20,24-25,32,36,47,51-52,57-58,67,72-73,80,88,92-93,97,103-105
+.agents/skills/value-prop-statements/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+web/src/StatusBanner.tsx
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 1,10,17
+  s_08f6f1dcb0464e::t_29dd62d8f800cf 2-9,11-16,18
+.agents/skills/sentiment-analysis/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/test-use-testing-module.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 19-20,22,24-25,30-31,33,35-37,44,47-48,59-63,65-67,70-71,75-76,78,80,82-84,87,89-93,97-98,100,102-103,106,108-111,115-116,120-121,123-125,128-129,131-132,135-136,138-140,145,148-149
+.agents/skills/user-personas/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+web/src/app.css
+  s_08f6f1dcb0464e::t_7a45d77937f54d 1-102
+vite.config.mts
+  s_08f6f1dcb0464e::t_b6f8262bee61c2 1,15,21-22,24,27-29,33,38-39,43,49-50,62-64,68-149,159
+  s_08f6f1dcb0464e::t_83c72754fe914c 5,7,14,19-20,31-32,34-37,40
+  s_08f6f1dcb0464e::t_be3c1ca5155b89 51-61
+.agents/skills/competitor-analysis/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/privacy-policy/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/error-use-exception-filters.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 21,25-26,28,30,33-34,48,50,52,63-64,72-74,76,83-84,94-96,99,101,105-106,112-113,118,125-127
+.agents/skills/market-segments/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/implement/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/strategy-red-team/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/monetization-strategy/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/gtm-motions/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/pricing-strategy/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/claude-handoff/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 4
+.agents/skills/wait-what/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+web/src/api.ts
+  s_08f6f1dcb0464e::t_cba8c3274087c9 1-12,14-16,18-20,22-30,37-43,45-47,49-53,57-58,60-66,68-69,71-75,77-79,81-96,98-101,103-104
+  s_08f6f1dcb0464e::t_becbb5a3956841 17,80,102
+  s_08f6f1dcb0464e::t_8ab01a91065d3c 13,21,31,35,44,48,54-56,59,67,70,97,105
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 32-34,36
+  s_08f6f1dcb0464e::t_327db2b6f60b6d 76
+.agents/skills/nestjs-best-practices/rules/db-avoid-n-plus-one.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 19,24,27,36,38
+.agents/skills/retro/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/migrate-to-shoehorn/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 34-36,38,40,43,45,47-48,54,56,59-62,70,76,78,86,92,94
+.agents/skills/setup-matt-pocock-skills/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/security-auth-jwt.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 68-70,72-73,86-87,89-90,92,96-97,102-103,105,114,121-122,127,130,135,137,141
+.agents/skills/cohort-analysis/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/devops-use-config-module.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 23-24,33,43-44,52-53,59-60,64,72-73,84-85,96-99,105-107,111-115,125,129,138,141-142,152-154
+.agents/skills/codebase-design/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 79,91
+.agents/skills/prioritize-features/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/marketing-ideas/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/devops-use-logging.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 19,23-25,27-28,34,37,50-51,57,60,63-65,68-70,84-86,96-98,107-109,118-120,125,133-136,146-148,150-151,168-170,183-185,190,197,200,203,205-211,219,223
+.agents/skills/draft-nda/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+tsconfig.json
+  s_08f6f1dcb0464e::t_e6d0ec477f3452 14,26-27
+.agents/skills/teach/MISSION-FORMAT.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 11,15,21,25
+.agents/skills/nestjs-best-practices/rules/perf-lazy-loading.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 25-26,39,47-48,50-51,58,64-65,67,71-73,80,86,89-92,94,105-106,111-113,115
+.agents/skills/nestjs-best-practices/rules/security-rate-limiting.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 21,27,47,55,60,65-67,72-74,84,90,100,109,113,117,120
+.agents/skills/user-segmentation/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/arch-single-responsibility.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 4,22,26-28,32-35,57,61,70,74,93,98-101
+.agents/skills/product-name/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/release-notes/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/north-star-metric/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/brainstorm-okrs/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/shipping-artifacts/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+web/src/PublishSection.tsx
+  s_08f6f1dcb0464e::t_175ccf6aaf63d7 127,164,177,179-180,182-183,185-198,201-202,232
+  s_08f6f1dcb0464e::t_3819a9cb6ade0d 135
+  s_08f6f1dcb0464e::t_2cd2fb4fddd33b 129
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 1,4,7,14,19-20,59,66,70,74,80,88,97,104,111-112,118-119,126,128,138,143,149-150,154,165-171,173,178,184,199,207,224
+  s_08f6f1dcb0464e::t_1a199923ee2f8c 2,5-6,121-123,140-142,208-210,212-217,221-223
+  s_08f6f1dcb0464e::t_329ee6db8c0537 3,8-13,15-18,21-55,57-58,60-65,67-69,71-73,75-79,81-87,89-96,98-103,105-110,113-117,120,124-125,130,132-134,136-137,139,144-148,151-153,155-163,174-176,200,203-206,211,218-220,225-227,229-231,233-234
+  s_08f6f1dcb0464e::t_31b8e769018ae9 56
+  s_08f6f1dcb0464e::t_8ab01a91065d3c 131,172,181,228
+.agents/skills/summarize-meeting/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+web/src/App.tsx
+  s_08f6f1dcb0464e::t_7f7c53a0d1ac3c 11-27,39-41,47,53-55,57-59,65-82,84-85
+  s_08f6f1dcb0464e::t_c1a28e26c8494b 28-33,35-38
+  s_08f6f1dcb0464e::t_3bda8ec277d34d 42-46,49-51
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 1-3,6-9,56,60-63
+  s_08f6f1dcb0464e::t_8ab01a91065d3c 34
+  s_08f6f1dcb0464e::t_e7b692db2634f8 10,64,83
+  s_08f6f1dcb0464e::t_1a199923ee2f8c 4-5,48,52
+.agents/skills/identify-assumptions-new/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/micro-use-queues.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 21-24,33,40-41,48,55,63-65,67-68,75,81-82,84,88,92-93,100,104,107,109-110,112-113,115-116,118,123,128,133,142,148-149,152,168,172-174,190-192,200-202,210-211,216,218,224-225,231,235,239-241
+.agents/skills/improve-codebase-architecture/HTML-REPORT.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 15-16,21-29
+.agents/skills/summarize-interview/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/dummy-dataset/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/arch-feature-modules.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 4
+web/src/vite-env.d.ts
+  s_08f6f1dcb0464e::t_f65c43ab7d2895 1
+.agents/skills/triage/OUT-OF-SCOPE.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 44-45,47
+test/pages.e2e.test.ts
+  s_08f6f1dcb0464e::t_fbbbcb09a5fec8 153-154
+.agents/skills/wwas/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+README.md
+  s_08f6f1dcb0464e::t_612ee6c6024c26 9,13,24,39-40
+  s_08f6f1dcb0464e::t_013c8ced9aae32 10-12,14-23,30,36-38,41-42
+.agents/skills/pre-mortem/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/ideal-customer-profile/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+web/src/LibrarySection.tsx
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 1-2,22,32,93,103-104,108-109,115,117,124,128,133-134,139-140,147,153,173-176,178,192,198,207-208
+  s_08f6f1dcb0464e::t_2c720c840bf5ad 3,16-21,23-31,33-35,37-66,68-92,94-102,105-107,110-111,116,118,120-123,125,130-132,135-138,141,149-152,154,156-158,161-162,164-166,169-171,177,179-191,193-197,199-206,209-213,216-218,222-223
+  s_08f6f1dcb0464e::t_1a199923ee2f8c 4-15,112-114
+  s_08f6f1dcb0464e::t_9046a66f8d73ad 36,119,126-127,129,142-146,148,155,159-160,163,167-168,172,214-215,219-221
+  s_08f6f1dcb0464e::t_2cd2fb4fddd33b 67
+.agents/skills/brainstorm-ideas-existing/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/di-avoid-service-locator.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 22-24,26,33-34,38,40,44,58,62-63,70,78-80,82-84,94,96,98
+.agents/skills/lean-canvas/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/arch-avoid-circular-deps.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 4,19,27,39,46,53,64-66
+.agents/skills/nestjs-best-practices/rules/devops-graceful-shutdown.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 17-18,30,42,45,48-49,52-53,55,59-62,66-70,76,79,82,84,91,94,99,104,106,114,118,121,128,131,135,148,151,162,165,174-177,181-182,185,188,190,192,194,198,201-204,207,210
+.agents/skills/prioritization-frameworks/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/nestjs-best-practices/rules/di-liskov-substitution.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 22,29-30,40,45,49,59,61-62,80,86,94,98-99,102,104,116,121,126,133-134,136-137,143,149-150,161,163-165,168-169,171,181,183,186-187,190-195,198-199,202-204,209-210,213-214
+.agents/skills/intended-vs-implemented/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/customer-journey-map/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 3
+.agents/skills/loop-me/SKILL.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 5
+.agents/skills/prototype/UI.md
+  s_08f6f1dcb0464e::t_8f6c41e0b52e3a 62,68,70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "a914cf441ccdcd193e85184aba04881d7a1dcda3",
+  "prompts": {},
+  "sessions": {
+    "s_08f6f1dcb0464e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1bd59476-671d-47dd-8f2b-4594226f48a3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
