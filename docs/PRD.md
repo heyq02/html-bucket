@@ -50,7 +50,7 @@ Engineers, PMs, and designers who produce a single-page or static HTML demo and 
 
 - Deployed and used only on the internal network
 - Not for public internet traffic
-- Trust model for v1: anyone who can reach the service on the intranet (auth deferred unless required)
+- Trust model for v1: anyone who can reach the service on the intranet may publish, overwrite, enable/disable, or delete pages (no login)
 
 ### Secondary (later) — Frequent publishers of multi-file HTML packages
 
@@ -65,7 +65,7 @@ People who ship HTML plus CSS/JS/images as a small folder. Out of scope for v1 (
 | **Who** | Internal makers sharing HTML for review or demo |
 | **Why** | They need teammates to see a page quickly and keep a stable reference URL. Email attachments and local opens get in the way. |
 | **What before** | Attach `.html` to email/chat → download → open from disk. No durable link. Paths/assets often break. Hard to find “what we shared last week.” |
-| **How** | Upload HTML, bind a relative path, get an internal URL; browse and filter published pages in a list; service serves the file over HTTP on the intranet |
+| **How** | Upload HTML, bind a relative path, get an internal URL; browse and filter published pages in a list; update, disable, or delete as needed; service serves the file over HTTP on the intranet |
 | **What after** | Paste one link in chat/email/docs. Anyone on the network opens the live page. Same path stays usable for follow-up. |
 | **Alternatives** | Email/chat attachments (fast start, bad URL); ad-hoc personal static hosts (inconsistent); full deploy / CI to staging (heavy for a one-off) |
 
@@ -86,105 +86,114 @@ People who ship HTML plus CSS/JS/images as a small folder. Out of scope for v1 (
 
 ### 7.1 UX / key flows
 
-**Layout (from demand)**
+**Layout**
 
-1. **Middle — Publish:** upload control + relative path input → result URL (copy).
-2. **Lower — Library:** list of published pages with filter/search; open any entry.
+1. **Publish:** upload control + relative path input → result URL (copy).
+2. **Library:** list of published pages with filter/search; open, copy link, update, enable/disable, or delete.
 
 **Happy path — Publish**
 
 1. User opens the service on the internal network.
 2. Selects one `.html` file.
 3. Enters a relative path (e.g. `demos/checkout-v2`).
-4. Submits; system stores the file at that path (overwrite if path exists — assumed for v1).
+4. Submits; if the path already exists, UI asks for overwrite confirmation.
 5. UI shows the full internal URL; user copies and shares.
 
-**Happy path — Browse**
+**Happy path — Browse / manage**
 
 1. User opens the same UI.
-2. Filters or searches the list (by path / name).
-3. Opens a listed page in a new tab via its URL.
+2. Filters or searches the list (by path).
+3. Opens a listed page, copies its link, updates the HTML, toggles enabled, or deletes it.
 
 **Edge cases to handle in UI**
 
 - Empty path → clear validation error
 - Invalid path characters → reject with message
 - Non-HTML upload → reject (v1: HTML only)
-- Same path overwrite → confirm or clear “replaced existing page” feedback
+- File over max size → reject with clear message
+- Same path overwrite → confirm before replace
 - Upload failure / disk error → actionable error, no silent success
 
 ### 7.2 Key features (v1 must-haves)
 
 | Feature | Behavior |
 | --- | --- |
-| HTML upload | Accept a single `.html` (or `text/html`) file |
+| HTML upload | Accept a single `.html` (or `text/html`) file, max 1MB |
 | Relative path binding | User-defined path maps 1:1 to the stored page |
-| Stable URL | `https://<internal-host>/<relative-path>` (exact URL scheme set at deploy) opens the page |
-| Overwrite | Re-upload to the same path replaces content; no version history in v1 |
-| Page list | Show published paths (and useful metadata if cheap: updated time, size) |
-| Filter / search | Filter list by path substring or simple search |
+| Stable URL | `https://<internal-host>/<relative-path>` (exact URL scheme set at deploy via `PUBLIC_BASE_URL`) opens the page |
+| Overwrite with confirm | Re-upload to the same path replaces content after UI confirmation; no version history |
+| Update from library | Replace HTML for an existing path without changing the path |
+| Enable / disable | Disabled pages stay in the list but return 404 when opened |
+| Delete | Hard-delete removes the file and list entry |
+| Page list | Show path, status, size, updated time |
+| Filter / search | Filter list by path substring |
+| Copy link | One-click copy of the shareable URL after publish and from the list |
 | Internal HTTP serve | Serve stored HTML with correct content type to intranet clients |
+| Health check | `GET /health` for deploy probes |
 
 ### 7.3 Technology
 
-- **Runtime:** Node service (as stated in demand)
-- **Deploy:** Internal network only
-- **Storage:** Local or mounted disk for v1 is acceptable; exact choice left to engineering
-- **UI:** Simple web UI served by the same service (or adjacent static assets)
+- **Runtime:** Node (NestJS) service
+- **Deploy:** Internal network only (Docker image provided)
+- **Storage:** Local or mounted disk (`PAGE_STORE_ROOT`)
+- **UI:** Simple web UI served by the same service
 
-Out of scope for tech in this PRD: SSO, CDN, multi-region, object storage — unless engineering needs them for the chosen host.
+Out of scope for tech in this PRD: SSO, CDN, multi-region, object storage.
 
-### 7.4 Assumptions and open questions
+### 7.4 Decisions and remaining open items
 
-**Assumptions (treat as true until disproven)**
+**Decided for v1**
+
+| Topic | Decision |
+| --- | --- |
+| Auth | Intranet reachability only; no login |
+| Path ownership | Anyone on the network may overwrite, disable, or delete any path |
+| Max file size | 1MB per HTML file |
+| Format | HTML only (no zip / asset folders) |
+| Path rules | Letters, digits, `.`, `_`, `-`, `/`; no `..` or empty segments |
+| Remove / hide | Hard delete + enable/disable toggle (no soft-delete recycle bin) |
+
+**Assumptions**
 
 1. One HTML file per path is enough for the first useful version.
-2. Overwrite on the same path is acceptable; no version history in v1.
-3. Intranet reachability is enough access control for the first release.
-4. Success is “link in under a minute,” not feature parity with Netlify/GitHub Pages.
+2. Success is “link in under a minute,” not feature parity with Netlify/GitHub Pages.
 
-**Open questions (decide before or during build)**
+**Deferred (later versions)**
 
-| # | Question | Impact if undecided |
-| --- | --- | --- |
-| Q1 | Auth — open intranet vs login? | Security review; may block deploy |
-| Q2 | Path ownership — can anyone overwrite any path? | Conflict / trust among teams |
-| Q3 | Max file size? | Abuse / disk limits |
-| Q4 | HTML-only vs zip with assets? | Scope of v1 vs v1.1 |
-| Q5 | Path naming rules (slashes, case, reserved words)? | URL stability and collisions |
-| Q6 | Soft delete / remove from list? | Disk growth and stale links |
+- Multi-file / zip with assets
+- Auth / permissions / path ownership
+- Version history
 
 ## 8. Release
 
 ### v1 (now)
 
-- Upload single HTML + relative path → internal URL  
-- Serve page over HTTP on the intranet  
-- List + basic filter/search  
-- Overwrite same path; clear publish feedback  
-
-**Relative timeframe:** Days to ~2 weeks for a usable internal v1, depending on host setup and answers to Q1–Q3.
+- Upload single HTML + relative path → internal URL (copy)
+- Serve page over HTTP on the intranet
+- List + filter/search + updated time
+- Overwrite with confirmation; update / enable / disable / delete from library
+- Health check; env-based deploy config
 
 ### Later
 
-- Multi-file / asset folders or zip upload  
-- Auth / permissions if intranet-open is not enough  
-- Version history or “previous revision”  
-- Soft delete, quotas, path ownership  
+- Multi-file / asset folders or zip upload
+- Auth / permissions if intranet-open is not enough
+- Version history or “previous revision”
+- Quotas, path ownership
 
 ### Explicitly not doing
 
-- Public internet hosting  
-- Full CMS or visual HTML editor  
-- Replacing CI/CD or production CDN  
-- Collaboration features (comments, roles) in v1  
+- Public internet hosting
+- Full CMS or visual HTML editor
+- Replacing CI/CD or production CDN
+- Collaboration features (comments, roles) in v1
 
 ### Launch notes
 
-- Ship to a small pilot group first; confirm KR1 in real use  
-- Document the base URL and path conventions in one short internal note  
-- Revisit Q1/Q2 after first week of usage if conflicts or access concerns appear  
+- Ship to a small pilot group first; confirm KR1 in real use
+- Document the base URL and path conventions (see README)
+- Revisit auth / ownership after first week if conflicts or access concerns appear
 
 ---
 
-*Source demand: `docs/DEMAND.md`. Unknowns are marked as assumptions or open questions — do not treat them as decided product policy.*
+*Source demand: `docs/DEMAND.md`. v1 access and lifecycle decisions are locked above.*

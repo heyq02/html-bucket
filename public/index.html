@@ -18,7 +18,7 @@
           HTML Bucket
         </h1>
         <p class="mt-2 text-fg-muted">
-          先选择 HTML 文件，再确认相对路径并发布。
+          先选择 HTML 文件，再确认相对路径并发布。内网任意可达用户均可发布与管理。
         </p>
       </header>
 
@@ -27,7 +27,7 @@
         class="mb-4 rounded-lg border border-border-default bg-canvas-default p-5 shadow-sm"
       >
         <h2 id="publish-title" class="mb-4 text-xl font-semibold text-fg-default">
-          Publish
+          发布
         </h2>
 
         <div id="step-pick" class="space-y-3">
@@ -45,7 +45,7 @@
           >
             上传 HTML
           </button>
-          <p id="pick-hint" class="text-sm text-fg-muted">点击后选择要发布的 HTML 文件。</p>
+          <p id="pick-hint" class="text-sm text-fg-muted">点击后选择要发布的 HTML 文件（最大 1MB）。</p>
         </div>
 
         <form id="publish-form" class="hidden space-y-3">
@@ -124,13 +124,13 @@
         class="rounded-lg border border-border-default bg-canvas-default p-5 shadow-sm"
       >
         <h2 id="library-title" class="mb-4 text-xl font-semibold text-fg-default">
-          Library
+          页面库
         </h2>
         <div class="mb-4 flex flex-col gap-2 sm:flex-row">
           <input
             id="filter"
             type="text"
-            placeholder="Filter by path"
+            placeholder="按路径筛选"
             class="w-full flex-1 rounded-md border border-control-border bg-canvas-default px-3 py-2 text-sm text-fg-default outline-none focus:border-fg-link focus:ring-2 focus:ring-fg-link/30"
           />
           <button
@@ -138,7 +138,7 @@
             id="refresh"
             class="inline-flex cursor-pointer items-center justify-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
           >
-            Refresh
+            刷新
           </button>
         </div>
         <p
@@ -154,6 +154,7 @@
                 <th class="px-2 py-2 font-semibold">路径</th>
                 <th class="px-2 py-2 font-semibold">状态</th>
                 <th class="px-2 py-2 font-semibold">大小</th>
+                <th class="px-2 py-2 font-semibold">更新时间</th>
                 <th class="px-2 py-2 font-semibold text-right">操作</th>
               </tr>
             </thead>
@@ -170,8 +171,16 @@
         </td>
         <td class="status px-2 py-3 text-sm"></td>
         <td class="size px-2 py-3 text-fg-muted"></td>
+        <td class="updated px-2 py-3 text-fg-muted whitespace-nowrap"></td>
         <td class="px-2 py-3">
           <div class="actions flex flex-wrap justify-end gap-2">
+            <button
+              type="button"
+              class="btn secondary inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
+              data-action="copy"
+            >
+              复制链接
+            </button>
             <button
               type="button"
               class="btn secondary inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2.5 py-1 text-xs font-medium text-btn-default-fg hover:bg-canvas-inset"
@@ -225,6 +234,43 @@
       const overwriteDialog = document.getElementById('overwrite-dialog');
       const overwritePathEl = document.getElementById('overwrite-path');
 
+      function pageUrl(path) {
+        return `${window.location.origin}/${path}`;
+      }
+
+      async function copyText(text) {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'absolute';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        document.body.removeChild(area);
+      }
+
+      function formatUpdatedAt(value) {
+        if (!value) {
+          return '—';
+        }
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) {
+          return '—';
+        }
+        return date.toLocaleString('zh-CN', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+      }
+
       function askOverwrite(path) {
         return new Promise((resolve) => {
           overwriteResolver = resolve;
@@ -261,7 +307,7 @@
           'border-btn-danger-border',
           'border-fg-success/30',
         );
-        if (!el.textContent) {
+        if (!el.textContent && !el.innerHTML) {
           return;
         }
         el.classList.add('border');
@@ -354,6 +400,23 @@
         return { res, body };
       }
 
+      function showPublishSuccess(path) {
+        const url = pageUrl(path);
+        setResultHtml(
+          `<span>已发布：<a class="text-fg-link hover:underline" href="/${path}">/${path}</a></span>
+           <button type="button" id="copy-publish-url" class="ml-2 inline-flex cursor-pointer items-center rounded-md border border-btn-default-border bg-btn-default-bg px-2 py-0.5 text-xs font-medium text-btn-default-fg hover:bg-canvas-default">复制链接</button>`,
+          'success',
+        );
+        document.getElementById('copy-publish-url')?.addEventListener('click', async () => {
+          try {
+            await copyText(url);
+            setLibraryStatus(`已复制 ${url}`, 'success');
+          } catch {
+            setLibraryStatus('复制失败，请手动复制地址栏链接', 'error');
+          }
+        });
+      }
+
       document.getElementById('pick-file').addEventListener('click', () => {
         fileInput.value = '';
         fileInput.click();
@@ -400,7 +463,6 @@
         setResult('发布中…');
         let { res, body } = await publishFile(pendingFile, path, overwrite);
 
-        // Server-side conflict (list may be stale / filtered)
         if (res.status === 409) {
           const shouldOverwrite = await askOverwrite(path);
           if (!shouldOverwrite) {
@@ -421,15 +483,11 @@
         showPickStep();
         filterEl.value = '';
         await loadPages();
-        setResultHtml(
-          `已发布：<a class="text-fg-link hover:underline" href="/${path}">/${path}</a>`,
-          'success',
-        );
+        showPublishSuccess(path);
       });
 
       async function loadPages() {
         const q = filterEl.value.trim();
-        // Always load full path set for overwrite detection, then filter for display
         const allRes = await fetch(`/api/pages?_=${Date.now()}`, {
           cache: 'no-store',
         });
@@ -447,7 +505,7 @@
         if (!pages.length) {
           const empty = document.createElement('tr');
           empty.innerHTML =
-            '<td colspan="4" class="px-2 py-6 text-center text-fg-muted">暂无页面</td>';
+            '<td colspan="5" class="px-2 py-6 text-center text-fg-muted">暂无页面</td>';
           pagesEl.appendChild(empty);
           return;
         }
@@ -471,6 +529,18 @@
           status.classList.add(page.enabled ? 'text-fg-success' : 'text-fg-muted');
 
           row.querySelector('.size').textContent = `${page.size} bytes`;
+          row.querySelector('.updated').textContent = formatUpdatedAt(page.updatedAt);
+
+          row
+            .querySelector('[data-action="copy"]')
+            .addEventListener('click', async () => {
+              try {
+                await copyText(pageUrl(page.path));
+                setLibraryStatus(`已复制 ${pageUrl(page.path)}`, 'success');
+              } catch {
+                setLibraryStatus('复制失败，请手动复制链接', 'error');
+              }
+            });
 
           const toggleBtn = row.querySelector('[data-action="toggle"]');
           toggleBtn.textContent = page.enabled ? '关闭' : '开启';

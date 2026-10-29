@@ -150,6 +150,13 @@ describe('Pages (e2e)', () => {
     await request(app.getHttpServer()).get('/missing/page').expect(404);
   });
 
+  it('reports health for probes', async () => {
+    await request(app.getHttpServer())
+      .get('/health')
+      .expect(200)
+      .expect({ status: 'ok' });
+  });
+
   it('serves a publish UI at the root', async () => {
     const res = await request(app.getHttpServer()).get('/').expect(200);
 
@@ -160,8 +167,12 @@ describe('Pages (e2e)', () => {
     expect(res.text).toContain('name="path"');
     expect(res.text).toContain('上传 HTML');
     expect(res.text).toContain('确认发布');
+    expect(res.text).toContain('页面库');
+    expect(res.text).toContain('按路径筛选');
+    expect(res.text).toContain('更新时间');
     expect(res.text).toContain('overwrite-dialog');
     expect(res.text).toContain('是否覆盖');
+    expect(res.text).toContain('data-action="copy"');
     expect(res.text).toContain('data-action="toggle"');
     expect(res.text).toContain('data-action="update"');
     expect(res.text).toContain('data-action="delete"');

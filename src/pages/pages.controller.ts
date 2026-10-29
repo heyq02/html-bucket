@@ -10,12 +10,15 @@ import {
   Post,
   Query,
   UploadedFile,
+  UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { memoryStorage } from 'multer';
+import { MulterExceptionFilter } from './multer-exception.filter';
+import { resolveMaxFileSizeBytes } from './pages.constants';
 import { PagesService } from './pages.service';
 
 type PublishBody = {
@@ -39,11 +42,17 @@ function parseOverwrite(value: string | undefined): boolean {
 export class PagesController {
   constructor(private readonly pagesService: PagesService) {}
 
+  @Get('health')
+  health() {
+    return { status: 'ok' };
+  }
+
   @Post('api/pages')
+  @UseFilters(MulterExceptionFilter)
   @UseInterceptors(
     FileInterceptor('file', {
       storage: memoryStorage(),
-      limits: { fileSize: 1024 * 1024 },
+      limits: { fileSize: resolveMaxFileSizeBytes() },
       fileFilter: (_req, file, callback) => {
         const isHtml =
           file.mimetype === 'text/html' ||
@@ -68,6 +77,13 @@ export class PagesController {
     }
     if (!body.path) {
       throw new BadRequestException('path is required');
+    }
+
+    const maxBytes = resolveMaxFileSizeBytes();
+    if (file.size > maxBytes) {
+      throw new BadRequestException(
+        `HTML file exceeds max size of ${maxBytes} bytes`,
+      );
     }
 
     return this.pagesService.publish(

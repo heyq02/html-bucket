@@ -1,7 +1,7 @@
 {
   "name": "html-bucket",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Internal service to upload HTML and share a durable intranet URL",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
