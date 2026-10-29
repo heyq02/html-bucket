@@ -1,0 +1,27 @@
+.gitignore
+  s_6893795e9e5c8d::t_993a11eef0bfea 1-44
+src/pages/page-store.spec.ts
+  s_6893795e9e5c8d::t_9e1707231edb91 1-26
+src/pages/page-store.ts
+  s_6893795e9e5c8d::t_29e55c8bf45b24 1-27
+package.json
+  s_6893795e9e5c8d::t_4f09535699c028 51
+package-lock.json
+  s_6893795e9e5c8d::t_70d5fecd626685 1-10302
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "cedf80cb43b4d34fea3270fa9e60d411c2e15588",
+  "prompts": {},
+  "sessions": {
+    "s_6893795e9e5c8d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "14f0fa19-a43e-4ecc-a174-f8f3a4a39cd3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
