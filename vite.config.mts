@@ -69,86 +69,30 @@ export default liangmi({
   },
   run: {
     tasks: {
-      // Frontend (cbuild from @liangmi/vp-config is also `vp build`)
-      'build:web': {
-        command: 'vp build',
-        cache: {
-          output: ['dist/web/**'],
-        },
-      },
-      'dev:web': {
-        command: 'vp dev',
+      // Everyday surface — keep this list short on purpose
+      dev: {
+        command: ['vp build', 'nest start --watch'],
         cache: false,
       },
-
-      // Backend
-      'build:api': {
-        command: 'nest build',
-        cache: {
-          input: [
-            {auto: true},
-            'src/**',
-            'tsconfig.json',
-            'tsconfig.build.json',
-            'nest-cli.json',
-          ],
-          output: ['dist/api/**'],
-        },
-      },
-
-      // Full product build: Nest API + Vite UI (separate outDirs so neither wipe wins)
       build: {
         command: ['nest build', 'vp build'],
       },
-
-      // Runtime
       start: {
-        command: 'nest start',
-        cache: false,
-        dependsOn: ['build'],
-      },
-      'start:dev': {
-        command: 'nest start --watch',
-        cache: false,
-        dependsOn: ['build:web'],
-      },
-      'start:debug': {
-        command: 'nest start --debug --watch',
-        cache: false,
-        dependsOn: ['build:web'],
-      },
-      'start:prod': {
         command: 'node dist/api/main.js',
         cache: false,
         dependsOn: ['build'],
       },
-
-      // Quality — prefer these aliases; ccheck/ctest/cfmt/clint remain from the preset
       check: {
         command: 'vp check',
       },
-      lint: {
-        command: 'vp lint',
-      },
-      format: {
-        command: 'vp fmt',
-      },
       test: {
-        command: 'vp test',
-        dependsOn: ['build:web'],
-      },
-      'test:e2e': {
-        command: 'vp test run test/pages.e2e.test.ts',
-        dependsOn: ['build:web'],
-      },
-      'test:watch': {
-        command: 'vp test watch',
-        cache: false,
+        command: ['vp build', 'vp test'],
       },
     },
   },
 })
-  .exclude(['pack'])
+  // Drop preset run tasks (cbuild/ccheck/…) so `vp run` only shows product tasks above
+  .exclude(['pack', 'run'])
   .overrideRules({
     // Nest is class + decorator based.
     'max-classes-per-file': 'off',

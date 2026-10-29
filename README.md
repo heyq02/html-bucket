@@ -8,38 +8,30 @@ Internal service for sharing static HTML: upload a file, set a relative path, ge
 
 - Frontend: React + [GitHub Primer](https://primer.style/) (`@primer/react`), built by [Vite+](https://viteplus.dev/)
 - Backend: NestJS serves API and `dist/web`
-- Tasks: defined in [`vite.config.mts`](vite.config.mts) `run.tasks` (plus preset `ccheck` / `ctest` / … from `@liangmi/vp-config`)
-- Run everything with `vp run <task>` (shorthand `vpr <task>`)
+- Commands: `vp run <task>` (shorthand `vpr`) — only these five:
 
 | Task | Purpose |
 | --- | --- |
-| `vp run build:web` / `dev:web` | Vite production build / Vite HMR (proxies `/api`) |
-| `vp run build:api` | Nest compile |
-| `vp run build` | Web + Nest |
-| `vp run start:dev` | Build web, then Nest watch |
-| `vp run start:prod` | Production Node process (`dependsOn: build`) |
-| `vp run check` / `test` | Format+lint+types / Vitest (tests build web first) |
-| `vp run` | Interactive task picker |
+| `vp run dev` | Local: build UI, Nest watch |
+| `vp run build` | Nest API + Vite UI → `dist/` |
+| `vp run start` | Production (`dependsOn: build`) |
+| `vp run check` | Format + lint + types |
+| `vp run test` | Vitest |
 
-UI source: [`web/src`](web/src).
+UI source: [`web/src`](web/src). For UI HMR with Nest already up: `vp dev`.
 
 ## Quick start
 
 ```bash
 npm install
-vp run start:dev
+vp run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
-# UI HMR (Nest already on :3000)
-vp run start:dev   # terminal 1
-vp run dev:web     # terminal 2
-
-# production
 vp run build
-vp run start:prod
+vp run start
 ```
 
 ## Environment variables
