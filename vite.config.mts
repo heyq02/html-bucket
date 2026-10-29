@@ -92,13 +92,13 @@ export default liangmi({
             'tsconfig.build.json',
             'nest-cli.json',
           ],
-          output: ['dist/**', '!dist/web/**'],
+          output: ['dist/api/**'],
         },
       },
 
-      // Full product build: Vite UI + Nest
+      // Full product build: Nest API + Vite UI (separate outDirs so neither wipe wins)
       build: {
-        command: ['vp build', 'nest build'],
+        command: ['nest build', 'vp build'],
       },
 
       // Runtime
@@ -118,7 +118,7 @@ export default liangmi({
         dependsOn: ['build:web'],
       },
       'start:prod': {
-        command: 'node dist/main.js',
+        command: 'node dist/api/main.js',
         cache: false,
         dependsOn: ['build'],
       },
