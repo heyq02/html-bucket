@@ -75,4 +75,33 @@ describe('PageStore', () => {
       /path/i,
     );
   });
+
+  it('lists pages as enabled by default', async () => {
+    await store.save('demos/a', '<h1>a</h1>');
+
+    await expect(store.list()).resolves.toEqual([
+      expect.objectContaining({ path: 'demos/a', enabled: true }),
+    ]);
+  });
+
+  it('can disable and re-enable a page', async () => {
+    await store.save('demos/a', '<h1>a</h1>');
+    await store.setEnabled('demos/a', false);
+
+    await expect(store.isEnabled('demos/a')).resolves.toBe(false);
+    await expect(store.list()).resolves.toEqual([
+      expect.objectContaining({ path: 'demos/a', enabled: false }),
+    ]);
+
+    await store.setEnabled('demos/a', true);
+    await expect(store.isEnabled('demos/a')).resolves.toBe(true);
+  });
+
+  it('deletes a page so it is no longer retrievable or listed', async () => {
+    await store.save('demos/a', '<h1>a</h1>');
+    await store.remove('demos/a');
+
+    await expect(store.get('demos/a')).resolves.toBeNull();
+    await expect(store.list()).resolves.toEqual([]);
+  });
 });

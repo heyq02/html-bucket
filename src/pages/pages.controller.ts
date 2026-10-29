@@ -2,9 +2,11 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   Get,
   Header,
   Param,
+  Patch,
   Post,
   Query,
   UploadedFile,
@@ -19,6 +21,11 @@ import { PagesService } from './pages.service';
 type PublishBody = {
   path?: string;
   overwrite?: string;
+};
+
+type PatchBody = {
+  path?: string;
+  enabled?: boolean;
 };
 
 function parseOverwrite(value: string | undefined): boolean {
@@ -73,6 +80,25 @@ export class PagesController {
   @Get('api/pages')
   async list(@Query('q') q?: string) {
     return this.pagesService.list(q);
+  }
+
+  @Patch('api/pages')
+  async patch(@Body() body: PatchBody) {
+    if (!body.path) {
+      throw new BadRequestException('path is required');
+    }
+    if (typeof body.enabled !== 'boolean') {
+      throw new BadRequestException('enabled must be a boolean');
+    }
+    return this.pagesService.setEnabled(body.path, body.enabled);
+  }
+
+  @Delete('api/pages')
+  async remove(@Query('path') path?: string) {
+    if (!path) {
+      throw new BadRequestException('path is required');
+    }
+    return this.pagesService.remove(path);
   }
 
   @Get()

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,6 +11,7 @@
         --accent: #0f6b5c;
         --line: #cfc6b6;
         --card: #fffdf8;
+        --danger: #9b2c2c;
       }
       * {
         box-sizing: border-box;
@@ -25,7 +26,7 @@
         min-height: 100vh;
       }
       main {
-        width: min(720px, calc(100% - 2rem));
+        width: min(920px, calc(100% - 2rem));
         margin: 0 auto;
         padding: 3rem 0 4rem;
       }
@@ -76,17 +77,29 @@
       .overwrite label {
         margin: 0;
       }
-      button {
+      button,
+      .btn {
         background: var(--accent);
         color: white;
         border: 0;
         border-radius: 999px;
-        padding: 0.7rem 1.2rem;
+        padding: 0.55rem 0.9rem;
         font: inherit;
         cursor: pointer;
       }
-      button:hover {
+      button:hover,
+      .btn:hover {
         filter: brightness(1.05);
+      }
+      .btn.secondary {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+      .btn.danger {
+        background: transparent;
+        color: var(--danger);
+        border: 1px solid #e2b4b4;
       }
       #result {
         margin-top: 0.9rem;
@@ -105,31 +118,52 @@
         margin: 0;
         flex: 1;
       }
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      table {
+        width: 100%;
+        border-collapse: collapse;
       }
-      li {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        padding: 0.65rem 0;
+      th,
+      td {
+        text-align: left;
+        padding: 0.7rem 0.4rem;
         border-top: 1px solid var(--line);
+        vertical-align: middle;
       }
-      li:first-child {
+      th {
         border-top: 0;
+        font-size: 0.85rem;
+        color: #66736c;
+        font-weight: 600;
       }
-      li a {
+      .path a {
         color: var(--ink);
         font-weight: 600;
+      }
+      .status {
+        font-size: 0.85rem;
+      }
+      .status.on {
+        color: var(--accent);
+      }
+      .status.off {
+        color: #66736c;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        justify-content: flex-end;
       }
       .muted {
         color: #66736c;
         font-size: 0.85rem;
       }
       .error {
-        color: #9b2c2c;
+        color: var(--danger);
+      }
+      .disabled-row .path a {
+        color: #66736c;
+        text-decoration: line-through;
       }
     </style>
   </head>
@@ -169,30 +203,124 @@
           <input id="filter" type="text" placeholder="Filter by path" />
           <button type="button" id="refresh">Refresh</button>
         </div>
-        <ul id="pages"></ul>
+        <table>
+          <thead>
+            <tr>
+              <th>路径</th>
+              <th>状态</th>
+              <th>大小</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="pages"></tbody>
+        </table>
       </section>
     </main>
+
+    <template id="page-row-template">
+      <tr>
+        <td class="path"><a href="#"></a></td>
+        <td class="status"></td>
+        <td class="muted size"></td>
+        <td>
+          <div class="actions">
+            <button type="button" class="btn secondary" data-action="toggle">开启/关闭</button>
+            <button type="button" class="btn secondary" data-action="update">更新</button>
+            <button type="button" class="btn danger" data-action="delete">删除</button>
+          </div>
+        </td>
+      </tr>
+    </template>
 
     <script>
       const form = document.getElementById('publish-form');
       const result = document.getElementById('result');
       const pagesEl = document.getElementById('pages');
       const filterEl = document.getElementById('filter');
+      const rowTemplate = document.getElementById('page-row-template');
 
       async function loadPages() {
         const q = filterEl.value.trim();
         const url = q ? `/api/pages?q=${encodeURIComponent(q)}` : '/api/pages';
         const res = await fetch(url);
         const pages = await res.json();
-        pagesEl.innerHTML = pages
-          .map(
-            (page) =>
-              `<li><a href="/${page.path}">/${page.path}</a><span class="muted">${page.size} bytes</span></li>`,
-          )
-          .join('');
+        pagesEl.innerHTML = '';
+
         if (!pages.length) {
-          pagesEl.innerHTML = '<li class="muted">No pages yet.</li>';
+          const empty = document.createElement('tr');
+          empty.innerHTML = '<td colspan="4" class="muted">暂无页面</td>';
+          pagesEl.appendChild(empty);
+          return;
         }
+
+        for (const page of pages) {
+          const row = rowTemplate.content.firstElementChild.cloneNode(true);
+          if (!page.enabled) {
+            row.classList.add('disabled-row');
+          }
+
+          const link = row.querySelector('.path a');
+          link.href = `/${page.path}`;
+          link.textContent = `/${page.path}`;
+
+          const status = row.querySelector('.status');
+          status.textContent = page.enabled ? '已开启' : '已关闭';
+          status.classList.add(page.enabled ? 'on' : 'off');
+
+          row.querySelector('.size').textContent = `${page.size} bytes`;
+
+          const toggleBtn = row.querySelector('[data-action="toggle"]');
+          toggleBtn.textContent = page.enabled ? '关闭' : '开启';
+          toggleBtn.addEventListener('click', () => togglePage(page.path, !page.enabled));
+
+          row
+            .querySelector('[data-action="update"]')
+            .addEventListener('click', () => prepareUpdate(page.path));
+
+          row
+            .querySelector('[data-action="delete"]')
+            .addEventListener('click', () => deletePage(page.path));
+
+          pagesEl.appendChild(row);
+        }
+      }
+
+      function prepareUpdate(path) {
+        document.getElementById('path').value = path;
+        document.getElementById('overwrite').checked = true;
+        document.getElementById('file').focus();
+        result.textContent = `已填入路径 /${path}，请选择新的 HTML 后上传覆盖。`;
+        result.classList.remove('error');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      async function togglePage(path, enabled) {
+        const res = await fetch('/api/pages', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ path, enabled }),
+        });
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({}));
+          alert(body.message || '更新状态失败');
+          return;
+        }
+        await loadPages();
+      }
+
+      async function deletePage(path) {
+        if (!confirm(`确认删除 /${path}？`)) {
+          return;
+        }
+        const res = await fetch(`/api/pages?path=${encodeURIComponent(path)}`, {
+          method: 'DELETE',
+        });
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({}));
+          alert(body.message || '删除失败');
+          return;
+        }
+        await loadPages();
       }
 
       form.addEventListener('submit', async (event) => {

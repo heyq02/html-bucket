@@ -1,15 +1,32 @@
-import { access, mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
+import {
+  access,
+  mkdir,
+  readdir,
+  readFile,
+  rm,
+  stat,
+  writeFile,
+} from 'node:fs/promises';
 import { dirname, join, relative, sep } from 'node:path';
 
 export type PageSummary = {
   path: string;
   size: number;
   updatedAt: Date;
+  enabled: boolean;
 };
 
 export type SaveOptions = {
   overwrite?: boolean;
 };
+
+type PageMeta = {
+  enabled: boolean;
+};
+
+type MetaFile = Record<string, PageMeta>;
+
+const META_FILE = '.pages-meta.json';
 
 export class PageStore {
   constructor(private readonly rootDir: string) {}
@@ -22,13 +39,20 @@ export class PageStore {
     const { overwrite = false } = options;
     const safePath = this.assertSafePath(relativePath);
     const filePath = this.resolve(safePath);
+    const alreadyExists = await this.exists(safePath);
 
-    if (!overwrite && (await this.exists(safePath))) {
+    if (!overwrite && alreadyExists) {
       throw new Error('Path already exists');
     }
 
     await mkdir(dirname(filePath), { recursive: true });
     await writeFile(filePath, html, 'utf8');
+
+    const meta = await this.readMeta();
+    if (!alreadyExists || !meta[safePath]) {
+      meta[safePath] = { enabled: true };
+      await this.writeMeta(meta);
+    }
   }
 
   async exists(relativePath: string): Promise<boolean> {
@@ -57,8 +81,46 @@ export class PageStore {
     }
   }
 
+  async isEnabled(relativePath: string): Promise<boolean> {
+    const safePath = this.assertSafePath(relativePath);
+    if (!(await this.exists(safePath))) {
+      return false;
+    }
+    const meta = await this.readMeta();
+    return meta[safePath]?.enabled ?? true;
+  }
+
+  async setEnabled(relativePath: string, enabled: boolean): Promise<void> {
+    const safePath = this.assertSafePath(relativePath);
+    if (!(await this.exists(safePath))) {
+      throw new Error('Page not found');
+    }
+    const meta = await this.readMeta();
+    meta[safePath] = { enabled };
+    await this.writeMeta(meta);
+  }
+
+  async remove(relativePath: string): Promise<void> {
+    const safePath = this.assertSafePath(relativePath);
+    const filePath = this.resolve(safePath);
+    try {
+      await rm(filePath, { force: true });
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+        throw error;
+      }
+    }
+
+    const meta = await this.readMeta();
+    if (meta[safePath]) {
+      delete meta[safePath];
+      await this.writeMeta(meta);
+    }
+  }
+
   async list(filter?: string): Promise<PageSummary[]> {
     const files = await this.collectHtmlFiles(this.rootDir);
+    const meta = await this.readMeta();
     const pages: PageSummary[] = [];
 
     for (const filePath of files) {
@@ -71,10 +133,32 @@ export class PageStore {
         path,
         size: info.size,
         updatedAt: info.mtime,
+        enabled: meta[path]?.enabled ?? true,
       });
     }
 
     return pages.sort((a, b) => a.path.localeCompare(b.path));
+  }
+
+  private async readMeta(): Promise<MetaFile> {
+    try {
+      const raw = await readFile(join(this.rootDir, META_FILE), 'utf8');
+      return JSON.parse(raw) as MetaFile;
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return {};
+      }
+      throw error;
+    }
+  }
+
+  private async writeMeta(meta: MetaFile): Promise<void> {
+    await mkdir(this.rootDir, { recursive: true });
+    await writeFile(
+      join(this.rootDir, META_FILE),
+      JSON.stringify(meta, null, 2),
+      'utf8',
+    );
   }
 
   private async collectHtmlFiles(dir: string): Promise<string[]> {
@@ -90,6 +174,9 @@ export class PageStore {
 
     const files: string[] = [];
     for (const entry of entries) {
+      if (entry.name === META_FILE) {
+        continue;
+      }
       const fullPath = join(dir, entry.name);
       if (entry.isDirectory()) {
         files.push(...(await this.collectHtmlFiles(fullPath)));
@@ -106,7 +193,10 @@ export class PageStore {
   }
 
   private assertSafePath(relativePath: string): string {
-    const normalized = relativePath.trim().replace(/^\/+/, '').replace(/\\/g, '/');
+    const normalized = relativePath
+      .trim()
+      .replace(/^\/+/, '')
+      .replace(/\\/g, '/');
     if (!normalized) {
       throw new Error('Invalid path: path is required');
     }

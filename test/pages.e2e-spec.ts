@@ -158,5 +158,55 @@ describe('Pages (e2e)', () => {
     expect(res.text).toContain('type="file"');
     expect(res.text).toContain('name="path"');
     expect(res.text).toContain('name="overwrite"');
+    expect(res.text).toContain('data-action="toggle"');
+    expect(res.text).toContain('data-action="update"');
+    expect(res.text).toContain('data-action="delete"');
+  });
+
+  it('can disable, enable, and delete a published page', async () => {
+    const html = '<h1>toggle-me</h1>';
+
+    await request(app.getHttpServer())
+      .post('/api/pages')
+      .field('path', 'demos/ops')
+      .attach('file', Buffer.from(html), {
+        filename: 'ops.html',
+        contentType: 'text/html',
+      })
+      .expect(201);
+
+    await request(app.getHttpServer())
+      .patch('/api/pages')
+      .send({ path: 'demos/ops', enabled: false })
+      .expect(200)
+      .expect({ path: 'demos/ops', enabled: false });
+
+    await request(app.getHttpServer()).get('/demos/ops').expect(404);
+
+    const listedOff = await request(app.getHttpServer())
+      .get('/api/pages')
+      .expect(200);
+    expect(listedOff.body).toEqual([
+      expect.objectContaining({ path: 'demos/ops', enabled: false }),
+    ]);
+
+    await request(app.getHttpServer())
+      .patch('/api/pages')
+      .send({ path: 'demos/ops', enabled: true })
+      .expect(200);
+
+    await request(app.getHttpServer())
+      .get('/demos/ops')
+      .expect(200)
+      .expect(html);
+
+    await request(app.getHttpServer())
+      .delete('/api/pages')
+      .query({ path: 'demos/ops' })
+      .expect(200)
+      .expect({ path: 'demos/ops', deleted: true });
+
+    await request(app.getHttpServer()).get('/demos/ops').expect(404);
+    await request(app.getHttpServer()).get('/api/pages').expect(200).expect([]);
   });
 });

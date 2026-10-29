@@ -52,11 +52,47 @@ export class PagesService {
       throw new NotFoundException(`Page not found: ${path}`);
     }
 
+    const enabled = await this.store.isEnabled(path);
+    if (!enabled) {
+      throw new NotFoundException(`Page not found: ${path}`);
+    }
+
     return html;
   }
 
   async list(filter?: string): Promise<PageSummary[]> {
     return this.store.list(filter);
+  }
+
+  async setEnabled(
+    path: string,
+    enabled: boolean,
+  ): Promise<{ path: string; enabled: boolean }> {
+    try {
+      await this.store.setEnabled(path, enabled);
+    } catch (error) {
+      const message = (error as Error).message;
+      if (/not found/i.test(message)) {
+        throw new NotFoundException(message);
+      }
+      throw new BadRequestException(message);
+    }
+    return { path, enabled };
+  }
+
+  async remove(path: string): Promise<{ path: string; deleted: true }> {
+    try {
+      if (!(await this.store.exists(path))) {
+        throw new NotFoundException(`Page not found: ${path}`);
+      }
+      await this.store.remove(path);
+    } catch (error) {
+      if (error instanceof NotFoundException) {
+        throw error;
+      }
+      throw new BadRequestException((error as Error).message);
+    }
+    return { path, deleted: true };
   }
 
   private toUrl(path: string): string {
