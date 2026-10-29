@@ -1,0 +1,21 @@
+vite.config.mts
+  s_08f6f1dcb0464e::t_ea9e06df500fe6 72-74,89,94-95
+README.md
+  s_08f6f1dcb0464e::t_4f33fa21c7ad43 11,15-19,21,27,34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "41d511a3332c4e8841a5fc14dcde260f6fc934a3",
+  "prompts": {},
+  "sessions": {
+    "s_08f6f1dcb0464e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1bd59476-671d-47dd-8f2b-4594226f48a3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
