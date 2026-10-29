@@ -18,7 +18,7 @@
           HTML Bucket
         </h1>
         <p class="mt-2 text-fg-muted">
-          Upload an HTML file, set a path, share an internal link.
+          先选择 HTML 文件，再确认相对路径并发布。
         </p>
       </header>
 
@@ -29,24 +29,33 @@
         <h2 id="publish-title" class="mb-4 text-xl font-semibold text-fg-default">
           Publish
         </h2>
-        <form id="publish-form" class="space-y-3">
-          <div>
-            <label for="file" class="mb-1 block text-sm font-medium text-fg-default">
-              HTML file
-            </label>
-            <input
-              id="file"
-              name="file"
-              type="file"
-              accept=".html,text/html"
-              required
-              class="block w-full text-sm text-fg-default file:mr-3 file:rounded-md file:border file:border-border-default file:bg-btn-default-bg file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-btn-default-fg"
-            />
-          </div>
+
+        <div id="step-pick" class="space-y-3">
+          <input
+            id="file"
+            name="file"
+            type="file"
+            accept=".html,text/html"
+            class="hidden"
+          />
+          <button
+            type="button"
+            id="pick-file"
+            class="inline-flex items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+          >
+            上传 HTML
+          </button>
+          <p id="pick-hint" class="text-sm text-fg-muted">点击后选择要发布的 HTML 文件。</p>
+        </div>
+
+        <form id="publish-form" class="hidden space-y-3">
+          <p class="text-sm text-fg-muted">
+            已选择：<span id="selected-name" class="font-medium text-fg-default"></span>
+          </p>
 
           <div>
             <label for="path" class="mb-1 block text-sm font-medium text-fg-default">
-              Relative path
+              相对路径
             </label>
             <input
               id="path"
@@ -56,27 +65,27 @@
               required
               class="w-full rounded-md border border-control-border bg-canvas-default px-3 py-2 text-sm text-fg-default outline-none focus:border-fg-link focus:ring-2 focus:ring-fg-link/30"
             />
+            <p class="mt-1 text-xs text-fg-muted">默认使用文件名，可修改。</p>
           </div>
 
-          <div class="flex items-center gap-2 py-1">
-            <input
-              id="overwrite"
-              name="overwrite"
-              type="checkbox"
-              value="true"
-              class="size-4 rounded border-control-border text-fg-success focus:ring-fg-link"
-            />
-            <label for="overwrite" class="text-sm text-fg-default">覆盖已有路径</label>
+          <div class="flex flex-wrap gap-2">
+            <button
+              type="submit"
+              class="inline-flex items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
+            >
+              确认发布
+            </button>
+            <button
+              type="button"
+              id="repick-file"
+              class="inline-flex items-center rounded-md border border-btn-default-border bg-btn-default-bg px-3.5 py-1.5 text-sm font-medium text-btn-default-fg hover:bg-canvas-inset"
+            >
+              重新选择
+            </button>
           </div>
-
-          <button
-            type="submit"
-            class="inline-flex items-center rounded-md border border-btn-primary-border bg-btn-primary-bg px-3.5 py-1.5 text-sm font-medium text-btn-primary-fg hover:bg-btn-primary-bg-hover"
-          >
-            Upload
-          </button>
-          <div id="result" class="min-h-5 text-sm text-fg-muted" aria-live="polite"></div>
         </form>
+
+        <div id="result" class="mt-3 min-h-5 text-sm text-fg-muted" aria-live="polite"></div>
       </section>
 
       <section
@@ -155,25 +164,136 @@
     </template>
 
     <script>
+      const stepPick = document.getElementById('step-pick');
       const form = document.getElementById('publish-form');
+      const fileInput = document.getElementById('file');
+      const pathInput = document.getElementById('path');
+      const selectedName = document.getElementById('selected-name');
       const result = document.getElementById('result');
       const pagesEl = document.getElementById('pages');
       const filterEl = document.getElementById('filter');
       const libraryStatus = document.getElementById('library-status');
       const rowTemplate = document.getElementById('page-row-template');
+
       const updateFileInput = document.createElement('input');
       updateFileInput.type = 'file';
       updateFileInput.accept = '.html,text/html';
       updateFileInput.hidden = true;
       document.body.appendChild(updateFileInput);
 
+      let pendingFile = null;
       let pendingUpdatePath = null;
+
+      function setResult(message, isError = false) {
+        result.textContent = message;
+        result.classList.toggle('text-fg-danger', isError);
+        result.classList.toggle('text-fg-muted', !isError);
+      }
 
       function setLibraryStatus(message, isError = false) {
         libraryStatus.textContent = message;
         libraryStatus.classList.toggle('text-fg-danger', isError);
         libraryStatus.classList.toggle('text-fg-muted', !isError);
       }
+
+      function defaultPathFromFilename(filename) {
+        const base = filename.split(/[/\\]/).pop() || filename;
+        return base.replace(/\.html?$/i, '') || base;
+      }
+
+      function showPickStep() {
+        pendingFile = null;
+        fileInput.value = '';
+        pathInput.value = '';
+        selectedName.textContent = '';
+        stepPick.classList.remove('hidden');
+        form.classList.add('hidden');
+      }
+
+      function showPathStep(file) {
+        pendingFile = file;
+        selectedName.textContent = file.name;
+        pathInput.value = defaultPathFromFilename(file.name);
+        stepPick.classList.add('hidden');
+        form.classList.remove('hidden');
+        pathInput.focus();
+        pathInput.select();
+      }
+
+      async function publishFile(file, path, overwrite = false) {
+        const data = new FormData();
+        data.set('path', path);
+        data.set('file', file, file.name);
+        if (overwrite) {
+          data.set('overwrite', 'true');
+        }
+
+        const res = await fetch('/api/pages', { method: 'POST', body: data });
+        const body = await res.json().catch(() => ({}));
+        return { res, body };
+      }
+
+      document.getElementById('pick-file').addEventListener('click', () => {
+        fileInput.value = '';
+        fileInput.click();
+      });
+
+      document.getElementById('repick-file').addEventListener('click', () => {
+        setResult('');
+        fileInput.value = '';
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', () => {
+        const file = fileInput.files?.[0];
+        if (!file) {
+          return;
+        }
+        setResult('');
+        showPathStep(file);
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!pendingFile) {
+          setResult('请先选择 HTML 文件', true);
+          showPickStep();
+          return;
+        }
+
+        const path = pathInput.value.trim();
+        if (!path) {
+          setResult('请填写相对路径', true);
+          return;
+        }
+
+        setResult('发布中…');
+        let { res, body } = await publishFile(pendingFile, path, false);
+
+        if (res.status === 409) {
+          const shouldOverwrite = confirm(
+            `路径 /${path} 已存在，是否覆盖？`,
+          );
+          if (!shouldOverwrite) {
+            setResult('已取消发布，路径未被覆盖');
+            return;
+          }
+          ({ res, body } = await publishFile(pendingFile, path, true));
+        }
+
+        if (!res.ok) {
+          const message = Array.isArray(body.message)
+            ? body.message.join(', ')
+            : body.message || '发布失败';
+          setResult(message, true);
+          return;
+        }
+
+        setResult('');
+        result.innerHTML = `已发布：<a class="text-fg-link hover:underline" href="${body.url}">${body.url}</a>`;
+        showPickStep();
+        await loadPages();
+      });
 
       async function loadPages() {
         const q = filterEl.value.trim();
@@ -247,13 +367,7 @@
         }
 
         setLibraryStatus(`正在更新 /${path}…`);
-        const data = new FormData();
-        data.set('path', path);
-        data.set('overwrite', 'true');
-        data.set('file', file, file.name);
-
-        const res = await fetch('/api/pages', { method: 'POST', body: data });
-        const body = await res.json().catch(() => ({}));
+        const { res, body } = await publishFile(file, path, true);
 
         if (!res.ok) {
           const message = Array.isArray(body.message)
@@ -295,31 +409,6 @@
         }
         await loadPages();
       }
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        result.textContent = 'Uploading…';
-        result.classList.remove('text-fg-danger');
-        result.classList.add('text-fg-muted');
-
-        const data = new FormData(form);
-        const res = await fetch('/api/pages', { method: 'POST', body: data });
-        const body = await res.json().catch(() => ({}));
-
-        if (!res.ok) {
-          const message = Array.isArray(body.message)
-            ? body.message.join(', ')
-            : body.message || 'Upload failed';
-          result.textContent = message;
-          result.classList.remove('text-fg-muted');
-          result.classList.add('text-fg-danger');
-          return;
-        }
-
-        result.innerHTML = `Published: <a class="text-fg-link hover:underline" href="${body.url}">${body.url}</a>`;
-        form.reset();
-        await loadPages();
-      });
 
       document.getElementById('refresh').addEventListener('click', loadPages);
       filterEl.addEventListener('input', () => {

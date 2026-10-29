@@ -158,7 +158,8 @@ describe('Pages (e2e)', () => {
     expect(res.text).toContain('/styles/app.css');
     expect(res.text).toContain('type="file"');
     expect(res.text).toContain('name="path"');
-    expect(res.text).toContain('name="overwrite"');
+    expect(res.text).toContain('上传 HTML');
+    expect(res.text).toContain('确认发布');
     expect(res.text).toContain('data-action="toggle"');
     expect(res.text).toContain('data-action="update"');
     expect(res.text).toContain('data-action="delete"');
