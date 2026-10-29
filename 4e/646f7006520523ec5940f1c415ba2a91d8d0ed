@@ -1,0 +1,27 @@
+web/src/main.tsx
+  s_08f6f1dcb0464e::t_eb4b7b89e6c947 6
+web/src/app.css
+  s_08f6f1dcb0464e::t_c316e1f150b424 3-8
+  s_08f6f1dcb0464e::t_1e2e298f20f368 281-282
+  s_08f6f1dcb0464e::t_b3bce65d6a5ce1 108
+  s_08f6f1dcb0464e::t_70d9ab94eca482 65
+  s_08f6f1dcb0464e::t_b3fd6c9f4e0986 171
+  s_08f6f1dcb0464e::t_93f6c04e6e04d7 210
+  s_08f6f1dcb0464e::t_1adc0dc3fff429 148
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "4e646f7006520523ec5940f1c415ba2a91d8d0ed",
+  "prompts": {},
+  "sessions": {
+    "s_08f6f1dcb0464e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1bd59476-671d-47dd-8f2b-4594226f48a3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
