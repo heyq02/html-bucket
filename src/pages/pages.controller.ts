@@ -9,6 +9,7 @@ import {
   Get,
   Header,
   Inject,
+  NotFoundException,
   Param,
   Patch,
   Post,
@@ -118,13 +119,17 @@ export class PagesController {
   @Get()
   @Header('Content-Type', 'text/html; charset=utf-8')
   async ui(): Promise<string> {
-    return readFile(join(process.cwd(), 'public', 'index.html'), 'utf8')
+    return readFile(join(process.cwd(), 'dist', 'web', 'index.html'), 'utf8')
   }
 
   @Get('*path')
   @Header('Content-Type', 'text/html; charset=utf-8')
   async serve(@Param('path') path: string | string[]) {
     const relativePath = Array.isArray(path) ? path.join('/') : path
+    // Vite-built assets are served by Nest static middleware under /assets/*.
+    if (relativePath === 'assets' || relativePath.startsWith('assets/')) {
+      throw new NotFoundException()
+    }
     return this.pagesService.getHtml(relativePath)
   }
 }

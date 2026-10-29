@@ -17,7 +17,7 @@ Implement liveness and readiness probes using `@nestjs/terminus`. Liveness check
 export class HealthController {
   @Get()
   check(): string {
-    return 'OK'; // Service might be unhealthy but returns OK
+    return 'OK' // Service might be unhealthy but returns OK
   }
 }
 
@@ -27,10 +27,10 @@ export class HealthController {
   @Get()
   async check(): Promise<string> {
     // If database is slow, health check times out
-    await this.userRepo.findOne({ where: { id: '1' } });
-    await this.redis.ping();
-    await this.externalApi.healthCheck();
-    return 'OK';
+    await this.userRepo.findOne({ where: { id: '1' } })
+    await this.redis.ping()
+    await this.externalApi.healthCheck()
+    return 'OK'
   }
 }
 ```

@@ -19,29 +19,29 @@ export class OrdersService {
 
   async createOrder(dto: CreateOrderDto): Promise<Order> {
     // Dependencies are hidden - not visible in constructor
-    const usersService = this.moduleRef.get(UsersService);
-    const inventoryService = this.moduleRef.get(InventoryService);
-    const paymentService = this.moduleRef.get(PaymentService);
+    const usersService = this.moduleRef.get(UsersService)
+    const inventoryService = this.moduleRef.get(InventoryService)
+    const paymentService = this.moduleRef.get(PaymentService)
 
-    const user = await usersService.findOne(dto.userId);
+    const user = await usersService.findOne(dto.userId)
     // ... rest of logic
   }
 }
 
 // Global singleton container
 class ServiceContainer {
-  private static instance: ServiceContainer;
-  private services = new Map<string, any>();
+  private static instance: ServiceContainer
+  private services = new Map<string, any>()
 
   static getInstance(): ServiceContainer {
     if (!this.instance) {
-      this.instance = new ServiceContainer();
+      this.instance = new ServiceContainer()
     }
-    return this.instance;
+    return this.instance
   }
 
   get<T>(key: string): T {
-    return this.services.get(key);
+    return this.services.get(key)
   }
 }
 ```
@@ -55,19 +55,19 @@ export class OrdersService {
   constructor(
     private usersService: UsersService,
     private inventoryService: InventoryService,
-    private paymentService: PaymentService,
+    private paymentService: PaymentService
   ) {}
 
   async createOrder(dto: CreateOrderDto): Promise<Order> {
-    const user = await this.usersService.findOne(dto.userId);
-    const inventory = await this.inventoryService.check(dto.items);
+    const user = await this.usersService.findOne(dto.userId)
+    const inventory = await this.inventoryService.check(dto.items)
     // Dependencies are clear and testable
   }
 }
 
 // Easy to test with mocks
 describe('OrdersService', () => {
-  let service: OrdersService;
+  let service: OrdersService
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
@@ -75,13 +75,13 @@ describe('OrdersService', () => {
         OrdersService,
         { provide: UsersService, useValue: mockUsersService },
         { provide: InventoryService, useValue: mockInventoryService },
-        { provide: PaymentService, useValue: mockPaymentService },
-      ],
-    }).compile();
+        { provide: PaymentService, useValue: mockPaymentService }
+      ]
+    }).compile()
 
-    service = module.get(OrdersService);
-  });
-});
+    service = module.get(OrdersService)
+  })
+})
 
 // VALID: Factory pattern for dynamic instantiation
 @Injectable()
@@ -91,11 +91,11 @@ export class HandlerFactory {
   getHandler(type: string): Handler {
     switch (type) {
       case 'email':
-        return this.moduleRef.get(EmailHandler);
+        return this.moduleRef.get(EmailHandler)
       case 'sms':
-        return this.moduleRef.get(SmsHandler);
+        return this.moduleRef.get(SmsHandler)
       default:
-        return this.moduleRef.get(DefaultHandler);
+        return this.moduleRef.get(DefaultHandler)
     }
   }
 }

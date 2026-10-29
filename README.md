@@ -6,31 +6,40 @@ Internal service for sharing static HTML: upload a file, set a relative path, ge
 
 ## Toolchain
 
-Dev tooling is [Vite+](https://viteplus.dev/) (`vite-plus`) with presets from [`@liangmi/vp-config`](https://github.com/liangmiQwQ/vp-config). Nest still owns runtime build/start (`nest build` / `nest start`).
+- Frontend: React + [GitHub Primer](https://primer.style/) (`@primer/react`), built by [Vite+](https://viteplus.dev/)
+- Backend: NestJS serves API and `dist/web`
+- Tasks: defined in [`vite.config.mts`](vite.config.mts) `run.tasks` (plus preset `ccheck` / `ctest` / … from `@liangmi/vp-config`)
+- Run everything with `vp run <task>` (shorthand `vpr <task>`)
 
-| Command                           | Purpose                                     |
-| --------------------------------- | ------------------------------------------- |
-| `npm run check`                   | Format + lint + typecheck (`vp run ccheck`) |
-| `npm run test`                    | Vitest (`vp run ctest`)                     |
-| `npm run format` / `npm run lint` | Oxfmt / Oxlint via Vite+                    |
-| `npm run build`                   | Tailwind CSS + Nest compile                 |
-| `npm run start:dev`               | Nest watch mode                             |
+| Task | Purpose |
+| --- | --- |
+| `vp run build:web` / `dev:web` | Vite production build / Vite HMR (proxies `/api`) |
+| `vp run build:api` | Nest compile |
+| `vp run build` | Web + Nest |
+| `vp run start:dev` | Build web, then Nest watch |
+| `vp run start:prod` | Production Node process (`dependsOn: build`) |
+| `vp run check` / `test` | Format+lint+types / Vitest (tests build web first) |
+| `vp run` | Interactive task picker |
 
-Config: [`vite.config.mts`](vite.config.mts).
+UI source: [`web/src`](web/src).
 
 ## Quick start
 
 ```bash
 npm install
-npm run start:dev
+vp run start:dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
-# production build
-npm run build
-npm run start:prod
+# UI HMR (Nest already on :3000)
+vp run start:dev   # terminal 1
+vp run dev:web     # terminal 2
+
+# production
+vp run build
+vp run start:prod
 ```
 
 ## Environment variables

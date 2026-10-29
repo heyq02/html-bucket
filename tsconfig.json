@@ -11,6 +11,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "ES2023",
+    "jsx": "react-jsx",
     "sourceMap": true,
     "outDir": "./dist",
     "incremental": true,
@@ -22,5 +23,6 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["node"],
     "rewriteRelativeImportExtensions": true
-  }
+  },
+  "include": ["src/**/*", "test/**/*", "web/**/*", "vite.config.mts"]
 }

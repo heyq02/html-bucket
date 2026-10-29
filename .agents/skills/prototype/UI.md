@@ -59,15 +59,15 @@ Create a single switcher component on the route:
 
 ```tsx
 // pseudo-code, adapt to the project's framework
-const variant = searchParams.get('variant') ?? 'A';
+const variant = searchParams.get('variant') ?? 'A'
 return (
   <>
     {variant === 'A' && <VariantA {...data} />}
     {variant === 'B' && <VariantB {...data} />}
     {variant === 'C' && <VariantC {...data} />}
-    <PrototypeSwitcher variants={['A','B','C']} current={variant} />
+    <PrototypeSwitcher variants={['A', 'B', 'C']} current={variant} />
   </>
-);
+)
 ```
 
 For sub-shape A (existing page): keep all the existing data fetching above the switcher; only the rendered subtree changes per variant.

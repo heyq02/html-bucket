@@ -1,6 +1,6 @@
 ---
 name: monetization-strategy
-description: "Brainstorm 3-5 monetization strategies with audience fit, risks, and validation experiments. Use when exploring revenue models, evaluating pricing strategies, or deciding how to monetize a product."
+description: 'Brainstorm 3-5 monetization strategies with audience fit, risks, and validation experiments. Use when exploring revenue models, evaluating pricing strategies, or deciding how to monetize a product.'
 ---
 
 # Monetization Strategy

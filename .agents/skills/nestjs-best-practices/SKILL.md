@@ -4,7 +4,7 @@ description: NestJS best practices and architecture patterns for building produc
 license: MIT
 metadata:
   author: Kadajett
-  version: "1.2.0"
+  version: '1.2.0'
 ---
 
 # NestJS Best Practices

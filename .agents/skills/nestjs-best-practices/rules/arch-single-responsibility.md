@@ -1,7 +1,7 @@
 ---
 title: Single Responsibility for Services
 impact: CRITICAL
-impactDescription: "40%+ improvement in testability"
+impactDescription: '40%+ improvement in testability'
 tags: architecture, services, single-responsibility
 ---
 
@@ -19,20 +19,20 @@ export class UserAndOrderService {
     private userRepo: UserRepository,
     private orderRepo: OrderRepository,
     private mailer: MailService,
-    private payment: PaymentService,
+    private payment: PaymentService
   ) {}
 
   async createUser(dto: CreateUserDto) {
-    const user = await this.userRepo.save(dto);
-    await this.mailer.sendWelcome(user);
-    return user;
+    const user = await this.userRepo.save(dto)
+    await this.mailer.sendWelcome(user)
+    return user
   }
 
   async createOrder(userId: string, dto: CreateOrderDto) {
-    const order = await this.orderRepo.save({ userId, ...dto });
-    await this.payment.charge(order);
-    await this.mailer.sendOrderConfirmation(order);
-    return order;
+    const order = await this.orderRepo.save({ userId, ...dto })
+    await this.payment.charge(order)
+    await this.mailer.sendOrderConfirmation(order)
+    return order
   }
 
   async calculateOrderStats(userId: string) {
@@ -54,11 +54,11 @@ export class UsersService {
   constructor(private userRepo: UserRepository) {}
 
   async create(dto: CreateUserDto): Promise<User> {
-    return this.userRepo.save(dto);
+    return this.userRepo.save(dto)
   }
 
   async findById(id: string): Promise<User> {
-    return this.userRepo.findOneOrFail({ where: { id } });
+    return this.userRepo.findOneOrFail({ where: { id } })
   }
 }
 
@@ -67,11 +67,11 @@ export class OrdersService {
   constructor(private orderRepo: OrderRepository) {}
 
   async create(userId: string, dto: CreateOrderDto): Promise<Order> {
-    return this.orderRepo.save({ userId, ...dto });
+    return this.orderRepo.save({ userId, ...dto })
   }
 
   async findByUser(userId: string): Promise<Order[]> {
-    return this.orderRepo.find({ where: { userId } });
+    return this.orderRepo.find({ where: { userId } })
   }
 }
 
@@ -90,15 +90,15 @@ export class OrdersController {
   constructor(
     private orders: OrdersService,
     private payment: PaymentService,
-    private notifications: NotificationService,
+    private notifications: NotificationService
   ) {}
 
   @Post()
   async create(@CurrentUser() user: User, @Body() dto: CreateOrderDto) {
-    const order = await this.orders.create(user.id, dto);
-    await this.payment.charge(order);
-    await this.notifications.sendOrderConfirmation(order);
-    return order;
+    const order = await this.orders.create(user.id, dto)
+    await this.payment.charge(order)
+    await this.notifications.sendOrderConfirmation(order)
+    return order
   }
 }
 ```

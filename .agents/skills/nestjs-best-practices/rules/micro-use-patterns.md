@@ -18,7 +18,7 @@ export class NotificationsController {
   @MessagePattern('user.created')
   async handleUserCreated(data: UserCreatedEvent) {
     // This WAITS for response, blocking the sender
-    await this.emailService.sendWelcome(data.email);
+    await this.emailService.sendWelcome(data.email)
     // If email fails, sender gets an error (coupling!)
   }
 }
@@ -28,8 +28,8 @@ export class NotificationsController {
 export class OrdersController {
   @EventPattern('inventory.check')
   async checkInventory(data: CheckInventoryDto) {
-    const available = await this.inventory.check(data);
-    return available; // This return value is IGNORED with @EventPattern!
+    const available = await this.inventory.check(data)
+    return available // This return value is IGNORED with @EventPattern!
   }
 }
 
@@ -37,13 +37,13 @@ export class OrdersController {
 @Injectable()
 export class UsersService {
   async createUser(dto: CreateUserDto): Promise<User> {
-    const user = await this.repo.save(dto);
+    const user = await this.repo.save(dto)
 
     // Blocks until notification service responds
-    await this.client.send('user.created', user).toPromise();
+    await this.client.send('user.created', user).toPromise()
     // If notification service is down, user creation fails!
 
-    return user;
+    return user
   }
 }
 ```

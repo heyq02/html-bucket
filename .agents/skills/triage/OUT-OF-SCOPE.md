@@ -41,9 +41,10 @@ consumers who embed or redistribute the output.
 ```ts
 // The current ThemeConfig interface is not designed for runtime switching:
 interface ThemeConfig {
-  colors: ColorPalette; // single palette, resolved at build time
-  fonts: FontStack;
+  colors: ColorPalette // single palette, resolved at build time
+  fonts: FontStack
 }
+```
 ````
 
 ## Prior requests

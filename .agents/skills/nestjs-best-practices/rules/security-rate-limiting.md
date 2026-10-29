@@ -18,13 +18,13 @@ export class AuthController {
   @Post('login')
   async login(@Body() dto: LoginDto): Promise<TokenResponse> {
     // Attackers can brute-force credentials
-    return this.authService.login(dto);
+    return this.authService.login(dto)
   }
 
   @Post('forgot-password')
   async forgotPassword(@Body() dto: ForgotPasswordDto): Promise<void> {
     // Can be abused to spam users with emails
-    return this.authService.sendResetEmail(dto.email);
+    return this.authService.sendResetEmail(dto.email)
   }
 }
 
@@ -44,7 +44,7 @@ export class ApiController {
 
 ```typescript
 // Configure throttler globally with multiple limits
-import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler'
 
 @Module({
   imports: [
@@ -52,26 +52,26 @@ import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
       {
         name: 'short',
         ttl: 1000, // 1 second
-        limit: 3, // 3 requests per second
+        limit: 3 // 3 requests per second
       },
       {
         name: 'medium',
         ttl: 10000, // 10 seconds
-        limit: 20, // 20 requests per 10 seconds
+        limit: 20 // 20 requests per 10 seconds
       },
       {
         name: 'long',
         ttl: 60000, // 1 minute
-        limit: 100, // 100 requests per minute
-      },
-    ]),
+        limit: 100 // 100 requests per minute
+      }
+    ])
   ],
   providers: [
     {
       provide: APP_GUARD,
-      useClass: ThrottlerGuard,
-    },
-  ],
+      useClass: ThrottlerGuard
+    }
+  ]
 })
 export class AppModule {}
 
@@ -81,13 +81,13 @@ export class AuthController {
   @Post('login')
   @Throttle({ short: { limit: 5, ttl: 60000 } }) // 5 attempts per minute
   async login(@Body() dto: LoginDto): Promise<TokenResponse> {
-    return this.authService.login(dto);
+    return this.authService.login(dto)
   }
 
   @Post('forgot-password')
   @Throttle({ short: { limit: 3, ttl: 3600000 } }) // 3 per hour
   async forgotPassword(@Body() dto: ForgotPasswordDto): Promise<void> {
-    return this.authService.sendResetEmail(dto.email);
+    return this.authService.sendResetEmail(dto.email)
   }
 }
 
@@ -97,7 +97,7 @@ export class HealthController {
   @Get()
   @SkipThrottle()
   check(): string {
-    return 'OK';
+    return 'OK'
   }
 }
 
@@ -106,18 +106,18 @@ export class HealthController {
 export class CustomThrottlerGuard extends ThrottlerGuard {
   protected async getTracker(req: Request): Promise<string> {
     // Use user ID if authenticated, IP otherwise
-    return req.user?.id || req.ip;
+    return req.user?.id || req.ip
   }
 
   protected async getLimit(context: ExecutionContext): Promise<number> {
-    const request = context.switchToHttp().getRequest();
+    const request = context.switchToHttp().getRequest()
 
     // Higher limits for authenticated users
     if (request.user) {
-      return request.user.isPremium ? 1000 : 200;
+      return request.user.isPremium ? 1000 : 200
     }
 
-    return 50; // Anonymous users
+    return 50 // Anonymous users
   }
 }
 ```

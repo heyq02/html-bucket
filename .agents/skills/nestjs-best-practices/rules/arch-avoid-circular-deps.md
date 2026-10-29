@@ -1,7 +1,7 @@
 ---
 title: Avoid Circular Dependencies
 impact: CRITICAL
-impactDescription: "#1 cause of runtime crashes"
+impactDescription: '#1 cause of runtime crashes'
 tags: architecture, modules, dependencies
 ---
 
@@ -16,7 +16,7 @@ Circular dependencies occur when Module A imports Module B, and Module B imports
 @Module({
   imports: [OrdersModule], // Orders needs Users, Users needs Orders = circular
   providers: [UsersService],
-  exports: [UsersService],
+  exports: [UsersService]
 })
 export class UsersModule {}
 
@@ -24,7 +24,7 @@ export class UsersModule {}
 @Module({
   imports: [UsersModule], // Circular dependency!
   providers: [OrdersService],
-  exports: [OrdersService],
+  exports: [OrdersService]
 })
 export class OrdersModule {}
 ```
@@ -36,21 +36,21 @@ export class OrdersModule {}
 // shared.module.ts
 @Module({
   providers: [SharedService],
-  exports: [SharedService],
+  exports: [SharedService]
 })
 export class SharedModule {}
 
 // users.module.ts
 @Module({
   imports: [SharedModule],
-  providers: [UsersService],
+  providers: [UsersService]
 })
 export class UsersModule {}
 
 // orders.module.ts
 @Module({
   imports: [SharedModule],
-  providers: [OrdersService],
+  providers: [OrdersService]
 })
 export class OrdersModule {}
 
@@ -61,9 +61,9 @@ export class UsersService {
   constructor(private eventEmitter: EventEmitter2) {}
 
   async createUser(data: CreateUserDto) {
-    const user = await this.userRepo.save(data);
-    this.eventEmitter.emit('user.created', user);
-    return user;
+    const user = await this.userRepo.save(data)
+    this.eventEmitter.emit('user.created', user)
+    return user
   }
 }
 

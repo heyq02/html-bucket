@@ -15,9 +15,7 @@ Create custom repositories to encapsulate complex queries and database logic. Th
 // Complex queries in services
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectRepository(User) private repo: Repository<User>,
-  ) {}
+  constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
   async findActiveWithOrders(minOrders: number): Promise<User[]> {
     // Complex query logic mixed with business logic
@@ -29,7 +27,7 @@ export class UsersService {
       .groupBy('user.id')
       .having('COUNT(order.id) >= :min', { min: minOrders })
       .orderBy('user.createdAt', 'DESC')
-      .getMany();
+      .getMany()
   }
 
   // Service becomes bloated with query logic
@@ -42,16 +40,14 @@ export class UsersService {
 // Custom repository with encapsulated queries
 @Injectable()
 export class UsersRepository {
-  constructor(
-    @InjectRepository(User) private repo: Repository<User>,
-  ) {}
+  constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
   async findById(id: string): Promise<User | null> {
-    return this.repo.findOne({ where: { id } });
+    return this.repo.findOne({ where: { id } })
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    return this.repo.findOne({ where: { email } });
+    return this.repo.findOne({ where: { email } })
   }
 
   async findActiveWithMinOrders(minOrders: number): Promise<User[]> {
@@ -63,11 +59,11 @@ export class UsersRepository {
       .groupBy('user.id')
       .having('COUNT(order.id) >= :min', { min: minOrders })
       .orderBy('user.createdAt', 'DESC')
-      .getMany();
+      .getMany()
   }
 
   async save(user: User): Promise<User> {
-    return this.repo.save(user);
+    return this.repo.save(user)
   }
 }
 
@@ -77,19 +73,19 @@ export class UsersService {
   constructor(private usersRepo: UsersRepository) {}
 
   async getActiveUsersWithOrders(): Promise<User[]> {
-    return this.usersRepo.findActiveWithMinOrders(1);
+    return this.usersRepo.findActiveWithMinOrders(1)
   }
 
   async create(dto: CreateUserDto): Promise<User> {
-    const existing = await this.usersRepo.findByEmail(dto.email);
+    const existing = await this.usersRepo.findByEmail(dto.email)
     if (existing) {
-      throw new ConflictException('Email already registered');
+      throw new ConflictException('Email already registered')
     }
 
-    const user = new User();
-    user.email = dto.email;
-    user.name = dto.name;
-    return this.usersRepo.save(user);
+    const user = new User()
+    user.email = dto.email
+    user.name = dto.name
+    return this.usersRepo.save(user)
   }
 }
 ```

@@ -7,8 +7,8 @@ import { AppModule } from './app.module.ts'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
-  app.useStaticAssets(join(process.cwd(), 'public', 'styles'), {
-    prefix: '/styles'
+  app.useStaticAssets(join(process.cwd(), 'dist', 'web'), {
+    index: false
   })
   await app.listen(process.env.PORT ?? 3000)
 }

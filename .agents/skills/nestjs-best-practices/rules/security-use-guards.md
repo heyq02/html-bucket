@@ -18,23 +18,23 @@ export class AdminController {
   @Get('users')
   async getUsers(@Request() req) {
     if (!req.user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException()
     }
     if (!req.user.roles.includes('admin')) {
-      throw new ForbiddenException();
+      throw new ForbiddenException()
     }
-    return this.adminService.getUsers();
+    return this.adminService.getUsers()
   }
 
   @Delete('users/:id')
   async deleteUser(@Request() req, @Param('id') id: string) {
     if (!req.user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException()
     }
     if (!req.user.roles.includes('admin')) {
-      throw new ForbiddenException();
+      throw new ForbiddenException()
     }
-    return this.adminService.deleteUser(id);
+    return this.adminService.deleteUser(id)
   }
 }
 ```
@@ -47,35 +47,35 @@ export class AdminController {
 export class JwtAuthGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,
-    private reflector: Reflector,
+    private reflector: Reflector
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     // Check for @Public() decorator
     const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [
       context.getHandler(),
-      context.getClass(),
-    ]);
-    if (isPublic) return true;
+      context.getClass()
+    ])
+    if (isPublic) return true
 
-    const request = context.switchToHttp().getRequest();
-    const token = this.extractToken(request);
+    const request = context.switchToHttp().getRequest()
+    const token = this.extractToken(request)
 
     if (!token) {
-      throw new UnauthorizedException('No token provided');
+      throw new UnauthorizedException('No token provided')
     }
 
     try {
-      request.user = await this.jwtService.verifyAsync(token);
-      return true;
+      request.user = await this.jwtService.verifyAsync(token)
+      return true
     } catch {
-      throw new UnauthorizedException('Invalid token');
+      throw new UnauthorizedException('Invalid token')
     }
   }
 
   private extractToken(request: Request): string | undefined {
-    const [type, token] = request.headers.authorization?.split(' ') ?? [];
-    return type === 'Bearer' ? token : undefined;
+    const [type, token] = request.headers.authorization?.split(' ') ?? []
+    return type === 'Bearer' ? token : undefined
   }
 }
 
@@ -87,26 +87,26 @@ export class RolesGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const requiredRoles = this.reflector.getAllAndOverride<Role[]>('roles', [
       context.getHandler(),
-      context.getClass(),
-    ]);
+      context.getClass()
+    ])
 
-    if (!requiredRoles) return true;
+    if (!requiredRoles) return true
 
-    const { user } = context.switchToHttp().getRequest();
-    return requiredRoles.some((role) => user.roles?.includes(role));
+    const { user } = context.switchToHttp().getRequest()
+    return requiredRoles.some(role => user.roles?.includes(role))
   }
 }
 
 // Decorators
-export const Public = () => SetMetadata('isPublic', true);
-export const Roles = (...roles: Role[]) => SetMetadata('roles', roles);
+export const Public = () => SetMetadata('isPublic', true)
+export const Roles = (...roles: Role[]) => SetMetadata('roles', roles)
 
 // Register guards globally
 @Module({
   providers: [
     { provide: APP_GUARD, useClass: JwtAuthGuard },
-    { provide: APP_GUARD, useClass: RolesGuard },
-  ],
+    { provide: APP_GUARD, useClass: RolesGuard }
+  ]
 })
 export class AppModule {}
 
@@ -116,18 +116,18 @@ export class AppModule {}
 export class AdminController {
   @Get('users')
   getUsers(): Promise<User[]> {
-    return this.adminService.getUsers();
+    return this.adminService.getUsers()
   }
 
   @Delete('users/:id')
   deleteUser(@Param('id') id: string): Promise<void> {
-    return this.adminService.deleteUser(id);
+    return this.adminService.deleteUser(id)
   }
 
   @Public() // Override: no auth required
   @Get('health')
   health() {
-    return { status: 'ok' };
+    return { status: 'ok' }
   }
 }
 ```

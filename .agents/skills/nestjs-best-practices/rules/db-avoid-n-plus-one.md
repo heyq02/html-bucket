@@ -16,15 +16,15 @@ N+1 queries occur when you fetch a list of entities, then make an additional que
 @Injectable()
 export class OrdersService {
   async getOrdersWithItems(userId: string): Promise<Order[]> {
-    const orders = await this.orderRepo.find({ where: { userId } });
+    const orders = await this.orderRepo.find({ where: { userId } })
     // 1 query for orders
 
     for (const order of orders) {
       // N additional queries - one per order!
-      order.items = await this.itemRepo.find({ where: { orderId: order.id } });
+      order.items = await this.itemRepo.find({ where: { orderId: order.id } })
     }
 
-    return orders;
+    return orders
   }
 }
 
@@ -33,9 +33,9 @@ export class OrdersService {
 export class UsersController {
   @Get()
   async findAll(): Promise<User[]> {
-    const users = await this.userRepo.find();
+    const users = await this.userRepo.find()
     // If User.posts is lazy-loaded, serializing triggers N queries
-    return users; // Each user.posts access = 1 query
+    return users // Each user.posts access = 1 query
   }
 }
 ```

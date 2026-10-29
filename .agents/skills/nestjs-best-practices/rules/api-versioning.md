@@ -20,7 +20,7 @@ export class UsersController {
     // Original response: { id, name, email }
     // Later changed to: { id, firstName, lastName, emailAddress }
     // Old clients break!
-    return this.usersService.findOne(id);
+    return this.usersService.findOne(id)
   }
 }
 
@@ -38,29 +38,29 @@ export class UsersV2Controller {}
 ```typescript
 // Enable versioning in main.ts
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule)
 
   // URI versioning: /v1/users, /v2/users
   app.enableVersioning({
     type: VersioningType.URI,
-    defaultVersion: '1',
-  });
+    defaultVersion: '1'
+  })
 
   // Or header versioning: X-API-Version: 1
   app.enableVersioning({
     type: VersioningType.HEADER,
     header: 'X-API-Version',
-    defaultVersion: '1',
-  });
+    defaultVersion: '1'
+  })
 
   // Or media type: Accept: application/json;v=1
   app.enableVersioning({
     type: VersioningType.MEDIA_TYPE,
     key: 'v=',
-    defaultVersion: '1',
-  });
+    defaultVersion: '1'
+  })
 
-  await app.listen(3000);
+  await app.listen(3000)
 }
 
 // Version-specific controllers
@@ -69,13 +69,13 @@ async function bootstrap() {
 export class UsersV1Controller {
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<UserV1Response> {
-    const user = await this.usersService.findOne(id);
+    const user = await this.usersService.findOne(id)
     // V1 response format
     return {
       id: user.id,
       name: user.name,
-      email: user.email,
-    };
+      email: user.email
+    }
   }
 }
 
@@ -84,15 +84,15 @@ export class UsersV1Controller {
 export class UsersV2Controller {
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<UserV2Response> {
-    const user = await this.usersService.findOne(id);
+    const user = await this.usersService.findOne(id)
     // V2 response format with breaking changes
     return {
       id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
       emailAddress: user.email,
-      createdAt: user.createdAt,
-    };
+      createdAt: user.createdAt
+    }
   }
 }
 
@@ -102,25 +102,25 @@ export class UsersController {
   @Get()
   @Version('1')
   findAllV1(): Promise<UserV1Response[]> {
-    return this.usersService.findAllV1();
+    return this.usersService.findAllV1()
   }
 
   @Get()
   @Version('2')
   findAllV2(): Promise<UserV2Response[]> {
-    return this.usersService.findAllV2();
+    return this.usersService.findAllV2()
   }
 
   @Get(':id')
   @Version(['1', '2']) // Same handler for multiple versions
   findOne(@Param('id') id: string): Promise<User> {
-    return this.usersService.findOne(id);
+    return this.usersService.findOne(id)
   }
 
   @Post()
   @Version(VERSION_NEUTRAL) // Available in all versions
   create(@Body() dto: CreateUserDto): Promise<User> {
-    return this.usersService.create(dto);
+    return this.usersService.create(dto)
   }
 }
 
@@ -128,20 +128,20 @@ export class UsersController {
 @Injectable()
 export class UsersService {
   async findOne(id: string, version: string): Promise<any> {
-    const user = await this.repo.findOne({ where: { id } });
+    const user = await this.repo.findOne({ where: { id } })
 
     if (version === '1') {
-      return this.toV1Response(user);
+      return this.toV1Response(user)
     }
-    return this.toV2Response(user);
+    return this.toV2Response(user)
   }
 
   private toV1Response(user: User): UserV1Response {
     return {
       id: user.id,
       name: `${user.firstName} ${user.lastName}`,
-      email: user.email,
-    };
+      email: user.email
+    }
   }
 
   private toV2Response(user: User): UserV2Response {
@@ -150,8 +150,8 @@ export class UsersService {
       firstName: user.firstName,
       lastName: user.lastName,
       emailAddress: user.email,
-      createdAt: user.createdAt,
-    };
+      createdAt: user.createdAt
+    }
   }
 }
 
@@ -161,9 +161,9 @@ export class UsersController {
   @Get(':id')
   async findOne(
     @Param('id') id: string,
-    @Headers('X-API-Version') version: string = '1',
+    @Headers('X-API-Version') version: string = '1'
   ): Promise<any> {
-    return this.usersService.findOne(id, version);
+    return this.usersService.findOne(id, version)
   }
 }
 
@@ -178,12 +178,12 @@ export class UsersV1Controller {
 @Injectable()
 export class DeprecationInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const response = context.switchToHttp().getResponse();
-    response.setHeader('Deprecation', 'true');
-    response.setHeader('Sunset', 'Sat, 1 Jan 2025 00:00:00 GMT');
-    response.setHeader('Link', '</v2/users>; rel="successor-version"');
+    const response = context.switchToHttp().getResponse()
+    response.setHeader('Deprecation', 'true')
+    response.setHeader('Sunset', 'Sat, 1 Jan 2025 00:00:00 GMT')
+    response.setHeader('Link', '</v2/users>; rel="successor-version"')
 
-    return next.handle();
+    return next.handle()
   }
 }
 ```

@@ -150,21 +150,8 @@ describe('Pages (e2e)', () => {
 
     expect(res.headers['content-type']).toMatch(/text\/html/)
     expect(res.text).toContain('HTML Bucket')
-    expect(res.text).toContain('/styles/app.css')
-    expect(res.text).toContain('type="file"')
-    expect(res.text).toContain('name="path"')
-    expect(res.text).toContain('上传 HTML')
-    expect(res.text).toContain('确认发布')
-    expect(res.text).toContain('页面库')
-    expect(res.text).toContain('按路径筛选')
-    expect(res.text).toContain('更新时间')
-    expect(res.text).toContain('overwrite-dialog')
-    expect(res.text).toContain('是否覆盖')
-    expect(res.text).toContain('data-action="copy"')
-    expect(res.text).toContain('data-action="toggle"')
-    expect(res.text).toContain('data-action="update"')
-    expect(res.text).toContain('data-action="delete"')
-    expect(res.text).toContain('data-color-mode')
+    expect(res.text).toContain('id="root"')
+    expect(res.text).toMatch(/assets\/.+\.js/)
   })
 
   it('can disable, enable, and delete a published page', async () => {

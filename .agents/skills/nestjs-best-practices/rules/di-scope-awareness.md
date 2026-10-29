@@ -18,21 +18,21 @@ export class UsersService {
   // This creates a new instance for EVERY request
   // All dependencies also become request-scoped
   async findAll() {
-    return this.userRepo.find();
+    return this.userRepo.find()
   }
 }
 
 // Singleton with mutable request state
 @Injectable() // Default: singleton
 export class RequestContextService {
-  private userId: string; // DANGER: Shared across all requests!
+  private userId: string // DANGER: Shared across all requests!
 
   setUser(userId: string) {
-    this.userId = userId; // Overwrites for all concurrent requests
+    this.userId = userId // Overwrites for all concurrent requests
   }
 
   getUser() {
-    return this.userId; // Returns wrong user!
+    return this.userId // Returns wrong user!
   }
 }
 ```
@@ -46,47 +46,47 @@ export class UsersService {
   constructor(private readonly userRepo: UserRepository) {}
 
   async findById(id: string): Promise<User> {
-    return this.userRepo.findOne({ where: { id } });
+    return this.userRepo.findOne({ where: { id } })
   }
 }
 
 // Request-scoped ONLY when you need request context
 @Injectable({ scope: Scope.REQUEST })
 export class RequestContextService {
-  private userId: string;
+  private userId: string
 
   setUser(userId: string) {
-    this.userId = userId;
+    this.userId = userId
   }
 
   getUser(): string {
-    return this.userId;
+    return this.userId
   }
 }
 
 // Better: Use NestJS built-in request context
-import { REQUEST } from '@nestjs/core';
-import { Request } from 'express';
+import { REQUEST } from '@nestjs/core'
+import { Request } from 'express'
 
 @Injectable({ scope: Scope.REQUEST })
 export class AuditService {
   constructor(@Inject(REQUEST) private request: Request) {}
 
   log(action: string) {
-    console.log(`User ${this.request.user?.id} performed ${action}`);
+    console.log(`User ${this.request.user?.id} performed ${action}`)
   }
 }
 
 // Best: Use ClsModule for async context (no scope bubble-up)
-import { ClsService } from 'nestjs-cls';
+import { ClsService } from 'nestjs-cls'
 
 @Injectable() // Stays singleton!
 export class AuditService {
   constructor(private cls: ClsService) {}
 
   log(action: string) {
-    const userId = this.cls.get('userId');
-    console.log(`User ${userId} performed ${action}`);
+    const userId = this.cls.get('userId')
+    console.log(`User ${userId} performed ${action}`)
   }
 }
 ```

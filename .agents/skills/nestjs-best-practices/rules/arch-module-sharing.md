@@ -16,24 +16,24 @@ NestJS modules are singletons by default. When a service is properly exported fr
 // storage.service.ts
 @Injectable()
 export class StorageService {
-  private cache = new Map(); // Each instance has separate state!
+  private cache = new Map() // Each instance has separate state!
 
   store(key: string, value: any) {
-    this.cache.set(key, value);
+    this.cache.set(key, value)
   }
 }
 
 // app.module.ts
 @Module({
   providers: [StorageService], // Instance #1
-  controllers: [AppController],
+  controllers: [AppController]
 })
 export class AppModule {}
 
 // videos.module.ts
 @Module({
   providers: [StorageService], // Instance #2 - different from AppModule!
-  controllers: [VideosController],
+  controllers: [VideosController]
 })
 export class VideosModule {}
 
@@ -50,7 +50,7 @@ export class VideosModule {}
 // storage/storage.module.ts
 @Module({
   providers: [StorageService],
-  exports: [StorageService], // Make available to importers
+  exports: [StorageService] // Make available to importers
 })
 export class StorageModule {}
 
@@ -58,7 +58,7 @@ export class StorageModule {}
 @Module({
   imports: [StorageModule], // Import the module, not the service
   controllers: [VideosController],
-  providers: [VideosService],
+  providers: [VideosService]
 })
 export class VideosModule {}
 
@@ -66,7 +66,7 @@ export class VideosModule {}
 @Module({
   imports: [StorageModule], // Same instance shared
   controllers: [ChannelsController],
-  providers: [ChannelsService],
+  providers: [ChannelsService]
 })
 export class ChannelsModule {}
 
@@ -75,8 +75,8 @@ export class ChannelsModule {}
   imports: [
     StorageModule, // Only if AppModule itself needs StorageService
     VideosModule,
-    ChannelsModule,
-  ],
+    ChannelsModule
+  ]
 })
 export class AppModule {}
 
@@ -90,20 +90,20 @@ export class AppModule {}
 @Global()
 @Module({
   providers: [ConfigService, LoggerService],
-  exports: [ConfigService, LoggerService],
+  exports: [ConfigService, LoggerService]
 })
 export class CoreModule {}
 
 // Import once in AppModule
 @Module({
-  imports: [CoreModule], // Registered globally, available everywhere
+  imports: [CoreModule] // Registered globally, available everywhere
 })
 export class AppModule {}
 
 // Other modules don't need to import CoreModule
 @Module({
   controllers: [UsersController],
-  providers: [UsersService], // Can inject ConfigService without importing
+  providers: [UsersService] // Can inject ConfigService without importing
 })
 export class UsersModule {}
 
@@ -119,21 +119,21 @@ export class UsersModule {}
 // common.module.ts - shared utilities
 @Module({
   providers: [DateService, ValidationService],
-  exports: [DateService, ValidationService],
+  exports: [DateService, ValidationService]
 })
 export class CommonModule {}
 
 // core.module.ts - re-exports common for convenience
 @Module({
   imports: [CommonModule, DatabaseModule],
-  exports: [CommonModule, DatabaseModule], // Re-export for consumers
+  exports: [CommonModule, DatabaseModule] // Re-export for consumers
 })
 export class CoreModule {}
 
 // feature.module.ts - imports CoreModule, gets both
 @Module({
   imports: [CoreModule], // Gets CommonModule + DatabaseModule
-  controllers: [FeatureController],
+  controllers: [FeatureController]
 })
 export class FeatureModule {}
 ```

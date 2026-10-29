@@ -12,15 +12,21 @@ The architectural review is rendered as a single self-contained HTML file in the
     <title>Architecture review for {{repo name}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
-      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-      mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs'
+      mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' })
     </script>
     <style>
       /* small custom layer for things Tailwind doesn't cover cleanly:
          dashed seam lines, hand-drawn-feeling arrow heads, etc. */
-      .seam { stroke-dasharray: 4 4; }
-      .leak { stroke: #dc2626; }
-      .deep { background: linear-gradient(135deg, #0f172a, #1e293b); }
+      .seam {
+        stroke-dasharray: 4 4;
+      }
+      .leak {
+        stroke: #dc2626;
+      }
+      .deep {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+      }
     </style>
   </head>
   <body class="bg-stone-50 text-slate-900 font-sans">

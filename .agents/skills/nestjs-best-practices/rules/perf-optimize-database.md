@@ -16,18 +16,18 @@ Select only needed columns, use proper indexes, avoid over-fetching relations, a
 @Injectable()
 export class UsersService {
   async findAllEmails(): Promise<string[]> {
-    const users = await this.repo.find();
+    const users = await this.repo.find()
     // Fetches ALL columns for ALL users
-    return users.map((u) => u.email);
+    return users.map(u => u.email)
   }
 
   async getUserSummary(id: string): Promise<UserSummary> {
     const user = await this.repo.findOne({
       where: { id },
-      relations: ['posts', 'posts.comments', 'posts.comments.author', 'followers'],
-    });
+      relations: ['posts', 'posts.comments', 'posts.comments.author', 'followers']
+    })
     // Over-fetches massive relation tree
-    return { name: user.name, postCount: user.posts.length };
+    return { name: user.name, postCount: user.posts.length }
   }
 }
 
@@ -35,10 +35,10 @@ export class UsersService {
 @Entity()
 export class Order {
   @Column()
-  userId: string; // No index - full table scan on every lookup
+  userId: string // No index - full table scan on every lookup
 
   @Column()
-  status: string; // No index - slow status filtering
+  status: string // No index - slow status filtering
 }
 ```
 
@@ -50,9 +50,9 @@ export class Order {
 export class UsersService {
   async findAllEmails(): Promise<string[]> {
     const users = await this.repo.find({
-      select: ['email'], // Only fetch email column
-    });
-    return users.map((u) => u.email);
+      select: ['email'] // Only fetch email column
+    })
+    return users.map(u => u.email)
   }
 
   // Use QueryBuilder for complex selections
@@ -64,7 +64,7 @@ export class UsersService {
       .leftJoin('user.posts', 'post')
       .where('user.id = :id', { id })
       .groupBy('user.id')
-      .getRawOne();
+      .getRawOne()
   }
 
   // Fetch relations only when needed
@@ -78,10 +78,10 @@ export class UsersService {
         email: true,
         posts: {
           id: true,
-          title: true,
-        },
-      },
-    });
+          title: true
+        }
+      }
+    })
   }
 }
 
@@ -93,16 +93,16 @@ export class UsersService {
 @Index(['userId', 'status']) // Composite index for common query pattern
 export class Order {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: string
 
   @Column()
-  userId: string;
+  userId: string
 
   @Column()
-  status: string;
+  status: string
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt: Date
 }
 
 // Always paginate large datasets
@@ -112,8 +112,8 @@ export class OrdersService {
     const [items, total] = await this.repo.findAndCount({
       skip: (page - 1) * limit,
       take: limit,
-      order: { createdAt: 'DESC' },
-    });
+      order: { createdAt: 'DESC' }
+    })
 
     return {
       items,
@@ -121,9 +121,9 @@ export class OrdersService {
         page,
         limit,
         total,
-        totalPages: Math.ceil(total / limit),
-      },
-    };
+        totalPages: Math.ceil(total / limit)
+      }
+    }
   }
 }
 ```

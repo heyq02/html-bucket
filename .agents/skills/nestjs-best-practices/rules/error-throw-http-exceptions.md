@@ -16,11 +16,11 @@ It's acceptable (and often preferable) to throw `HttpException` subclasses from 
 @Injectable()
 export class UsersService {
   async findById(id: string): Promise<{ user?: User; error?: string }> {
-    const user = await this.repo.findOne({ where: { id } });
+    const user = await this.repo.findOne({ where: { id } })
     if (!user) {
-      return { error: 'User not found' }; // Controller must check this
+      return { error: 'User not found' } // Controller must check this
     }
-    return { user };
+    return { user }
   }
 }
 
@@ -28,11 +28,11 @@ export class UsersService {
 export class UsersController {
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    const result = await this.usersService.findById(id);
+    const result = await this.usersService.findById(id)
     if (result.error) {
-      throw new NotFoundException(result.error);
+      throw new NotFoundException(result.error)
     }
-    return result.user;
+    return result.user
   }
 }
 ```
@@ -46,27 +46,27 @@ export class UsersService {
   constructor(private readonly repo: UserRepository) {}
 
   async findById(id: string): Promise<User> {
-    const user = await this.repo.findOne({ where: { id } });
+    const user = await this.repo.findOne({ where: { id } })
     if (!user) {
-      throw new NotFoundException(`User #${id} not found`);
+      throw new NotFoundException(`User #${id} not found`)
     }
-    return user;
+    return user
   }
 
   async create(dto: CreateUserDto): Promise<User> {
     const existing = await this.repo.findOne({
-      where: { email: dto.email },
-    });
+      where: { email: dto.email }
+    })
     if (existing) {
-      throw new ConflictException('Email already registered');
+      throw new ConflictException('Email already registered')
     }
-    return this.repo.save(dto);
+    return this.repo.save(dto)
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<User> {
-    const user = await this.findById(id); // Throws if not found
-    Object.assign(user, dto);
-    return this.repo.save(user);
+    const user = await this.findById(id) // Throws if not found
+    Object.assign(user, dto)
+    return this.repo.save(user)
   }
 }
 
@@ -75,12 +75,12 @@ export class UsersService {
 export class UsersController {
   @Get(':id')
   findOne(@Param('id') id: string): Promise<User> {
-    return this.usersService.findById(id);
+    return this.usersService.findById(id)
   }
 
   @Post()
   create(@Body() dto: CreateUserDto): Promise<User> {
-    return this.usersService.create(dto);
+    return this.usersService.create(dto)
   }
 }
 
@@ -88,9 +88,9 @@ export class UsersController {
 export class EntityNotFoundException extends Error {
   constructor(
     public readonly entity: string,
-    public readonly id: string,
+    public readonly id: string
   ) {
-    super(`${entity} with ID "${id}" not found`);
+    super(`${entity} with ID "${id}" not found`)
   }
 }
 
@@ -98,15 +98,15 @@ export class EntityNotFoundException extends Error {
 @Catch(EntityNotFoundException)
 export class EntityNotFoundFilter implements ExceptionFilter {
   catch(exception: EntityNotFoundException, host: ArgumentsHost) {
-    const ctx = host.switchToHttp();
-    const response = ctx.getResponse<Response>();
+    const ctx = host.switchToHttp()
+    const response = ctx.getResponse<Response>()
 
     response.status(404).json({
       statusCode: 404,
       message: exception.message,
       entity: exception.entity,
-      id: exception.id,
-    });
+      id: exception.id
+    })
   }
 }
 ```

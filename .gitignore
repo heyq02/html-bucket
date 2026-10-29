@@ -2,7 +2,6 @@
 /dist
 /node_modules
 /build
-/public/styles/app.css
 
 # logs
 logs

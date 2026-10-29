@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run build \
+RUN npx vp run build \
   && npm prune --omit=dev
 
 RUN mkdir -p /home/storage \
