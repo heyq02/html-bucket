@@ -1,0 +1,354 @@
+.agents/skills/ab-test-analysis/SKILL.md
+  h_a57efa94f24ca5 1-82
+.agents/skills/analyze-feature-requests/SKILL.md
+  h_a57efa94f24ca5 1-49
+.agents/skills/ansoff-matrix/SKILL.md
+  h_a57efa94f24ca5 1-166
+.agents/skills/ask-matt/PHASE-BOUNDARIES.md
+  h_a57efa94f24ca5 1-55
+.agents/skills/ask-matt/SKILL.md
+  h_a57efa94f24ca5 1-97
+.agents/skills/ask-matt/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/beachhead-segment/SKILL.md
+  h_a57efa94f24ca5 1-145
+.agents/skills/brainstorm-experiments-existing/SKILL.md
+  h_a57efa94f24ca5 1-51
+.agents/skills/brainstorm-experiments-new/SKILL.md
+  h_a57efa94f24ca5 1-45
+.agents/skills/brainstorm-ideas-existing/SKILL.md
+  h_a57efa94f24ca5 1-54
+.agents/skills/brainstorm-ideas-new/SKILL.md
+  h_a57efa94f24ca5 1-46
+.agents/skills/brainstorm-okrs/SKILL.md
+  h_a57efa94f24ca5 1-80
+.agents/skills/business-model/SKILL.md
+  h_a57efa94f24ca5 1-133
+.agents/skills/chief-of-staff/SKILL.md
+  h_a57efa94f24ca5 1-68
+.agents/skills/chief-of-staff/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/claude-handoff/SKILL.md
+  h_a57efa94f24ca5 1-18
+.agents/skills/claude-handoff/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/code-review/SKILL.md
+  h_a57efa94f24ca5 1-89
+.agents/skills/code-review/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/codebase-design/DEEPENING.md
+  h_a57efa94f24ca5 1-37
+.agents/skills/codebase-design/DESIGN-IT-TWICE.md
+  h_a57efa94f24ca5 1-44
+.agents/skills/codebase-design/SKILL.md
+  h_a57efa94f24ca5 1-114
+.agents/skills/codebase-design/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/cohort-analysis/SKILL.md
+  h_a57efa94f24ca5 1-114
+.agents/skills/competitive-battlecard/SKILL.md
+  h_a57efa94f24ca5 1-77
+.agents/skills/competitor-analysis/SKILL.md
+  h_a57efa94f24ca5 1-110
+.agents/skills/create-prd/SKILL.md
+  h_a57efa94f24ca5 1-97
+.agents/skills/customer-journey-map/SKILL.md
+  h_a57efa94f24ca5 1-65
+.agents/skills/diagnosing-bugs/SKILL.md
+  h_a57efa94f24ca5 1-138
+.agents/skills/diagnosing-bugs/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/diagnosing-bugs/scripts/hitl-loop.template.sh
+  h_a57efa94f24ca5 1-44
+.agents/skills/domain-modeling/ADR-FORMAT.md
+  h_a57efa94f24ca5 1-47
+.agents/skills/domain-modeling/GLOSSARY-FORMAT.md
+  h_a57efa94f24ca5 1-60
+.agents/skills/domain-modeling/SKILL.md
+  h_a57efa94f24ca5 1-74
+.agents/skills/domain-modeling/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/draft-nda/SKILL.md
+  h_a57efa94f24ca5 1-160
+.agents/skills/dummy-dataset/SKILL.md
+  h_a57efa94f24ca5 1-114
+.agents/skills/git-guardrails-claude-code/SKILL.md
+  h_a57efa94f24ca5 1-95
+.agents/skills/git-guardrails-claude-code/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/git-guardrails-claude-code/scripts/block-dangerous-git.sh
+  h_a57efa94f24ca5 1-25
+.agents/skills/grammar-check/SKILL.md
+  h_a57efa94f24ca5 1-209
+.agents/skills/grill-me/SKILL.md
+  h_a57efa94f24ca5 1-7
+.agents/skills/grill-me/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/grill-with-docs/SKILL.md
+  h_a57efa94f24ca5 1-7
+.agents/skills/grill-with-docs/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/grilling/SKILL.md
+  h_a57efa94f24ca5 1-30
+.agents/skills/grilling/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/growth-loops/SKILL.md
+  h_a57efa94f24ca5 1-125
+.agents/skills/gtm-motions/SKILL.md
+  h_a57efa94f24ca5 1-155
+.agents/skills/gtm-strategy/SKILL.md
+  h_a57efa94f24ca5 1-94
+.agents/skills/handoff/SKILL.md
+  h_a57efa94f24ca5 1-16
+.agents/skills/handoff/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/ideal-customer-profile/SKILL.md
+  h_a57efa94f24ca5 1-164
+.agents/skills/identify-assumptions-existing/SKILL.md
+  h_a57efa94f24ca5 1-44
+.agents/skills/identify-assumptions-new/SKILL.md
+  h_a57efa94f24ca5 1-52
+.agents/skills/implement-spec/SKILL.md
+  h_a57efa94f24ca5 1-40
+.agents/skills/implement-spec/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/implement/SKILL.md
+  h_a57efa94f24ca5 1-17
+.agents/skills/implement/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/improve-codebase-architecture/HTML-REPORT.md
+  h_a57efa94f24ca5 1-123
+.agents/skills/improve-codebase-architecture/SKILL.md
+  h_a57efa94f24ca5 1-71
+.agents/skills/improve-codebase-architecture/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/intended-vs-implemented/SKILL.md
+  h_a57efa94f24ca5 1-42
+.agents/skills/interview-script/SKILL.md
+  h_a57efa94f24ca5 1-105
+.agents/skills/job-stories/SKILL.md
+  h_a57efa94f24ca5 1-74
+.agents/skills/lean-canvas/SKILL.md
+  h_a57efa94f24ca5 1-121
+.agents/skills/loop-me/SKILL.md
+  h_a57efa94f24ca5 1-32
+.agents/skills/loop-me/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/market-segments/SKILL.md
+  h_a57efa94f24ca5 1-80
+.agents/skills/market-sizing/SKILL.md
+  h_a57efa94f24ca5 1-90
+.agents/skills/marketing-ideas/SKILL.md
+  h_a57efa94f24ca5 1-44
+.agents/skills/metrics-dashboard/SKILL.md
+  h_a57efa94f24ca5 1-94
+.agents/skills/migrate-to-shoehorn/SKILL.md
+  h_a57efa94f24ca5 1-118
+.agents/skills/migrate-to-shoehorn/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/monetization-strategy/SKILL.md
+  h_a57efa94f24ca5 1-150
+.agents/skills/north-star-metric/SKILL.md
+  h_a57efa94f24ca5 1-74
+.agents/skills/opportunity-solution-tree/SKILL.md
+  h_a57efa94f24ca5 1-64
+.agents/skills/outcome-roadmap/SKILL.md
+  h_a57efa94f24ca5 1-68
+.agents/skills/pestle-analysis/SKILL.md
+  h_a57efa94f24ca5 1-124
+.agents/skills/porters-five-forces/SKILL.md
+  h_a57efa94f24ca5 1-212
+.agents/skills/positioning-ideas/SKILL.md
+  h_a57efa94f24ca5 1-61
+.agents/skills/pr/CREDITS.md
+  h_a57efa94f24ca5 1-3
+.agents/skills/pr/SKILL.md
+  h_a57efa94f24ca5 1-170
+.agents/skills/pr/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/pre-mortem/SKILL.md
+  h_a57efa94f24ca5 1-93
+.agents/skills/pricing-strategy/SKILL.md
+  h_a57efa94f24ca5 1-85
+.agents/skills/prioritization-frameworks/SKILL.md
+  h_a57efa94f24ca5 1-75
+.agents/skills/prioritize-assumptions/SKILL.md
+  h_a57efa94f24ca5 1-48
+.agents/skills/prioritize-features/SKILL.md
+  h_a57efa94f24ca5 1-52
+.agents/skills/privacy-policy/SKILL.md
+  h_a57efa94f24ca5 1-238
+.agents/skills/product-name/SKILL.md
+  h_a57efa94f24ca5 1-47
+.agents/skills/product-strategy/SKILL.md
+  h_a57efa94f24ca5 1-111
+.agents/skills/product-vision/SKILL.md
+  h_a57efa94f24ca5 1-52
+.agents/skills/prototype/LOGIC.md
+  h_a57efa94f24ca5 1-67
+.agents/skills/prototype/SKILL.md
+  h_a57efa94f24ca5 1-26
+.agents/skills/prototype/UI.md
+  h_a57efa94f24ca5 1-112
+.agents/skills/prototype/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/release-notes/SKILL.md
+  h_a57efa94f24ca5 1-63
+.agents/skills/research/SKILL.md
+  h_a57efa94f24ca5 1-12
+.agents/skills/research/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/retro/SKILL.md
+  h_a57efa94f24ca5 1-44
+.agents/skills/retro/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/review-resume/SKILL.md
+  h_a57efa94f24ca5 1-221
+.agents/skills/scaffold-exercises/SKILL.md
+  h_a57efa94f24ca5 1-106
+.agents/skills/scaffold-exercises/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/sentiment-analysis/SKILL.md
+  h_a57efa94f24ca5 1-83
+.agents/skills/setup-matt-pocock-skills/SKILL.md
+  h_a57efa94f24ca5 1-120
+.agents/skills/setup-matt-pocock-skills/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/setup-matt-pocock-skills/domain.md
+  h_a57efa94f24ca5 1-51
+.agents/skills/setup-matt-pocock-skills/issue-tracker-github.md
+  h_a57efa94f24ca5 1-50
+.agents/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md
+  h_a57efa94f24ca5 1-46
+.agents/skills/setup-matt-pocock-skills/issue-tracker-local.md
+  h_a57efa94f24ca5 1-30
+.agents/skills/setup-matt-pocock-skills/triage-labels.md
+  h_a57efa94f24ca5 1-15
+.agents/skills/setup-pre-commit/SKILL.md
+  h_a57efa94f24ca5 1-91
+.agents/skills/setup-pre-commit/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/setup-ts-deep-modules/SKILL.md
+  h_a57efa94f24ca5 1-102
+.agents/skills/setup-ts-deep-modules/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/setup-ts-deep-modules/dependency-cruiser.config.cjs
+  h_a57efa94f24ca5 1-95
+.agents/skills/shipping-artifacts/SKILL.md
+  h_a57efa94f24ca5 1-98
+.agents/skills/sprint-plan/SKILL.md
+  h_a57efa94f24ca5 1-67
+.agents/skills/sql-queries/SKILL.md
+  h_a57efa94f24ca5 1-87
+.agents/skills/stakeholder-map/SKILL.md
+  h_a57efa94f24ca5 1-51
+.agents/skills/startup-canvas/SKILL.md
+  h_a57efa94f24ca5 1-138
+.agents/skills/strategy-red-team/SKILL.md
+  h_a57efa94f24ca5 1-72
+.agents/skills/summarize-interview/SKILL.md
+  h_a57efa94f24ca5 1-53
+.agents/skills/summarize-meeting/SKILL.md
+  h_a57efa94f24ca5 1-81
+.agents/skills/swot-analysis/SKILL.md
+  h_a57efa94f24ca5 1-96
+.agents/skills/tdd/SKILL.md
+  h_a57efa94f24ca5 1-38
+.agents/skills/tdd/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/tdd/mocking.md
+  h_a57efa94f24ca5 1-59
+.agents/skills/tdd/tests.md
+  h_a57efa94f24ca5 1-77
+.agents/skills/teach/GLOSSARY-FORMAT.md
+  h_a57efa94f24ca5 1-35
+.agents/skills/teach/LEARNING-RECORD-FORMAT.md
+  h_a57efa94f24ca5 1-46
+.agents/skills/teach/MISSION-FORMAT.md
+  h_a57efa94f24ca5 1-31
+.agents/skills/teach/RESOURCES-FORMAT.md
+  h_a57efa94f24ca5 1-32
+.agents/skills/teach/SKILL.md
+  h_a57efa94f24ca5 1-140
+.agents/skills/teach/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/test-scenarios/SKILL.md
+  h_a57efa94f24ca5 1-86
+.agents/skills/to-questionnaire/SKILL.md
+  h_a57efa94f24ca5 1-54
+.agents/skills/to-questionnaire/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/to-spec/SKILL.md
+  h_a57efa94f24ca5 1-75
+.agents/skills/to-spec/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/to-tickets/SKILL.md
+  h_a57efa94f24ca5 1-105
+.agents/skills/to-tickets/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/triage/AGENT-BRIEF.md
+  h_a57efa94f24ca5 1-207
+.agents/skills/triage/OUT-OF-SCOPE.md
+  h_a57efa94f24ca5 1-105
+.agents/skills/triage/SKILL.md
+  h_a57efa94f24ca5 1-112
+.agents/skills/triage/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/user-personas/SKILL.md
+  h_a57efa94f24ca5 1-69
+.agents/skills/user-segmentation/SKILL.md
+  h_a57efa94f24ca5 1-88
+.agents/skills/user-stories/SKILL.md
+  h_a57efa94f24ca5 1-74
+.agents/skills/value-prop-statements/SKILL.md
+  h_a57efa94f24ca5 1-51
+.agents/skills/value-proposition/SKILL.md
+  h_a57efa94f24ca5 1-108
+.agents/skills/wait-what/SKILL.md
+  h_a57efa94f24ca5 1-7
+.agents/skills/wait-what/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/wayfinder/SKILL.md
+  h_a57efa94f24ca5 1-128
+.agents/skills/wayfinder/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/wizard/SKILL.md
+  h_a57efa94f24ca5 1-44
+.agents/skills/wizard/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/wizard/template.sh
+  h_a57efa94f24ca5 1-223
+.agents/skills/write-swift/SKILL.md
+  h_a57efa94f24ca5 1-396
+.agents/skills/writing-beats/SKILL.md
+  h_a57efa94f24ca5 1-67
+.agents/skills/writing-beats/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/writing-for-agents/SKILL-MECHANICS.md
+  h_a57efa94f24ca5 1-22
+.agents/skills/writing-for-agents/SKILL.md
+  h_a57efa94f24ca5 1-81
+.agents/skills/writing-for-agents/agents/openai.yaml
+  h_a57efa94f24ca5 1-3
+.agents/skills/writing-fragments/SKILL.md
+  h_a57efa94f24ca5 1-79
+.agents/skills/writing-fragments/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/writing-shape/SKILL.md
+  h_a57efa94f24ca5 1-79
+.agents/skills/writing-shape/agents/openai.yaml
+  h_a57efa94f24ca5 1-5
+.agents/skills/wwas/SKILL.md
+  h_a57efa94f24ca5 1-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "487a45cd413ecbe0ed76dde75db0025d4fc82168",
+  "prompts": {},
+  "humans": {
+    "h_a57efa94f24ca5": {
+      "author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
