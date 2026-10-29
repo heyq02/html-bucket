@@ -1,0 +1,23 @@
+docker/start.sh
+  s_08f6f1dcb0464e::t_a6f7a96294f82f 5
+vite.config.mts
+  s_08f6f1dcb0464e::t_60aafb8d25a2ac 95,99,101,121
+tsconfig.build.json
+  s_08f6f1dcb0464e::t_c04adda4d8754d 3-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "7a374bd9eae8372ce85d37fb95c4237471b97f06",
+  "prompts": {},
+  "sessions": {
+    "s_08f6f1dcb0464e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1bd59476-671d-47dd-8f2b-4594226f48a3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
