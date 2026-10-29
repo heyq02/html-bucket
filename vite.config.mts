@@ -1,4 +1,4 @@
-import {liangmi} from '@liangmi/vp-config'
+import { liangmi } from '@liangmi/vp-config'
 import swc from 'unplugin-swc'
 
 export default liangmi({
@@ -12,42 +12,42 @@ export default liangmi({
         parser: {
           syntax: 'typescript',
           tsx: true,
-          decorators: true,
+          decorators: true
         },
         transform: {
           legacyDecorator: true,
           decoratorMetadata: true,
           react: {
-            runtime: 'automatic',
-          },
+            runtime: 'automatic'
+          }
         },
-        keepClassNames: true,
+        keepClassNames: true
       },
       module: {
-        type: 'es6',
-      },
-    }),
+        type: 'es6'
+      }
+    })
   ],
   build: {
     outDir: 'dist/web',
-    emptyOutDir: true,
+    emptyOutDir: true
   },
   server: {
     proxy: {
       '/api': 'http://localhost:3000',
-      '/health': 'http://localhost:3000',
-    },
+      '/health': 'http://localhost:3000'
+    }
   },
   lint: [
     {
-      ignores: ['.agents/**', 'skills-lock.json', 'dist/**'],
+      ignores: ['.agents/**', 'skills-lock.json', 'dist/**']
     },
     {
       files: ['test/**', 'src/**/*.test.ts'],
       rules: {
         // Supertest uses `.expect(...)` assertions, not vitest `expect()`.
-        'vitest/expect-expect': 'off',
-      },
+        'vitest/expect-expect': 'off'
+      }
     },
     {
       files: ['web/**'],
@@ -59,37 +59,37 @@ export default liangmi({
         'typescript/no-misused-promises': 'off',
         'typescript/strict-void-return': 'off',
         'react/set-state-in-effect': 'off',
-        'eslint/no-alert': 'off',
-      },
-    },
+        'eslint/no-alert': 'off'
+      }
+    }
   ],
   test: {
     include: ['src/**/*.test.ts', 'test/**/*.test.ts'],
-    setupFiles: ['reflect-metadata'],
+    setupFiles: ['reflect-metadata']
   },
   run: {
     tasks: {
       // Everyday surface — keep this list short on purpose
       dev: {
         command: ['vp build', 'nest start --watch'],
-        cache: false,
+        cache: false
       },
       build: {
-        command: ['nest build', 'vp build'],
+        command: ['nest build', 'vp build']
       },
       start: {
         command: 'node dist/api/main.js',
         cache: false,
-        dependsOn: ['build'],
+        dependsOn: ['build']
       },
       check: {
-        command: 'vp check',
+        command: 'vp check'
       },
       test: {
-        command: ['vp build', 'vp test'],
-      },
-    },
-  },
+        command: ['vp build', 'vp test']
+      }
+    }
+  }
 })
   // Drop preset run tasks (cbuild/ccheck/…) so `vp run` only shows product tasks above
   .exclude(['pack', 'run'])
@@ -100,5 +100,5 @@ export default liangmi({
     'typescript/parameter-properties': 'off',
     'typescript/no-extraneous-class': 'off',
     // Nest DI needs injectable classes as runtime values (not type-only imports).
-    'typescript/consistent-type-imports': 'off',
+    'typescript/consistent-type-imports': 'off'
   })

@@ -10,13 +10,13 @@ Internal service for sharing static HTML: upload a file, set a relative path, ge
 - Backend: NestJS serves API and `dist/web`
 - Commands: `vp run <task>` (shorthand `vpr`) — only these five:
 
-| Task | Purpose |
-| --- | --- |
-| `vp run dev` | Local: build UI, Nest watch |
-| `vp run build` | Nest API + Vite UI → `dist/` |
+| Task           | Purpose                         |
+| -------------- | ------------------------------- |
+| `vp run dev`   | Local: build UI, Nest watch     |
+| `vp run build` | Nest API + Vite UI → `dist/`    |
 | `vp run start` | Production (`dependsOn: build`) |
-| `vp run check` | Format + lint + types |
-| `vp run test` | Vitest |
+| `vp run check` | Format + lint + types           |
+| `vp run test`  | Vitest                          |
 
 UI source: [`web/src`](web/src). For UI HMR with Nest already up: `vp dev`.
 

@@ -81,6 +81,9 @@ export function defaultPathFromFilename(filename: string): string {
   return base.replace(/\.html?$/i, '') || base
 }
 
+/** Keep in sync with server DEFAULT_MAX_FILE_SIZE_BYTES (1MB). */
+export const MAX_UPLOAD_BYTES = 1024 * 1024
+
 export function formatUpdatedAt(value: string | undefined): string {
   if (!value) {
     return '—'
@@ -96,6 +99,34 @@ export function formatUpdatedAt(value: string | undefined): string {
     hour: '2-digit',
     minute: '2-digit'
   })
+}
+
+export function formatBytes(size: number): string {
+  if (!Number.isFinite(size) || size < 0) {
+    return '—'
+  }
+  if (size < 1024) {
+    return `${size} B`
+  }
+  if (size < 1024 * 1024) {
+    return `${(size / 1024).toFixed(size < 10 * 1024 ? 1 : 0)} KB`
+  }
+  return `${(size / (1024 * 1024)).toFixed(2)} MB`
+}
+
+export function validateHtmlUpload(file: File): string | null {
+  const name = file.name.toLowerCase()
+  const looksHtml = name.endsWith('.html') || name.endsWith('.htm') || file.type === 'text/html'
+  if (!looksHtml) {
+    return '请选择 .html 文件'
+  }
+  if (file.size > MAX_UPLOAD_BYTES) {
+    return `文件过大（${formatBytes(file.size)}），上限 ${formatBytes(MAX_UPLOAD_BYTES)}`
+  }
+  if (file.size === 0) {
+    return '文件为空，请重新选择'
+  }
+  return null
 }
 
 export async function copyText(text: string): Promise<void> {
