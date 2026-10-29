@@ -254,7 +254,9 @@ export function PublishSection({ knownPaths, onPublished, onLibraryMessage }: Pu
             onFileChosen(event.dataTransfer.files[0])
           }}
         >
-          <Text weight='medium'>拖入 HTML，或点击选择</Text>
+          <Text as='span' className='dropzone-title'>
+            {dragging ? '松开即可上传' : '拖入 HTML，或点击选择'}
+          </Text>
           <Text as='span' className='dropzone-hint'>
             仅 .html / .htm · 最大 {formatBytes(MAX_UPLOAD_BYTES)}
           </Text>
