@@ -103,6 +103,49 @@ describe('Pages (e2e)', () => {
       .expect(400);
   });
 
+  it('rejects republish to the same path unless overwrite is selected', async () => {
+    const first = '<h1>v1</h1>';
+    const second = '<h1>v2</h1>';
+
+    await request(app.getHttpServer())
+      .post('/api/pages')
+      .field('path', 'demos/same')
+      .attach('file', Buffer.from(first), {
+        filename: 'a.html',
+        contentType: 'text/html',
+      })
+      .expect(201);
+
+    await request(app.getHttpServer())
+      .post('/api/pages')
+      .field('path', 'demos/same')
+      .attach('file', Buffer.from(second), {
+        filename: 'b.html',
+        contentType: 'text/html',
+      })
+      .expect(409);
+
+    await request(app.getHttpServer())
+      .get('/demos/same')
+      .expect(200)
+      .expect(first);
+
+    await request(app.getHttpServer())
+      .post('/api/pages')
+      .field('path', 'demos/same')
+      .field('overwrite', 'true')
+      .attach('file', Buffer.from(second), {
+        filename: 'b.html',
+        contentType: 'text/html',
+      })
+      .expect(201);
+
+    await request(app.getHttpServer())
+      .get('/demos/same')
+      .expect(200)
+      .expect(second);
+  });
+
   it('returns 404 for missing pages', async () => {
     await request(app.getHttpServer()).get('/missing/page').expect(404);
   });
@@ -114,5 +157,6 @@ describe('Pages (e2e)', () => {
     expect(res.text).toContain('HTML Bucket');
     expect(res.text).toContain('type="file"');
     expect(res.text).toContain('name="path"');
+    expect(res.text).toContain('name="overwrite"');
   });
 });

@@ -62,6 +62,20 @@
         padding: 0.7rem 0.8rem;
         font: inherit;
       }
+      .overwrite {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 0 1rem;
+        font-size: 0.95rem;
+      }
+      .overwrite input {
+        width: auto;
+        margin: 0;
+      }
+      .overwrite label {
+        margin: 0;
+      }
       button {
         background: var(--accent);
         color: white;
@@ -138,6 +152,11 @@
             placeholder="demos/checkout-v2"
             required
           />
+
+          <div class="overwrite">
+            <input id="overwrite" name="overwrite" type="checkbox" value="true" />
+            <label for="overwrite">覆盖已有路径</label>
+          </div>
 
           <button type="submit">Upload</button>
           <div id="result" aria-live="polite"></div>

@@ -1,4 +1,4 @@
-import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { access, mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, sep } from 'node:path';
 
 export type PageSummary = {
@@ -7,13 +7,40 @@ export type PageSummary = {
   updatedAt: Date;
 };
 
+export type SaveOptions = {
+  overwrite?: boolean;
+};
+
 export class PageStore {
   constructor(private readonly rootDir: string) {}
 
-  async save(relativePath: string, html: string): Promise<void> {
-    const filePath = this.resolve(this.assertSafePath(relativePath));
+  async save(
+    relativePath: string,
+    html: string,
+    options: SaveOptions = {},
+  ): Promise<void> {
+    const { overwrite = false } = options;
+    const safePath = this.assertSafePath(relativePath);
+    const filePath = this.resolve(safePath);
+
+    if (!overwrite && (await this.exists(safePath))) {
+      throw new Error('Path already exists');
+    }
+
     await mkdir(dirname(filePath), { recursive: true });
     await writeFile(filePath, html, 'utf8');
+  }
+
+  async exists(relativePath: string): Promise<boolean> {
+    try {
+      await access(this.resolve(this.assertSafePath(relativePath)));
+      return true;
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return false;
+      }
+      throw error;
+    }
   }
 
   async get(relativePath: string): Promise<string | null> {

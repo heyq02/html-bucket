@@ -18,7 +18,15 @@ import { PagesService } from './pages.service';
 
 type PublishBody = {
   path?: string;
+  overwrite?: string;
 };
+
+function parseOverwrite(value: string | undefined): boolean {
+  if (value === undefined) {
+    return false;
+  }
+  return ['true', '1', 'on', 'yes'].includes(value.toLowerCase());
+}
 
 @Controller()
 export class PagesController {
@@ -55,7 +63,11 @@ export class PagesController {
       throw new BadRequestException('path is required');
     }
 
-    return this.pagesService.publish(body.path, file.buffer.toString('utf8'));
+    return this.pagesService.publish(
+      body.path,
+      file.buffer.toString('utf8'),
+      parseOverwrite(body.overwrite),
+    );
   }
 
   @Get('api/pages')

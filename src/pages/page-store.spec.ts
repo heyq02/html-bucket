@@ -24,11 +24,21 @@ describe('PageStore', () => {
     await expect(store.get('demos/hello')).resolves.toBe(html);
   });
 
-  it('overwrites HTML at the same path', async () => {
+  it('overwrites HTML at the same path when overwrite is true', async () => {
     await store.save('demos/hello', '<h1>v1</h1>');
-    await store.save('demos/hello', '<h1>v2</h1>');
+    await store.save('demos/hello', '<h1>v2</h1>', { overwrite: true });
 
     await expect(store.get('demos/hello')).resolves.toBe('<h1>v2</h1>');
+  });
+
+  it('rejects save when path exists and overwrite is false', async () => {
+    await store.save('demos/hello', '<h1>v1</h1>');
+
+    await expect(
+      store.save('demos/hello', '<h1>v2</h1>', { overwrite: false }),
+    ).rejects.toThrow(/exists/i);
+
+    await expect(store.get('demos/hello')).resolves.toBe('<h1>v1</h1>');
   });
 
   it('returns null when path is missing', async () => {

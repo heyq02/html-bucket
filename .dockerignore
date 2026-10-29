@@ -1,0 +1,13 @@
+node_modules
+dist
+coverage
+.git
+.agents
+storage
+tmp-storage
+*.log
+.env
+.env.*
+docs
+README.md
+skills-lock.json

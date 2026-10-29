@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ConflictException,
   Inject,
   Injectable,
   NotFoundException,
@@ -18,11 +19,19 @@ export class PagesService {
     this.store = new PageStore(rootDir);
   }
 
-  async publish(path: string, html: string): Promise<{ path: string; url: string }> {
+  async publish(
+    path: string,
+    html: string,
+    overwrite = false,
+  ): Promise<{ path: string; url: string }> {
     try {
-      await this.store.save(path, html);
+      await this.store.save(path, html, { overwrite });
     } catch (error) {
-      throw new BadRequestException((error as Error).message);
+      const message = (error as Error).message;
+      if (/already exists/i.test(message)) {
+        throw new ConflictException(message);
+      }
+      throw new BadRequestException(message);
     }
 
     return {
