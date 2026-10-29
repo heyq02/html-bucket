@@ -101,6 +101,7 @@
             Refresh
           </button>
         </div>
+        <p id="library-status" class="mb-3 min-h-5 text-sm text-fg-muted" aria-live="polite"></p>
 
         <div class="overflow-x-auto">
           <table class="w-full border-collapse text-left text-sm">
@@ -158,7 +159,21 @@
       const result = document.getElementById('result');
       const pagesEl = document.getElementById('pages');
       const filterEl = document.getElementById('filter');
+      const libraryStatus = document.getElementById('library-status');
       const rowTemplate = document.getElementById('page-row-template');
+      const updateFileInput = document.createElement('input');
+      updateFileInput.type = 'file';
+      updateFileInput.accept = '.html,text/html';
+      updateFileInput.hidden = true;
+      document.body.appendChild(updateFileInput);
+
+      let pendingUpdatePath = null;
+
+      function setLibraryStatus(message, isError = false) {
+        libraryStatus.textContent = message;
+        libraryStatus.classList.toggle('text-fg-danger', isError);
+        libraryStatus.classList.toggle('text-fg-muted', !isError);
+      }
 
       async function loadPages() {
         const q = filterEl.value.trim();
@@ -203,7 +218,7 @@
 
           row
             .querySelector('[data-action="update"]')
-            .addEventListener('click', () => prepareUpdate(page.path));
+            .addEventListener('click', () => startUpdate(page.path));
 
           row
             .querySelector('[data-action="delete"]')
@@ -213,15 +228,44 @@
         }
       }
 
-      function prepareUpdate(path) {
-        document.getElementById('path').value = path;
-        document.getElementById('overwrite').checked = true;
-        document.getElementById('file').focus();
-        result.textContent = `已填入路径 /${path}，请选择新的 HTML 后上传覆盖。`;
-        result.classList.remove('text-fg-danger');
-        result.classList.add('text-fg-muted');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      function startUpdate(path) {
+        pendingUpdatePath = path;
+        updateFileInput.value = '';
+        setLibraryStatus(`选择新的 HTML 以更新 /${path}`);
+        updateFileInput.click();
       }
+
+      updateFileInput.addEventListener('change', async () => {
+        const path = pendingUpdatePath;
+        const file = updateFileInput.files?.[0];
+        pendingUpdatePath = null;
+        updateFileInput.value = '';
+
+        if (!path || !file) {
+          setLibraryStatus('');
+          return;
+        }
+
+        setLibraryStatus(`正在更新 /${path}…`);
+        const data = new FormData();
+        data.set('path', path);
+        data.set('overwrite', 'true');
+        data.set('file', file, file.name);
+
+        const res = await fetch('/api/pages', { method: 'POST', body: data });
+        const body = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          const message = Array.isArray(body.message)
+            ? body.message.join(', ')
+            : body.message || '更新失败';
+          setLibraryStatus(message, true);
+          return;
+        }
+
+        setLibraryStatus(`已更新 /${path}`);
+        await loadPages();
+      });
 
       async function togglePage(path, enabled) {
         const res = await fetch('/api/pages', {
