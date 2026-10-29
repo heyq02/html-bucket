@@ -1,0 +1,40 @@
+.prettierrc
+  h_a57efa94f24ca5 1-4
+README.md
+  h_a57efa94f24ca5 1-98
+eslint.config.mjs
+  h_a57efa94f24ca5 1-35
+nest-cli.json
+  h_a57efa94f24ca5 1-8
+package.json
+  h_a57efa94f24ca5 1-71
+src/app.controller.spec.ts
+  h_a57efa94f24ca5 1-22
+src/app.controller.ts
+  h_a57efa94f24ca5 1-12
+src/app.module.ts
+  h_a57efa94f24ca5 1-10
+src/app.service.ts
+  h_a57efa94f24ca5 1-8
+src/main.ts
+  h_a57efa94f24ca5 1-8
+test/app.e2e-spec.ts
+  h_a57efa94f24ca5 1-29
+test/jest-e2e.json
+  h_a57efa94f24ca5 1-9
+tsconfig.build.json
+  h_a57efa94f24ca5 1-4
+tsconfig.json
+  h_a57efa94f24ca5 1-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "46c2e431ba5c7f0eed19a9d266064ad8e3fd067f",
+  "prompts": {},
+  "humans": {
+    "h_a57efa94f24ca5": {
+      "author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
