@@ -1,5 +1,11 @@
 :root {
   color-scheme: light dark;
+  /* Softer corners than Primer defaults (3 / 6 / 12 → 6 / 12 / 16) */
+  --borderRadius-small: 0.375rem;
+  --borderRadius-medium: 0.75rem;
+  --borderRadius-default: 0.75rem;
+  --borderRadius-large: 1rem;
+  --overlay-borderRadius: 0.75rem;
 }
 
 body {
@@ -56,7 +62,7 @@ body {
   margin-bottom: 1rem;
   padding: 1.25rem;
   border: 1px solid var(--borderColor-default);
-  border-radius: var(--borderRadius-medium);
+  border-radius: var(--borderRadius-large);
   background: var(--bgColor-default);
 }
 
@@ -99,7 +105,7 @@ body {
   min-height: 9rem;
   padding: 1.5rem 1.25rem;
   border: 1px dashed var(--borderColor-emphasis, var(--borderColor-default));
-  border-radius: var(--borderRadius-medium);
+  border-radius: var(--borderRadius-large);
   background: var(--bgColor-muted);
   color: var(--fgColor-default);
   cursor: pointer;
@@ -139,7 +145,7 @@ body {
   gap: 0.75rem;
   padding: 0.75rem 0.9rem;
   border: 1px solid var(--borderColor-muted);
-  border-radius: var(--borderRadius-medium);
+  border-radius: var(--borderRadius-large);
   background: var(--bgColor-muted);
 }
 
@@ -162,7 +168,7 @@ body {
   gap: 0.35rem;
   padding: 0.75rem 0.9rem;
   border: 1px solid var(--borderColor-muted);
-  border-radius: var(--borderRadius-medium);
+  border-radius: var(--borderRadius-large);
   background: var(--bgColor-muted);
 }
 
@@ -201,7 +207,7 @@ body {
   margin-top: 0.9rem;
   padding: 0.85rem 1rem;
   border: 1px solid var(--borderColor-success-emphasis, var(--borderColor-success-muted));
-  border-radius: var(--borderRadius-medium);
+  border-radius: var(--borderRadius-large);
   background: var(--bgColor-success-muted);
 }
 
@@ -272,6 +278,8 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 2rem 1rem;
+  border-radius: var(--borderRadius-large);
+  background: var(--bgColor-muted);
   text-align: center;
   color: var(--fgColor-default);
 }

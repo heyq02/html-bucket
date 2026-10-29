@@ -3,6 +3,7 @@ import { ThemeProvider } from '@primer/react/next'
 
 import '@primer/primitives/dist/css/functional/themes/light.css'
 import '@primer/primitives/dist/css/functional/themes/dark.css'
+import '@primer/primitives/dist/css/functional/size/radius.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
