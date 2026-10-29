@@ -1,0 +1,52 @@
+test/pages.e2e-spec.ts
+  s_6893795e9e5c8d::t_7fa893d1654405 1-58,118
+  s_6893795e9e5c8d::t_ef3d2ad2217491 59-108
+  s_6893795e9e5c8d::t_f08f36cf89c663 109-117
+src/pages/pages.constants.ts
+  s_6893795e9e5c8d::t_835d58b12b7eb8 1-2
+src/pages/pages.module.ts
+  s_6893795e9e5c8d::t_69d23a1ea17679 1-21
+src/pages/pages.service.ts
+  s_6893795e9e5c8d::t_3cbe51bb2e296d 1-56
+src/pages/page-store.spec.ts
+  s_6893795e9e5c8d::t_78276c62b9ddf5 26-48
+  s_6893795e9e5c8d::t_5dd83582e82d58 49-67
+src/app.module.ts
+  s_6893795e9e5c8d::t_8acd9b7fa5c952 2,5
+package.json
+  s_6893795e9e5c8d::t_2004bab494f982 37
+src/pages/page-store.ts
+  s_6893795e9e5c8d::t_5591cdc03f732a 79,81-99
+  s_6893795e9e5c8d::t_0887a3f36c0b0e 1-8,33-78
+  s_6893795e9e5c8d::t_b85cd9460362f1 14,21-24
+  s_6893795e9e5c8d::t_17e44b74dd352a 80
+public/index.html
+  s_6893795e9e5c8d::t_d2ea3d8f5ce702 1-211
+src/pages/pages.controller.ts
+  s_6893795e9e5c8d::t_c31136420a1112 15
+  s_6893795e9e5c8d::t_89bb86590f66a3 66,70-71
+  s_6893795e9e5c8d::t_478117fcf47e0e 67-69
+  s_6893795e9e5c8d::t_92d6b2ac48ea60 1-2,4-13,16-18,23-31,45-48,50,77-78
+  s_6893795e9e5c8d::t_2dafb49501d6d7 3,19-22,32-44,49,51-65,72-76
+  s_6893795e9e5c8d::t_e0958f96b50112 14
+src/main.ts
+  s_6893795e9e5c8d::t_6e42f4a7ac415e 8
+package-lock.json
+  s_6893795e9e5c8d::t_ba489d61462cf0 26,3073-3082
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "588595240a9f6742aaee5ea06e61365156fa7758",
+  "prompts": {},
+  "sessions": {
+    "s_6893795e9e5c8d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "14f0fa19-a43e-4ecc-a174-f8f3a4a39cd3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
