@@ -1,0 +1,23 @@
+web/src/PublishSection.tsx
+  s_08f6f1dcb0464e::t_6f1da5e1dbcef2 257-259
+web/src/app.css
+  s_08f6f1dcb0464e::t_92fc6a8643fbaa 126
+  s_08f6f1dcb0464e::t_b3b3a1d1c3b653 13,20-21,32,40,46,99,109
+  s_08f6f1dcb0464e::t_a74075ad7577c4 100,125,127-128
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "20d577ada21b477b91378ac006b4514871d3f7f3",
+  "prompts": {},
+  "sessions": {
+    "s_08f6f1dcb0464e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1bd59476-671d-47dd-8f2b-4594226f48a3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
