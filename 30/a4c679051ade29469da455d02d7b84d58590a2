@@ -1,0 +1,31 @@
+src/pages/page-store.spec.ts
+  s_6893795e9e5c8d::t_b121b9eefd1a76 78-106
+src/pages/pages.service.ts
+  s_6893795e9e5c8d::t_6d7f619f1daeef 55-59,67-96
+  s_6893795e9e5c8d::t_61ea7de796c2aa 97
+test/pages.e2e-spec.ts
+  s_6893795e9e5c8d::t_cea312ab5cc5c9 161-210
+public/index.html
+  s_6893795e9e5c8d::t_69eb5d74b9f24c 2,14,29,80-81,86,90-91,94-103,121-123,125-128,130,132,134-136,138,142-156,162-166,206-216,220-234,240,247-248,250-321,323
+src/pages/page-store.ts
+  s_6893795e9e5c8d::t_a916966327bc1a 1-9,16,23-30,42,44,50-55,84-120,123,136,143-163,177-179,196-199
+src/pages/pages.controller.ts
+  s_6893795e9e5c8d::t_33978b936dd252 5,9,26-30,85-102
+  s_6893795e9e5c8d::t_fc69a1b2bfe919 103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "30a4c679051ade29469da455d02d7b84d58590a2",
+  "prompts": {},
+  "sessions": {
+    "s_6893795e9e5c8d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "14f0fa19-a43e-4ecc-a174-f8f3a4a39cd3",
+        "model": "default"
+      },
+      "human_author": "heyongqi10 <heyongqi10@jd.com>"
+    }
+  }
+}
